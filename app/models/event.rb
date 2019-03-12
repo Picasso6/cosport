@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   belongs_to :owner, class_name: "User"
   has_many :attendees, through: :attendances
   has_many :comments
+<<<<<<< HEAD
 
   def self.search(params)
     puts params
@@ -15,4 +16,6 @@ class Event < ApplicationRecord
       all
     end
   end
+=======
+>>>>>>> master
 end

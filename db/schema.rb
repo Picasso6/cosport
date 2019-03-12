@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2019_03_12_113331) do
     t.integer "phone_number"
     t.string "level"
     t.string "gender"
+    t.string "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
