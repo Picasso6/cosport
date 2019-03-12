@@ -6,6 +6,8 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.datetime :start_date
       t.integer :duration
 
+      t.references :owner, index: true
+
       t.timestamps
     end
   end
