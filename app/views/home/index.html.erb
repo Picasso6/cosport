@@ -19,11 +19,13 @@
 
 <% @event.each do |event| %>
   <div>
-    <a href="<%= events_path(event.id) %>">
+    <a href="<%= events_path(event.id) %>"><%= event.title%></a>
       <p><%= Sport.all.find(event.sport_id).sport_name %></p>
 
       <p>à
         <%= City.find(event.city_id).city_name %></p>
+        <p>le <%=event.start_date%></p>
+        <p>pendant <%= event.duration%> heures</p>
 
       <p>crée par
         <%= User.all.find(event.owner_id).first_name%>
@@ -38,8 +40,9 @@
               <% end %>
             </p>
           <% end %>
+          <p><%= event.description%></p>
           <a href="#">REJOINDRE CE COSPORT</a>
-        </a>
+
         <p>--------------------------</p>
       </div>
     <% end %>
@@ -51,7 +54,3 @@
     <p><%= text_field_tag :sport, params[:search] %></p>
     <%= submit_tag "Search", :name => nil %>
 <% end %>
-
-
-
-
