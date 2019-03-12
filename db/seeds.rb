@@ -9,7 +9,8 @@
 require 'faker'
 
 15.times do
-  user_random = User.create!(first_name: Faker::Name.first_name ,last_name: Faker::Name.last_name ,email: Faker::Internet.email, password: Faker::Internet.password(8), gender: Faker::Gender.binary_type , level: "good")
+  user_random = User.new(first_name: Faker::Name.first_name ,last_name: Faker::Name.last_name ,email: Faker::Internet.email, password: Faker::Internet.password(8), gender: Faker::Gender.binary_type , level: "good")
+  user_random.save
 end
 puts "Users faker generated"
 
@@ -25,7 +26,8 @@ puts "Events faker generated"
 
 
 10.times do
-  city_random = City.create!(city_name: Faker::Address.city )
+  city_random = City.new(city_name: Faker::Address.city )
+  city_random.save
 end
 puts "Cities faker generated"
 
@@ -39,6 +41,7 @@ Sport.create!(sport_name: "Natation" )
 puts "Sport categories generated"
 
 10.times do
-  comment_random = Comment.create!(content: Faker::Hipster.sentence , user_id: rand(1..User.count) , event_id: rand(1..Event.count) )
+  comment_random = Comment.new(content: Faker::Hipster.sentence , user_id: User.all.sample , event_id: Event.all.sample)
+  comment_random.save
 end
 puts "Comments faker generated"
