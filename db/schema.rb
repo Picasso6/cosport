@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_12_111723) do
+ActiveRecord::Schema.define(version: 2019_03_12_113331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendances", force: :cascade do |t|
+    t.bigint "attendee_id"
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attendee_id"], name: "index_attendances_on_attendee_id"
+    t.index ["event_id"], name: "index_attendances_on_event_id"
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string "city_name"
@@ -21,15 +30,35 @@ ActiveRecord::Schema.define(version: 2019_03_12_111723) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "event_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_comments_on_event_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.datetime "start_date"
     t.integer "duration"
+    t.bigint "sport_id"
+    t.bigint "city_id"
     t.bigint "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_events_on_city_id"
     t.index ["owner_id"], name: "index_events_on_owner_id"
+    t.index ["sport_id"], name: "index_events_on_sport_id"
+  end
+
+  create_table "sports", force: :cascade do |t|
+    t.string "sport_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
