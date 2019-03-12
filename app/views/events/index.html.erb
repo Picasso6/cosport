@@ -1,0 +1,6 @@
+<h2> EVENT INDEX </h2>
+<% @event.each do |event| %>
+   	<div>
+    	<a href="<%= event_path(event.id) %>"><%= event.title %></a>
+   	</div>
+<% end %>
