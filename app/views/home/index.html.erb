@@ -1,19 +1,45 @@
 <h1>PAGE ACCUEIL</h1>
 
-<h2> tout les USERS :</h2>
+<h2>
+  tout les USERS :</h2>
 
 <% @user.each do |user| %>
-   	<div>
-    	<a href="<%= user_path(user.id) %>"><%= user.email %></a>
-   	</div>
+  <div>
+    <a href="<%= user_path(user.id) %>"><%= user.email %></a>
+  </div>
 <% end %>
 
-<h2> tout les EVENTS :</h2>
+<h2>
+  tout les EVENTS :</h2>
 
-<h3><a href="event_path"> event index</a></h3>
+<h3>
+  <a href="event_path">
+    event index</a>
+</h3>
 
 <% @event.each do |event| %>
-   	<div>
-    	<a href="<%= event_path(event.id) %>"><%= event.title %></a>
-   	</div>
-<% end %>
+  <div>
+    <a href="<%= events_path(event.id) %>">
+      <p><%= Sport.all.find(event.sport_id).sport_name %></p>
+
+      <p>à
+        <%= event.city.city_name %></p>
+
+      <p>crée par
+        <%= User.all.find(event.owner_id).first_name%>
+        <%= User.all.find(event.owner_id).last_name%></p>
+      <% if Attendance.where(attendee_id: event.id).exists?%>
+        <p>avec
+          <% Attendance.where(attendee_id: event.id).each do |attendee|%>
+            <% attendee.first_name%>
+              <% attendee.last_name%>
+                <br>
+
+              <% end %>
+            </p>
+          <% end %>
+          <a href="#">REJOINDRE CE COSPORT</a>
+        </a>
+        <p>--------------------------</p>
+      </div>
+    <% end %>
