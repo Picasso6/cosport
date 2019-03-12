@@ -13,7 +13,7 @@
   Tous les EVENTS :</h2>
 
 <h3>
-  <a href="event_path">
+  <a href="events_path">
     event index</a>
 </h3>
 
@@ -23,7 +23,7 @@
       <p><%= Sport.all.find(event.sport_id).sport_name %></p>
 
       <p>à
-        <%= event.city.city_name %></p>
+        <%= City.find(event.city_id).city_name %></p>
 
       <p>crée par
         <%= User.all.find(event.owner_id).first_name%>
