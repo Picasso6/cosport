@@ -7,7 +7,10 @@ gem "aws-sdk-s3", require: false
 gem 'rails-ujs'
 gem 'dotenv-rails'
 gem 'table_print'
-gem 'gmaps4rails'
+
+gem 'faker'
+#gem 'gmaps4rails'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
@@ -21,6 +24,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
+  gem 'devise'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
