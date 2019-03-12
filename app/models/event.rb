@@ -5,6 +5,7 @@ class Event < ApplicationRecord
   has_many :attendees, through: :attendances
   has_many :comments
 
+
   def self.search(params)
     puts params
     if params["city"] != ""
@@ -15,4 +16,5 @@ class Event < ApplicationRecord
       all
     end
   end
+
 end
