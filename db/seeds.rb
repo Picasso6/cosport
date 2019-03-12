@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+15.times do
+  user_random = User.create!(first_name: Faker::Name.first_name ,last_name: Faker::Name.last_name ,  description: Faker::Hipster.sentence ,email: Faker::Internet.email, password: Faker::Internet.password(8), phone_number :Faker::PhoneNumber.cell_phone , gender: Faker::Gender.binary_type , level )
+end
