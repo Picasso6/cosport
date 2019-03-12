@@ -1,7 +1,7 @@
-<h1>PAGE ACCUEIL</h1>
+<%= form_tag events_index_path, :method => 'get', :id => 'events_search' do %>
 
 <h2>
-  tout les USERS :</h2>
+  Tous les USERS :</h2>
 
 <% @user.each do |user| %>
   <div>
@@ -10,7 +10,7 @@
 <% end %>
 
 <h2>
-  tout les EVENTS :</h2>
+  Tous les EVENTS :</h2>
 
 <h3>
   <a href="events_path">
@@ -43,3 +43,15 @@
         <p>--------------------------</p>
       </div>
     <% end %>
+
+    <p><%= label_tag 'City' %> </p>
+    <p><%= text_field_tag :city, params[:search] %> </p>
+
+    <p><%= label_tag 'Sport' %></p>
+    <p><%= text_field_tag :sport, params[:search] %></p>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
+
+
+
+
