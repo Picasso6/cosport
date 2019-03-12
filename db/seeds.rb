@@ -18,7 +18,7 @@ puts "Users faker generated"
   event.save
 end
 
-puts "SEED User*20"
+puts "Events faker generated"
 
 # description: Faker::Hipster.sentence ,
 # phone_number :Faker::PhoneNumber.cell_phone
