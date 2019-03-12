@@ -23,12 +23,12 @@ puts "Users faker generated"
 end
 puts "Cities faker generated"
 
-Sport.create!(sport_name: "football" )
-Sport.create!(sport_name: "handball" )
-Sport.create!(sport_name: "pétanque" )
-Sport.create!(sport_name: "running" )
-Sport.create!(sport_name: "tennis" )
-Sport.create!(sport_name: "natation" )
+Sport.create!(sport_name: "Football" )
+Sport.create!(sport_name: "Handball" )
+Sport.create!(sport_name: "Pétanque" )
+Sport.create!(sport_name: "Running" )
+Sport.create!(sport_name: "Tennis" )
+Sport.create!(sport_name: "Natation" )
 
 puts "Sport categories generated"
 
