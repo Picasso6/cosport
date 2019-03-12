@@ -1,19 +1,9 @@
-<h1>PAGE ACCUEIL</h1>
+<%= form_tag events_index_path, :method => 'get', :id => 'events_search' do %>
 
-<h2> tout les USERS :</h2>
+    <p><%= label_tag 'City' %> </p>
+    <p><%= text_field_tag :city, params[:search] %> </p>
 
-<% @user.each do |user| %>
-   	<div>
-    	<a href="<%= user_path(user.id) %>"><%= user.email %></a>
-   	</div>
-<% end %>
-
-<h2> tout les EVENTS :</h2>
-
-<h3><a href="event_path"> event index</a></h3>
-
-<% @event.each do |event| %>
-   	<div>
-    	<a href="<%= event_path(event.id) %>"><%= event.title %></a>
-   	</div>
+    <p><%= label_tag 'Sport' %></p>
+    <p><%= text_field_tag :sport, params[:search] %></p>
+    <%= submit_tag "Search", :name => nil %>
 <% end %>

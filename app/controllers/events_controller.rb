@@ -4,6 +4,8 @@ class EventsController < ApplicationController
   end
 
   def index
-  	@event = Event.all
+    @events = Event.search(params)
   end
+
+
 end
