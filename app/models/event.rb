@@ -5,6 +5,10 @@ class Event < ApplicationRecord
   has_many :attendees, through: :attendances
   has_many :comments
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8904c802ea9da19360b82654edaceb7e9585231a
 
   def self.search(params)
     puts params
@@ -16,6 +20,10 @@ class Event < ApplicationRecord
       all
     end
   end
+<<<<<<< HEAD
 =======
 >>>>>>> master
+=======
+
+>>>>>>> 8904c802ea9da19360b82654edaceb7e9585231a
 end

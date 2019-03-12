@@ -7,3 +7,15 @@
     <p><%= text_field_tag :sport, params[:search] %></p>
     <%= submit_tag "Search", :name => nil %>
 <% end %>
+
+
+<h2> tout les EVENTS :</h2>
+
+<h3><a href="<%= events_path %>"> event index</a></h3>
+
+<% @event.each do |event| %>
+   	<div>
+    	<a href="<%= event_path(event.id) %>"><%= event.title %></a>
+   	</div>
+<% end %>
+
