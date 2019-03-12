@@ -1,0 +1,10 @@
+<% user = @users.find(params[:id]) %>
+
+  <%= user.first_name %>
+  <%= user.last_name %>
+  <%= user.gender %>
+  <%= user.email %>
+  <%= user.phone_number %>
+  <% if user.level != nil%>
+    <%= user.level %>
+  <% end %>
