@@ -5,6 +5,7 @@ class AddFieldsToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :phone_number, :integer
     add_column :users, :level, :string
     add_column :users, :gender, :string
+    add_column :users, :description, :string
 
   end
 end
