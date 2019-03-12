@@ -12,6 +12,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.create
+    @event.title = params['title']
     @event.sport_id = params['sport_id']
     @event.description = params["description"]
     #hour_start = params['hour_start']
