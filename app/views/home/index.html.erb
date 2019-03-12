@@ -1,0 +1,19 @@
+<h1>PAGE ACCUEIL</h1>
+
+<h2> tout les USERS :</h2>
+
+<% @user.each do |user| %>
+   	<div>
+    	<a href="<%= user_path(user.id) %>"><%= user.email %></a>
+   	</div>
+<% end %>
+
+<h2> tout les EVENTS :</h2>
+
+<h3><a href="event_path"> event index</a></h3>
+
+<% @event.each do |event| %>
+   	<div>
+    	<a href="<%= event_path(event.id) %>"><%= event.title %></a>
+   	</div>
+<% end %>

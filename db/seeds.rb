@@ -13,6 +13,12 @@ require 'faker'
 end
 puts "Users faker generated"
 
+20.times do
+  event = Event.new(title: Faker::Company.bs, description: Faker::Config.random, start_date: Faker::Date.forward(23), duration: 30, owner_id: User.all.sample)
+  event.save
+end
+
+puts "SEED User*20"
 
 # description: Faker::Hipster.sentence ,
 # phone_number :Faker::PhoneNumber.cell_phone
