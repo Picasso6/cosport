@@ -1,0 +1,15 @@
+<div>
+<div class="navbar navbar-dark bg-dark fixed-top navbar-expand-sm py-3">
+        <a class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target=".navbar-collapse">☰</a>
+        <a href="#" class="navbar-brand">Brand</a>
+        <ul class="nav navbar-nav">
+          <% if current_user %>
+            <li class="nav-item" ><%= link_to "Deconnexion", destroy_user_session_path, method: "delete", class: "nav-link" %></li>
+          <% else %>
+            <li class="nav-item" ><%= link_to "Connexion", new_user_session_path, class: "nav-link" %></li>
+            <li class="nav-item" ><%= link_to "Inscription", new_user_registration_path, class: "nav-link" %></li>
+          <% end %>
+        </ul>
+</div>
+<!-- /.navbar -->
+</div>
