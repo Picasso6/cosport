@@ -1,15 +1,33 @@
-<div>
-<div class="navbar navbar-dark bg-dark fixed-top navbar-expand-sm py-3">
-        <a class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target=".navbar-collapse">☰</a>
-        <a href="#" class="navbar-brand">Brand</a>
-        <ul class="nav navbar-nav">
-          <% if current_user %>
-            <li class="nav-item" ><%= link_to "Deconnexion", destroy_user_session_path, method: "delete", class: "nav-link" %></li>
-          <% else %>
-            <li class="nav-item" ><%= link_to "Connexion", new_user_session_path, class: "nav-link" %></li>
-            <li class="nav-item" ><%= link_to "Inscription", new_user_registration_path, class: "nav-link" %></li>
-          <% end %>
-        </ul>
+
+
+
+
+
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top navbar-expand-sm py-3 bg-primary">
+
+    <a class="navbar-brand" href="#">Navbar</a>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+      <%= link_to "Events", events_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Users", events_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricingg</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <% if current_user %>
+        <li class="nav-item" ><%= link_to "Deconnexion", destroy_user_session_path, method: "delete", class: "nav-link" %></li>
+      <% else %>
+        <li class="nav-item" ><%= link_to "Connexion", new_user_session_path, class: "nav-link" %></li>
+        <li class="nav-item" ><%= link_to "Inscription", new_user_registration_path, class: "nav-link" %></li>
+      <% end %>
+    </ul>
+  </nav>
 </div>
-<!-- /.navbar -->
-</div>
+
+
+
+home / creer un event // liste des users
