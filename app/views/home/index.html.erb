@@ -1,5 +1,7 @@
+
 <section>
   <div class="container-fluid">
+
 <h2>
   Tous les USERS :</h2>
 
@@ -48,7 +50,12 @@
           <%end%>
         <hr>
       </div>
+
+     <%end%>
+<%= form_tag events_index_path, :method => 'get', :id => 'events_search' do %>
+
       <%end%>
+
 
    <p><%= label_tag 'City' %> </p>
     <p><%=select_tag :city, options_for_select(City.all.collect{ |city| [city.city_name, city.id] }) %> </p>
@@ -67,6 +74,10 @@
     </div>
     <%= submit_tag "Search", :name => nil %>
 
+    <% end %>
+
+
   </div>
 </section>
+
 

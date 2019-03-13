@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Salut <%= @user.first_name %> !</h1>
+    <p>
+      Y a un pélo il s'est ajouté à ton event <%= @attendance.event.title %>. C <%= @attendance.attendee.first_name %>
+    </p>
+    <p>
+      Pour gérer tes participations : <%= @url %>.
+    </p>
+    <p> À très vite sur monsite.fr !
+  </body>
+</html>
