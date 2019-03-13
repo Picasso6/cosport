@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show ] do
-    resources :avatar, only: [:new, :create]
+    resources :profil_picture, only: [:create]
   end
   resources :homes, only: [:index]
   root 'home#index'
