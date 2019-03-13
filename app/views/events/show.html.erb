@@ -6,11 +6,7 @@
     <%= label_tag 'comments' %>
     <%= text_area_tag 'content' %>
 	<%= submit_tag "Create com" %>	
-	<p>coucou</p>	
 <% end %>
-
-<p>blabla</p>
-
 
 <% @comment.each do |comment| %>
 	<p><a href="<%= user_path(comment.user_id) %>"><%= comment.user.first_name %></a> dit : <%= comment.content %></p>
