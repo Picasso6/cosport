@@ -11,8 +11,20 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= require popper
+//= require bootstrap-sprockets
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+
+
+$(window).scroll(function() {
+  /* affix after scrolling 100px */
+  if ($(document).scrollTop() > 100) {
+    $('.navbar').addClass('affix');
+  } else {
+    $('.navbar').removeClass('affix');
+  }
+});

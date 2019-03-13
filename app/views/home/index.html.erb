@@ -1,4 +1,7 @@
 
+<section>
+  <div class="container-fluid">
+
 <h2>
   Tous les USERS :</h2>
 
@@ -42,13 +45,18 @@
           <% end %>
           <p><%= event.description%></p>
 
-          <%if !Attendance.where(event_id: event.id , attendee_id: current_user.id).exists?%>
+          <%if current_user && !Attendance.where(event_id: event.id , attendee_id: current_user.id).exists?%>
           <%=link_to "REJOINDRE CE COSPORT !", event_attendances_path(event.id) ,method: "post" %>
           <%end%>
-        <p>--------------------------</p>
+        <hr>
       </div>
+
      <%end%>
 <%= form_tag events_index_path, :method => 'get', :id => 'events_search' do %>
+
+      <%end%>
+
+
    <p><%= label_tag 'City' %> </p>
     <p><%=select_tag :city, options_for_select(City.all.collect{ |city| [city.city_name, city.id] }) %> </p>
 
@@ -65,4 +73,11 @@
            <%= time_field 'hour_start', class: "form-control " %>
     </div>
     <%= submit_tag "Search", :name => nil %>
+
     <% end %>
+
+
+  </div>
+</section>
+
+
