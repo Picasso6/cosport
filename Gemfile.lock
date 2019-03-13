@@ -51,7 +51,6 @@ GEM
       execjs
     aws-eventstream (1.0.1)
     aws-partitions (1.142.0)
-
     aws-sdk-core (3.46.2)
       aws-eventstream (~> 1.0)
       aws-partitions (~> 1.0)
