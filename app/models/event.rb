@@ -1,7 +1,21 @@
 class Event < ApplicationRecord
-  #belongs_to :city
-  #belongs_to :sport
-  #belongs_to :owner, class_name: "User"
-  #has_many :attendees, through: :attendances
-  #has_many :comments
+  belongs_to :city
+  belongs_to :sport
+  belongs_to :owner, class_name: "User"
+  has_many :attendees, through: :attendances
+  has_many :comments
+
+
+  def self.search(params)
+    puts params
+    hour = params['hour_start'].values[0].to_time.strftime('%H').to_i
+    minute = params['hour_start'].values[0].to_time.strftime('%M').to_i
+    @given_start_date = (params["start_date"].to_time + hour.hours + minute.minutes).to_datetime
+    if params["city"] != ""
+      where(["city_id = ? and sport_id = ? and start_date >= ?", "#{params["city"]}", "#{params["sport"]}", "#{@given_start_date}"])
+    else
+      all
+    end
+  end
+
 end
