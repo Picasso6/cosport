@@ -1,5 +1,10 @@
 
-	
+  <%if @user.profil_picture.attached?%>
+    <%= image_tag @user.profil_picture, alt: 'profil_picture' %>
+  <%else%>
+  	<p>pas encore de profil_picture</p>
+  <% end %>
+
   <%= @user.first_name %>
   <%= @user.last_name %>
   <%= @user.gender %>
