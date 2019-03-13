@@ -1,4 +1,5 @@
-
+<section>
+  <div class="container-fluid">
 <h2>
   Tous les USERS :</h2>
 
@@ -45,7 +46,7 @@
           <%if !Attendance.where(event_id: event.id , attendee_id: current_user.id).exists?%>
           <%=link_to "REJOINDRE CE COSPORT !", event_attendances_path(event.id) ,method: "post" %>
           <%end%>
-        <p>--------------------------</p>
+        <hr>
       </div>
      <%end%>
 
@@ -66,4 +67,6 @@
     </div>
     <%= submit_tag "Search", :name => nil %>
 
- 
+  </div>
+</section>
+
