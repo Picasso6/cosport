@@ -1,3 +1,8 @@
+@import "bootstrap";
+
+
+
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,3 +18,42 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+ html,body {
+ 	height:100%;
+  padding-top:50px;
+ }
+ body {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1 0 auto;
+}
+.footer {
+  flex-shrink: 0;
+  background-color: grey;
+}
+
+ .navbar {
+   -webkit-transition:padding 0.2s ease;
+   -moz-transition:padding 0.2s ease;
+   -o-transition:padding 0.2s ease;
+   transition:padding 0.2s ease;
+ }
+
+ .affix {
+   padding-top: 0.2em !important;
+   padding-bottom: 0.2em !important;
+   -webkit-transition:padding 0.2s linear;
+   -moz-transition:padding 0.2s linear;
+   -o-transition:padding 0.2s linear;
+   transition:padding 0.2s linear;
+ }
+
+
+ section {
+     min-height:calc(100% - 70px);
+ }
