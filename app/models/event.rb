@@ -8,10 +8,11 @@ class Event < ApplicationRecord
 
   def self.search(params)
     puts params
+    hour = params['hour_start'].values[0].to_time.strftime('%H').to_i
+    minute = params['hour_start'].values[0].to_time.strftime('%M').to_i
+    @given_start_date = (params["start_date"].to_time + hour.hours + minute.minutes).to_datetime
     if params["city"] != ""
-    @city_id = City.find_by(city_name: params["city"]).id
-    @sport_id = Sport.find_by(sport_name: params["sport"]).id
-      where(["city_id = ? and sport_id = ?", "#{@city_id}", "#{@sport_id}"])
+      where(["city_id = ? and sport_id = ? and start_date >= ?", "#{params["city"]}", "#{params["sport"]}", "#{@given_start_date}"])
     else
       all
     end
