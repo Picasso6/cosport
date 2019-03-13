@@ -1,0 +1,10 @@
+<p><%= @attendance.attendee.first_name %> <%= @attendance.attendee.last_name %> veux rejoindre votre annonce.</p>
+
+<%= link_to(event_attendance_path(@attendance.event.id, @attendance.id), method: :patch) do %>
+  <p>valider</p>
+<% end %>
+
+
+<%= link_to(event_attendance_path(@attendance.event.id, @attendance.id), method: :delete) do %>
+  <p>supprimer</p>
+<% end %>
