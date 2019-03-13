@@ -32,9 +32,8 @@ Sport.create!(sport_name: "Natation" )
 puts "Sport categories generated"
 
 20.times do
-
  event_random = Event.create!(title: Faker::Company.bs, description: Faker::Hipster.sentence, start_date: Faker::Date.forward(23), duration: 30, city_id: rand(1..City.count), sport_id: rand(1..Sport.count) ,owner_id: rand(1..User.count))
-
+end
 
 puts "Events faker generated"
 
