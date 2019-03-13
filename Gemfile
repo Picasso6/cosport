@@ -7,6 +7,7 @@ gem "aws-sdk-s3", require: false
 gem 'rails-ujs'
 gem 'dotenv-rails'
 gem 'table_print'
+gem 'jquery-rails'
 
 gem 'faker'
 #gem 'gmaps4rails'

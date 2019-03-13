@@ -19,7 +19,9 @@
 
 <% @event.each do |event| %>
   <div>
-    <a href="<%= events_path(event.id) %>"><%= event.title%></a>
+
+    <%=link_to event.title , event_path(event.id) , method: "get" %>
+    <br>
       <p><%= Sport.all.find(event.sport_id).sport_name %></p>
 
       <p>à
@@ -30,19 +32,20 @@
       <p>crée par
         <%= User.all.find(event.owner_id).first_name%>
         <%= User.all.find(event.owner_id).last_name%></p>
-      <% if Attendance.where(attendee_id: event.id).exists?%>
+      <% if Attendance.where(event_id: event.id).exists?%>
         <p>avec
-          <% Attendance.where(attendee_id: event.id).each do |attendee|%>
-            <% attendee.first_name%>
-              <% attendee.last_name%>
+          <% Attendance.where(event_id: event.id).each do |attendance|%>
+            <%= User.find(attendance.attendee_id).first_name%>
+            <%= User.find(attendance.attendee_id).last_name%>
                 <br>
-
-              <% end %>
+          <% end %>
             </p>
           <% end %>
           <p><%= event.description%></p>
-          <a href="#">REJOINDRE CE COSPORT</a>
 
+          <%if !Attendance.where(event_id: event.id , attendee_id: current_user.id).exists?%>
+          <%=link_to "REJOINDRE CE COSPORT !", event_attendances_path(event.id) ,method: "post" %>
+          <%end%>
         <p>--------------------------</p>
       </div>
     <% end %>
