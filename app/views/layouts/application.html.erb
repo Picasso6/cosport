@@ -10,16 +10,11 @@
   </head>
 
   <body>
-    <!--nav tempo pour co/deco -->
-    <div style="width: 100%; height: 5em; background: red;">
-      <% if current_user %>
-        <p><%= link_to "Deconnexion", destroy_user_session_path, method: "delete" %></p>
-      <% else %>
-        <p><%= link_to "Connexion", new_user_session_path %></p>
-        <p><%= link_to "Inscription", new_user_registration_path %></p>  
-      <% end %>
+    <%= render "layouts/navbar_application"  %>
+    <div class="content">
+      <%= yield %>
     </div>
-    <!--nav tempo pour co/deco -->
-    <%= yield %>
+    <%= javascript_include_tag 'application' %>
+    <%= render "layouts/footer_application"  %>
   </body>
 </html>

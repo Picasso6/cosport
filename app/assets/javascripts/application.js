@@ -10,9 +10,23 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
 //= require jquery
 //= require jquery_ujs
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+
+
+$(window).scroll(function() {
+  /* affix after scrolling 100px */
+  if ($(document).scrollTop() > 100) {
+    $('.navbar').addClass('affix');
+  } else {
+    $('.navbar').removeClass('affix');
+  }
+});
