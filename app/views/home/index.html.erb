@@ -18,55 +18,6 @@
 
 <% @event.each do |event| %>
   <div>
-    <a href="<%= events_path(event.id) %>"><%= event.title%></a>
-      <p><%= Sport.all.find(event.sport_id).sport_name %></p>
-
-      <p>à
-        <%= City.find(event.city_id).city_name %></p>
-        <p>le <%=event.start_date%></p>
-        <p>pendant <%= event.duration%> heures</p>
-
-      <p>crée par
-        <%= User.all.find(event.owner_id).first_name%>
-        <%= User.all.find(event.owner_id).last_name%></p>
-      <% if Attendance.where(attendee_id: event.id).exists?%>
-        <p>avec
-          <% Attendance.where(attendee_id: event.id).each do |attendee|%>
-            <% attendee.first_name%>
-              <% attendee.last_name%>
-                <br>
-
-              <% end %>
-            </p>
-          <% end %>
-          <p><%= event.description%></p>
-          <a href="#">REJOINDRE CE COSPORT</a>
-
-        <p>--------------------------</p>
-      </div>
-    <% end %>
-    <%= form_tag events_index_path, :method => 'get', :id => 'events_search' do %>
-
-
-<h2>
-  Tous les USERS :</h2>
-
-<% @user.each do |user| %>
-  <div>
-    <a href="<%= user_path(user.id) %>"><%= user.email %></a>
-  </div>
-<% end %>
-
-<h2>
-  Tous les EVENTS :</h2>
-
-<h3>
-  <a href="events_path">
-    event index</a>
-</h3>
-
-<% @event.each do |event| %>
-  <div>
 
     <%=link_to event.title , event_path(event.id) , method: "get" %>
     <br>
@@ -96,7 +47,7 @@
           <%end%>
         <p>--------------------------</p>
       </div>
-    <% end %>
+     <%end%>
 
    <p><%= label_tag 'City' %> </p>
     <p><%=select_tag :city, options_for_select(City.all.collect{ |city| [city.city_name, city.id] }) %> </p>
@@ -115,4 +66,4 @@
     </div>
     <%= submit_tag "Search", :name => nil %>
 
-<% end %>
+ 
