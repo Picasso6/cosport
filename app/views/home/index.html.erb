@@ -1,59 +1,72 @@
 <section>
   <div class="container-fluid">
-    <%= form_tag events_index_path, :method => 'get', :id => 'events_search' do %>
+<h2>
+  Tous les USERS :</h2>
 
-    <h1>
-      Tous les USERS :</h1>
+<% @user.each do |user| %>
+  <div>
+    <a href="<%= user_path(user.id) %>"><%= user.email %></a>
+  </div>
+<% end %>
 
-    <% @user.each do |user| %>
-      <div>
-        <a href="<%= user_path(user.id) %>"><%= user.email %></a>
+<h2>
+  Tous les EVENTS :</h2>
+
+<h3>
+  <a href="events_path">
+    event index</a>
+</h3>
+
+<% @event.each do |event| %>
+  <div>
+
+    <%=link_to event.title , event_path(event.id) , method: "get" %>
+    <br>
+      <p><%= Sport.all.find(event.sport_id).sport_name %></p>
+
+      <p>à
+        <%= City.find(event.city_id).city_name %></p>
+        <p>le <%=event.start_date%></p>
+        <p>pendant <%= event.duration%> heures</p>
+
+      <p>crée par
+        <%= User.all.find(event.owner_id).first_name%>
+        <%= User.all.find(event.owner_id).last_name%></p>
+      <% if Attendance.where(event_id: event.id).exists?%>
+        <p>avec
+          <% Attendance.where(event_id: event.id).each do |attendance|%>
+            <%= User.find(attendance.attendee_id).first_name%>
+            <%= User.find(attendance.attendee_id).last_name%>
+                <br>
+          <% end %>
+            </p>
+          <% end %>
+          <p><%= event.description%></p>
+
+          <%if !Attendance.where(event_id: event.id , attendee_id: current_user.id).exists?%>
+          <%=link_to "REJOINDRE CE COSPORT !", event_attendances_path(event.id) ,method: "post" %>
+          <%end%>
+        <hr>
       </div>
-    <% end %>
+     <%end%>
 
-    <h2>
-      Tous les EVENTS :</h2>
+   <p><%= label_tag 'City' %> </p>
+    <p><%=select_tag :city, options_for_select(City.all.collect{ |city| [city.city_name, city.id] }) %> </p>
 
-    <h3>
-      <a href="events_path">
-        event index</a>
-    </h3>
+    <p><%= label_tag 'Sport' %></p>
+    <p><%=select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }) %></p>
+    <div class="form-group" >
+          <%= label_tag 'Date' %>
+          <%= date_field_tag 'start_date', @start_date, class: "form-control "  %>
+    </div>
 
-    <% @event.each do |event| %>
-      <div>
-        <a href="<%= events_path(event.id) %>"><%= event.title%></a>
-          <p><%= Sport.all.find(event.sport_id).sport_name %></p>
+    <div class="form-group" >
+          <%= label_tag 'À partir de' %>
+          <br>
+           <%= time_field 'hour_start', class: "form-control " %>
+    </div>
+    <%= submit_tag "Search", :name => nil %>
 
-          <p>à
-            <%= City.find(event.city_id).city_name %></p>
-            <p>le <%=event.start_date%></p>
-            <p>pendant <%= event.duration%> heures</p>
+  </div>
+</section>
 
-          <p>crée par
-            <%= User.all.find(event.owner_id).first_name%>
-            <%= User.all.find(event.owner_id).last_name%></p>
-          <% if Attendance.where(attendee_id: event.id).exists?%>
-            <p>avec
-              <% Attendance.where(attendee_id: event.id).each do |attendee|%>
-                <% attendee.first_name%>
-                  <% attendee.last_name%>
-                    <br>
-
-                  <% end %>
-                </p>
-              <% end %>
-              <p><%= event.description%></p>
-              <a href="#">REJOINDRE CE COSPORT</a>
-
-            <p>--------------------------</p>
-          </div>
-        <% end %>
-
-        <p><%= label_tag 'City' %> </p>
-        <p><%= text_field_tag :city, params[:search] %> </p>
-
-        <p><%= label_tag 'Sport' %></p>
-        <p><%= text_field_tag :sport, params[:search] %></p>
-        <%= submit_tag "Search", :name => nil %>
-    <% end %></div>
-  </section>
