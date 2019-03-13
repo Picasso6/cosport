@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :events, only: [:show, :index , :new , :create] do
     resources :attendances, only: [:create]
+    resources :comments, only: [:create]
   end
 
   resources :users, only: [:show ] do
