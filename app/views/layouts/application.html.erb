@@ -12,14 +12,13 @@
   <body>
 
 
-    <div id="app">
-      <div class="main-wrapper">
           <%= render "layouts/navbar_application"  %>
-          <%= yield %>
-          <%# <%= javascript_include_tag 'application' %>
+          <div class="content">
+            <%= yield %>
+            </div>
+           <%= javascript_include_tag 'application' %>
           <%= render "layouts/footer_application"  %>
-        </div>
-      </div>
+
 
   </body>
 </html>
