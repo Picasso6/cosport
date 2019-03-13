@@ -22,4 +22,14 @@ class User < ApplicationRecord
     UserMailer.welcome_email(self).deliver_now
   end
 
+  def self.qualification_level(sport)
+    sport_id = Sport.find_by(sport_name: sport).id
+    qualification_array = ["débutant","amateur","confirmé"]
+    if self.level == nil
+      return "non précisé"
+    else
+      return qualification_array[self.level[sport_id-1]]
+    end
+  end
+
 end
