@@ -1,20 +1,17 @@
 <h2> EVENT SHOW </h2>
 <%= @event.title %>
 
-<% if current_user %>
-	<% form_tag, event_comments_path(@event.id), method: "post" do %>
-	    <%= label_tag 'comments' %>
-	    <%= text_area_tag 'content' %>
 
-	    <br /> <br />
-		<%= submit_tag "Create com" %>		
-	<% end %>
-<% else %>
-	<a href="new_user_session_path">Comment</a>
+<%= form_tag(event_comments_path(@event.id), method: :post ) do %>
+    <%= label_tag 'comments' %>
+    <%= text_area_tag 'content' %>
+	<%= submit_tag "Create com" %>	
+	<p>coucou</p>	
 <% end %>
 
+<p>blabla</p>
 
 
 <% @comment.each do |comment| %>
-	<%= comment.content %>
+	<p><a href="<%= user_path(comment.user_id) %>"><%= comment.user.first_name %></a> dit : <%= comment.content %></p>
 <% end %>
