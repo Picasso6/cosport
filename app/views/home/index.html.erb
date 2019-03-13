@@ -48,7 +48,7 @@
           <%end%>
         <p>--------------------------</p>
       </div>
-     <%end%>
+      <%end%>
 
    <p><%= label_tag 'City' %> </p>
     <p><%=select_tag :city, options_for_select(City.all.collect{ |city| [city.city_name, city.id] }) %> </p>
