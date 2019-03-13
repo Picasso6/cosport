@@ -26,7 +26,7 @@ class EventsController < ApplicationController
 
     puts "**************"
 
-    @event.start_date = (params["start_date"].to_time + minute.minutes).to_datetime
+    @event.start_date = (params["start_date"].to_time +hour.hours+ minute.minutes).to_datetime
     #@event.start_date = (params["start_date"].to_time + params['hour_start'].values[0].to_time).to_datetime
 
     #(start_date.to_time + hour.hours + minute.minutes).to_datetime
@@ -45,7 +45,7 @@ class EventsController < ApplicationController
 
     else
       #flash.now[:danger] = 'Problème lors de ta création d'evenement '
-      puts "$$$$$$$$ PROBLEME CRÉATION EVENT $$$$$$$$"
+      puts "$$$$$$$$PROBLEME CRÉATION EVENT $$$$$$$$"
       puts @event.errors.full_messages
       render :new
     end
