@@ -7,8 +7,10 @@ gem "aws-sdk-s3", require: false
 gem 'rails-ujs'
 gem 'dotenv-rails'
 gem 'table_print'
+
 gem 'faker'
 #gem 'gmaps4rails'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
