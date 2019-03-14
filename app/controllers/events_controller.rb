@@ -1,5 +1,8 @@
 class EventsController < ApplicationController
-  #before_action :authenticate_user, only: [:new , :show]
+  include EventsHelper
+  before_action :authenticate_user, only: [:new , :show]
+  before_action :not_validated_yet, only: [:show]
+
 
   def show
   	@event = Event.find(params["id"])

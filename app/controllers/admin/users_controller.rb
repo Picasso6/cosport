@@ -19,6 +19,11 @@ class Admin::UsersController < ApplicationController
         atd.destroy
       end
     end
+    if Comment.exists?(user: @user)
+      Comment.where(user: @user).each do |comment|
+        comment.destroy
+      end
+    end
     @user.destroy
     redirect_to request.referrer
   end

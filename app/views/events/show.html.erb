@@ -19,11 +19,10 @@
 <%= form_tag(event_comments_path(@event.id), method: :post ) do %>
     <%= label_tag 'comments' %>
     <%= text_area_tag 'content' %>
-	<%= submit_tag "Create com" %>	
+	<%= submit_tag "Create com" %>
 <% end %>
 
 <% @comment.each do |comment| %>
 	<p><a href="<%= user_path(comment.user_id) %>"><%= comment.user.first_name %></a> dit : <%= comment.content %></p>
 	<%= button_to "delete", event_comment_path(@event.id, comment.id), :method => :delete %> 
 <% end %>
-
