@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   end
 
-  resources :users, only: [:show ] do
+  resources :users, only: [:show, :index ] do
     resources :profil_picture, only: [:create]
     resources :opinions, only: [:create, :new]
   end
