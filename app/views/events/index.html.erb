@@ -7,7 +7,7 @@
 <% array.sort.uniq.each do |date| %>
   <% if @events.where(start_date: date).exists?%>
   <% event_date = @events.where(start_date: date)[0].start_date  %>
-  <%= event_date.strftime("%A")%>  <%= event_date.strftime("%e ")%>   <%= event_date.strftime("%B ")%>   <%= event_date.strftime("%Y")%>
+  <%= @days_array_fr[event_date.wday]%>  <%= event_date.strftime("%e ")%>   <%=@months_array_fr[event_date.strftime("%m").to_i] %>   <%= event_date.strftime("%Y")%>
   <br>
   <% @events.where(start_date: date).each do |event|%>
     <%= event.title%>
