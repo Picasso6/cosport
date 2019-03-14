@@ -1,6 +1,91 @@
-<% @events.order(:start_date).each do |event| %>
 
-<%=link_to(event_path(event.id)) do %>
-  <%= event.title %>
+
+
+<% @events.order(:start_date).each do |event| %>
 <% end %>
+
+
+<% if @events.select{ |element| element.start_date.asctime.split[0]== "Mon" }[0]!= nil %>
+<p>LUNDI</p>
+<% @events.select{ |element| element.start_date.asctime.split[0]== "Mon" }.each do |event| %>
+    <%=link_to(event_path(event.id)) do %>
+    <%= event.title %>
+
+    <br>
+    <% end %>
+<% end %>
+<hr>
+<% end %>
+
+
+<% if @events.select{ |element| element.start_date.asctime.split[0]== "Tue" }[0]!= nil %>
+<p>MARDI</p>
+<% @events.select{ |element| element.start_date.asctime.split[0]== "Tue" }.each do |event| %>
+    <%=link_to(event_path(event.id)) do %>
+    <%= event.title %> <br>
+    <%= event.start_date %>
+    <br>
+    <% end %>
+<% end %>
+<hr>
+<% end %>
+
+
+<% if @events.select{ |element| element.start_date.asctime.split[0]== "Wed" }[0]!= nil %>
+<p>MERCREDI</p>
+<% @events.select{ |element| element.start_date.asctime.split[0]== "Wed" }.each do |event| %>
+    <%=link_to(event_path(event.id)) do %>
+    <%= event.title %>
+    <br>
+    <% end %>
+<% end %>
+<hr>
+<% end %>
+
+<hr>
+<% if @events.select{ |element| element.start_date.asctime.split[0]== "Thu" }[0]!= nil %>
+<p>JEUDI</p>
+<% @events.select{ |element| element.start_date.asctime.split[0]== "Thu" }.each do |event| %>
+    <%=link_to(event_path(event.id)) do %>
+    <%= event.title %>
+    <br>
+    <% end %>
+<% end %>
+<hr>
+<% end %>
+
+
+<% if @events.select{ |element| element.start_date.asctime.split[0]== "Fri" }[0]!= nil %>
+<p>VENDREDI</p>
+<% @events.select{ |element| element.start_date.asctime.split[0]== "Fri" }.each do |event| %>
+    <%=link_to(event_path(event.id)) do %>
+    <%= event.title %>
+    <br>
+    <% end %>
+<% end %>
+<hr>
+<% end %>
+
+
+<% if @events.select{ |element| element.start_date.asctime.split[0]== "Sat" }[0]!= nil %>
+<p>SAMEDI</p>
+<% @events.select{ |element| element.start_date.asctime.split[0]== "Sat" }.each do |event| %>
+    <%=link_to(event_path(event.id)) do %>
+    <%= event.title %>
+    <br>
+    <% end %>
+<% end %>
+<hr>
+<% end %>
+
+
+<% if @events.select{ |element| element.start_date.asctime.split[0]== "Sun" }[0]!= nil %>
+<p>DIMANCHE</p>
+<% @events.select{ |element| element.start_date.asctime.split[0]== "Sun" }.each do |event| %>
+    <%=link_to(event_path(event.id)) do %>
+    <%= event.title %>
+    <br>
+    <% end %>
+<% end %>
+<hr>
 <% end %>

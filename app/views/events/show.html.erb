@@ -1,4 +1,5 @@
 <h2> EVENT SHOW </h2>
+
 <p><%= @event.title %></p>
 <p><%= @event.start_date %></p>
 
@@ -23,3 +24,4 @@
 <% @comment.each do |comment| %>
 	<p><a href="<%= user_path(comment.user_id) %>"><%= comment.user.first_name %></a> dit : <%= comment.content %></p>
 <% end %>
+
