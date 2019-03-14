@@ -3,7 +3,7 @@
 <p><%= @event.title %></p>
 <p><%= @event.start_date.ctime %></p>
 
-<% if @event.start_date.ctime < Time.now.ctime %>
+<% if @event.start_date < (Time.now + Time.now.gmt_offset).utc %>
 	<h3>l'event a deja commencé</h3>
 <% else %>
 	<% if @event.owner_id == current_user.id %>
