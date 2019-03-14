@@ -61,7 +61,7 @@ select("model_name", "model_id", Model.all.collect {|mt| [ mt.name, mt.id ] })
     <p><%=select_tag :city, options_for_select(City.all.collect{ |city| [city.city_name, city.id] }.insert(0, "")) %> </p>
 
     <p><%= label_tag 'Sport' %></p>
-    <p><%=select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }) %></p>
+    <p><%=select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }.insert(0, "")) %></p>
     <div class="form-group" >
           <%= label_tag 'Date' %>
           <%= date_field_tag 'start_date', @start_date, class: "form-control "  %>
