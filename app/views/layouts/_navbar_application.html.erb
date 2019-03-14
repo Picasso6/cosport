@@ -5,7 +5,7 @@
 
   <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top navbar-expand-sm py-3 bg-primary">
 
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="<%=root_path%>">
       <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
     	 viewBox="0 0 274.4862671 194.9902496" enable-background="new 0 0 274.4862671 194.9902496" xml:space="preserve" class="our-logo">
     <g id="XMLID_18_">
@@ -251,7 +251,7 @@
     </svg></a>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-      <%= link_to "COSPORT", events_path, class: "nav-link our-logo-typo" %>
+      <%= link_to "COSPORT", root_path, class: "nav-link our-logo-typo" %>
       </li>
       <li class="nav-item">
       <%= link_to "Events", events_path, class: "nav-link" %>
@@ -260,7 +260,10 @@
         <%= link_to "Users", users_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricingg</a>
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+      <%= link_to "Events Création", new_event_path, class: "nav-link" %>
       </li>
     </ul>
     <ul class="navbar-nav">
