@@ -20,11 +20,14 @@
  */
 
 
+ /* ---------------------------------------------------
+     SETUP NAVBAR AND FOOTER STICKY WITH FLEXBOX
+ ----------------------------------------------------- */
 
  html,body {
  	height:100%;
   padding-top:50px;
- }
+  }
  body {
   display: flex;
   flex-direction: column;
@@ -56,4 +59,33 @@
 
  section {
      min-height:calc(100% - 70px);
- }
+}
+
+
+/* ---------------------------------------------------
+    COLORS STYLE
+----------------------------------------------------- */
+// color main
+$f-color-1: #ff815a;   //corail
+$f-color-2: #6f4dff;   //electric-purple
+$f-color-3: #2ff4b7;   //green-pepsi
+
+.primary-color { background-color: $f-color-1; }
+.secondary-color { background-color: $f-color-2; }
+.third-color { background-color: $f-color-3; }
+
+// color shade/grey
+$s-color-1: #e2e0df;
+$s-color-2: #575757;
+$s-color-3: #080416;
+
+.light-color { background-color: $s-color-1; }
+.medium-color{ background-color: $s-color-2; }
+.strong-color { background-color: $s-color-3; }
+
+// color for background
+$m-color-1: #f1efeb;
+$m-color-2: #bababa;
+
+.primary-color-bg { background-color: $m-color-1;}
+.secondary-color-bg { background-color: $m-color-2;}
