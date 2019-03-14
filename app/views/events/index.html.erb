@@ -1,16 +1,32 @@
 
 
 
-<% @events.order(:start_date).each do |event| %>
+<%array = @events.map { |evt| evt.start_date.strftime("%F") } %>
+<br>
+
+<% array.sort.uniq.each do |date| %>
+  <% if @events.where(start_date: date).exists?%>
+  <% event_date = @events.where(start_date: date)[0].start_date  %>
+  <%= event_date.strftime("%A")%>  <%= event_date.strftime("%e ")%>   <%= event_date.strftime("%B ")%>   <%= event_date.strftime("%Y")%>
+  <br>
+  <% @events.where(start_date: date).each do |event|%>
+    <%= event.title%>
+    <br>
+  <% end %>
+    <% end %>
+    <hr>
 <% end %>
 
+
+
+
+------------
 
 <% if @events.select{ |element| element.start_date.asctime.split[0]== "Mon" }[0]!= nil %>
 <p>LUNDI</p>
 <% @events.select{ |element| element.start_date.asctime.split[0]== "Mon" }.each do |event| %>
     <%=link_to(event_path(event.id)) do %>
     <%= event.title %>
-
     <br>
     <% end %>
 <% end %>
