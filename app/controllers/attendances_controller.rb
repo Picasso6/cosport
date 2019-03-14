@@ -4,9 +4,12 @@ def create
   unless already_attended?
       @event = Event.find(params[:event_id])
       @attendance = Attendance.new(attendee_id: current_user.id, event_id: @event.id)
-      @attendance.save
-  end
-  redirect_to request.referrer
+      if @attendance.save
+        redirect_to request.referrer
+      else
+        puts @attendance.errors.full_messages
+      end
+
 end
 
 def edit
