@@ -20,6 +20,12 @@
   	<p><%= @user.level %></p>
   <% end %>
 
+    <%= form_tag(user_opinions_path(@user.id), method: :post ) do %>
+      <%= label_tag 'opinions' %>
+      <%= text_area_tag 'content' %>
+      <%= submit_tag "Create opi" %>  
+    <% end %>
+
   <% @opinion.each do |opinion| %>
     <p><a href="<%= user_path(opinion.sender) %>"><%= opinion.sender.first_name %></a> dit : <%= opinion.content %></p>
   <% end %>
