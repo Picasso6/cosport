@@ -1,5 +1,17 @@
 @import "bootstrap";
 
+/* */
+@font-face {
+font-family: 'Asap';
+src: url('SourceSansPro/Asap-Bold.ttf') format('truetype');
+src: url('SourceSansPro/Asap-BoldItalic.ttf') format('truetype');
+src: url('SourceSansPro/Asap-Italic.ttf') format('truetype');
+src: url('SourceSansPro/Asap-Medium.ttf') format('truetype');
+src: url('SourceSansPro/Asap-MediumItalic.ttf') format('truetype');
+src: url('SourceSansPro/Asap-Regular.ttf') format('truetype');
+src: url('SourceSansPro/Asap-SemiBoldItalic.ttf') format('truetype');
+src: url('SourceSansPro/Asap-SemiBold.ttf') format('truetype');
+}
 
 
 
@@ -21,10 +33,15 @@
 
 
 
+
+ /* ---------------------------------------------------
+     SETUP NAVBAR AND FOOTER STICKY WITH FLEXBOX
+ ----------------------------------------------------- */
+
  html,body {
  	height:100%;
-  padding-top:50px;
- }
+  // padding-top:50px;
+  }
  body {
   display: flex;
   flex-direction: column;
@@ -56,4 +73,80 @@
 
  section {
      min-height:calc(100% - 70px);
- }
+}
+
+
+/* ---------------------------------------------------
+    COLORS STYLE
+----------------------------------------------------- */
+// color main
+$f-color-1: #ff815a;   //corail
+$f-color-2: #6f4dff;   //electric-purple
+$f-color-3: #2ff4b7;   //green-pepsi
+
+.primary-color { background-color: $f-color-1; }
+.secondary-color { background-color: $f-color-2; }
+.third-color { background-color: $f-color-3; }
+
+// color shade/grey
+$s-color-1: #e2e0df;
+$s-color-2: #575757;
+$s-color-3: #080416;
+
+.light-color { background-color: $s-color-1; }
+.medium-color{ background-color: $s-color-2; }
+.strong-color { background-color: $s-color-3; }
+
+// color for background
+$m-color-1: #f1efeb;
+$m-color-2: #bababa;
+
+.primary-color-bg { background-color: $m-color-1;}
+.secondary-color-bg { background-color: $m-color-2;}
+
+
+
+
+
+
+/* ---------------------------------------------------
+    LANDING PAGE (home#index)
+----------------------------------------------------- */
+// logo
+.our-logo { width: 100px;}
+// .our-logo-typo {}
+// banners
+
+div.container-fluid { padding: 0px; }
+header.masthead {
+  position: relative;
+  background-color: #343a40;
+  background: url("../img/bg-masthead.jpg") no-repeat center center;
+  background-size: cover;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+header.masthead .overlay {
+  position: absolute;
+  background-color: #212529;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+}
+
+header.masthead h1 {
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  header.masthead {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+  header.masthead h1 {
+    font-size: 3rem;
+  }
+}

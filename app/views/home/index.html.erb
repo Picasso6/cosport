@@ -1,80 +1,29 @@
 
-<section>
+<section> <!-- place your content inside for sticky footer -->
   <div class="container-fluid">
 
-<h2>
-  Tous les USERS :</h2>
-
-<% @user.each do |user| %>
-  <div>
-    <a href="<%= user_path(user.id) %>"><%= user.email %></a>
-  </div>
-<% end %>
-
-<h2>
-  Tous les EVENTS :</h2>
-
-<h3>
-  <a href="events_path">
-    event index</a>
-</h3>
-
-<% @event.each do |event| %>
-  <div>
-
-    <%=link_to event.title , event_path(event.id) , method: "get" %>
-    <br>
-      <p><%= Sport.all.find(event.sport_id).sport_name %></p>
-
-      <p>à
-        <%= City.find(event.city_id).city_name %></p>
-        <p>le <%=event.start_date%></p>
-        <p>pendant <%= event.duration%> heures</p>
-
-      <p>crée par
-        <%= User.all.find(event.owner_id).first_name%>
-        <%= User.all.find(event.owner_id).last_name%></p>
-      <% if Attendance.where(event_id: event.id).exists?%>
-        <p>avec
-          <% Attendance.where(event_id: event.id).each do |attendance|%>
-            <%= User.find(attendance.attendee_id).first_name%>
-            <%= User.find(attendance.attendee_id).last_name%>
-                <br>
-          <% end %>
-            </p>
-          <% end %>
-          <p><%= event.description%></p>
-
-          <%if current_user && !Attendance.where(event_id: event.id , attendee_id: current_user.id).exists?%>
-          <%=link_to "REJOINDRE CE COSPORT !", event_attendances_path(event.id) ,method: "post" %>
-          <%end%>
-        <hr>
+  <header class="masthead text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <h1 class="mb-5">Build a landing page for your business or project and generate more leads!</h1>
+        </div>
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+          <form>
+            <div class="form-row">
+              <div class="col-12 col-md-9 mb-2 mb-md-0">
+                <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
+              </div>
+              <div class="col-12 col-md-3">
+                <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
-
-     <%end%>
-<%= form_tag events_index_path, :method => 'get', :id => 'events_search' do %>
-
-
-
-   <p><%= label_tag 'City' %> </p>
-    <p><%=select_tag :city, options_for_select(City.all.collect{ |city| [city.city_name, city.id] }.insert(0, "")) %> </p>
-
-    <p><%= label_tag 'Sport' %></p>
-    <p><%=select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }.insert(0, "")) %></p>
-    <div class="form-group" >
-          <%= label_tag 'Date' %>
-          <%= date_field_tag 'start_date', @start_date, class: "form-control "  %>
     </div>
-
-    <div class="form-group" >
-          <%= label_tag 'À partir de' %>
-          <br>
-           <%= time_field 'hour_start', class: "form-control " %>
-    </div>
-    <%= submit_tag "Search", :name => nil %>
-
-    <% end %>
+  </header>
 
 
-  </div>
-</section>
+</section><!-- end of section content -->
