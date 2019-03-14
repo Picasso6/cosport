@@ -54,14 +54,11 @@
      <%end%>
 <%= form_tag events_index_path, :method => 'get', :id => 'events_search' do %>
 
-<<<<<<< HEAD
-=======
-      
->>>>>>> 4749d086eabb69820ebde7c086345faa7a0349e8
 
+select("model_name", "model_id", Model.all.collect {|mt| [ mt.name, mt.id ] })
 
    <p><%= label_tag 'City' %> </p>
-    <p><%=select_tag :city, options_for_select(City.all.collect{ |city| [city.city_name, city.id] }) %> </p>
+    <p><%=select_tag :city, options_for_select(City.all.collect{ |city| [city.city_name, city.id] }.insert(0, "")) %> </p>
 
     <p><%= label_tag 'Sport' %></p>
     <p><%=select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }) %></p>
