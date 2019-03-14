@@ -1,7 +1,7 @@
 <h2> EVENT SHOW </h2>
 
 <p><%= @event.title %></p>
-<p><%= @event.start_date %></p>
+<p><%= @event.start_date.ctime %></p>
 
 <% if @event.start_date.ctime < Time.now.ctime %>
 	<h3>l'event a deja commencé</h3>
