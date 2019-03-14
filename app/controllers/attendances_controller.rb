@@ -1,10 +1,9 @@
 class AttendancesController < ApplicationController
-  def create
-    unless already_attended?
+
+def create
+  unless already_attended?
       @event = Event.find(params[:event_id])
-      @attendance = Attendance.new
-      @attendance.attendee_id = current_user.id
-      @attendance.event_id = @event.id
+      @attendance = Attendance.new(attendee_id: current_user.id, event_id: @event.id)
       @attendance.save
   end
   redirect_to request.referrer

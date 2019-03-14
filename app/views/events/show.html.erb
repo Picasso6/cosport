@@ -1,2 +1,25 @@
 <h2> EVENT SHOW </h2>
-<%= @event.title %>
+<p><%= @event.title %></p>
+<p><%= @event.start_date %></p>
+
+<% if @event.start_date.ctime < Time.now.ctime %>
+	<h3>l'event a deja commencé</h3>
+<% else %>
+	<% if @event.owner_id == current_user.id %>
+		<h3>admin</h3>
+	<% elsif current_user.attendances.where(event_id: @event.id).exists? && @event.owner_id != current_user.id%>
+		<h3>deja inscrit</h3>
+	<% else %>
+	<%=link_to "REJOINDRE CE COSPORT !", event_attendances_path(@event.id) ,method: "post" %>
+	<% end %>
+<% end %>
+
+<%= form_tag(event_comments_path(@event.id), method: :post ) do %>
+    <%= label_tag 'comments' %>
+    <%= text_area_tag 'content' %>
+	<%= submit_tag "Create com" %>	
+<% end %>
+
+<% @comment.each do |comment| %>
+	<p><a href="<%= user_path(comment.user_id) %>"><%= comment.user.first_name %></a> dit : <%= comment.content %></p>
+<% end %>
