@@ -17,4 +17,9 @@ Rails.application.routes.draw do
   end
   resources :homes, only: [:index]
   root 'home#index'
+
+  namespace :admin do
+    root 'admin#index'
+    resources :users, :events
+  end
 end

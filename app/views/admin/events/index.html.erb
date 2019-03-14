@@ -1,0 +1,31 @@
+<% @unvalidatedevent.each do |event| %>
+<div>
+
+  <%=link_to event.title , event_path(event.id) , method: "get" %>
+  <br>
+    <p><%= Sport.all.find(event.sport_id).sport_name %></p>
+
+    <p>à
+      <%= City.find(event.city_id).city_name %></p>
+      <p>le <%=event.start_date%></p>
+      <p>pendant <%= event.duration%> heures</p>
+
+    <p>crée par
+      <%= User.all.find(event.owner_id).first_name%>
+      <%= User.all.find(event.owner_id).last_name%></p>
+    <% if Attendance.where(event_id: event.id).exists?%>
+      <p>avec
+        <% Attendance.where(event_id: event.id).each do |attendance|%>
+          <%= User.find(attendance.attendee_id).first_name%>
+          <%= User.find(attendance.attendee_id).last_name%>
+              <br>
+        <% end %>
+          </p>
+        <% end %>
+        <p><%= event.description%></p>
+        <p><a class="font-weight-light text-success small" href="<%=admin_event_path(event.id)%> " data-method="PATCH">Validate</a>
+         <a class="font-weight-light text-danger small" href="<%=admin_event_path(event.id)%> " data-method="DELETE">Delete</a></p>
+      <hr>
+    </div>
+
+    <%end%>
