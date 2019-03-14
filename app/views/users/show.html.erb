@@ -1,10 +1,21 @@
-<% user = @users.find(params[:id]) %>
 
-  <%= user.first_name %>
-  <%= user.last_name %>
-  <%= user.gender %>
-  <%= user.email %>
-  <%= user.phone_number %>
-  <% if user.level != nil%>
-    <%= user.level %>
+  <%if @user.profil_picture.attached?%>
+    <%= image_tag @user.profil_picture, alt: 'profil_picture' %>
+  <%else%>
+  	<p>pas encore de profil_picture</p>
+  <% end %>
+
+  <h3>Changer profil_picture ?</h3>
+	<%= form_tag user_profil_picture_index_path(@user), multipart: true do %>
+  	  <%= file_field_tag :profil_picture %>
+  	<%= submit_tag "mettre à jour" %>
+  	<% end %>
+  <br><br>
+  <p><%= @user.first_name %></p>
+  <p><%= @user.last_name %></p>
+  <p><%= @user.gender %></p>
+  <p><%= @user.email %></p>
+  <p><%= @user.phone_number %></p>
+  <% if @user.level != nil%>
+  	<p><%= @user.level %></p>
   <% end %>

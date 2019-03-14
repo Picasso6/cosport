@@ -7,11 +7,13 @@ Rails.application.routes.draw do
 
 
   resources :events, only: [:show, :index , :new , :create] do
-    resources :attendances, only: [:create]
+    resources :comments, only: [:create, :new]
+    resources :attendances, only: [:create, :edit, :update, :destroy]
+
   end
 
   resources :users, only: [:show ] do
-    resources :avatar, only: [:new, :create]
+    resources :profil_picture, only: [:create]
   end
   resources :homes, only: [:index]
   root 'home#index'
