@@ -2,8 +2,8 @@
 
 <p><%= @event.title %></p>
 <p><%= @event.start_date %></p>
-
-<% if @event.start_date.ctime < Time.now.ctime %>
+<p><%= Time.now %></p>
+<% if @event.start_date < Time.now.ctime %>
 	<h3>l'event a deja commencé</h3>
 <% else %>
 	<% if @event.owner_id == current_user.id %>
@@ -18,10 +18,9 @@
 <%= form_tag(event_comments_path(@event.id), method: :post ) do %>
     <%= label_tag 'comments' %>
     <%= text_area_tag 'content' %>
-	<%= submit_tag "Create com" %>	
+	<%= submit_tag "Create com" %>
 <% end %>
 
 <% @comment.each do |comment| %>
 	<p><a href="<%= user_path(comment.user_id) %>"><%= comment.user.first_name %></a> dit : <%= comment.content %></p>
 <% end %>
-
