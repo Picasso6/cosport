@@ -8,7 +8,9 @@
 <% if Attendance.where(event_id: @event.id).exists?%>
 	<p>avec</p>
 	<%  Attendance.where(event_id: @event.id).each do |participation|%>
-	<p><%=	User.find(participation.attendee_id).first_name %> <%=	User.find(participation.attendee_id).last_name %></p>
+<%= link_to user_path(participation.attendee_id) do %>
+	<%=	User.find(participation.attendee_id).first_name %> <%=User.find(participation.attendee_id).last_name %>
+<% end%>
 	<% end%>
 <% end%>
 
