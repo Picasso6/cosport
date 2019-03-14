@@ -1,9 +1,13 @@
 
+<% current_user.id %>
+
+<% if current_user.id == @user.id %>
   <%if @user.profil_picture.attached?%>
     <%= image_tag @user.profil_picture, alt: 'profil_picture' %>
   <%else%>
   	<p>pas encore de profil_picture</p>
   <% end %>
+<% end %>
 
   <h3>Changer profil_picture ?</h3>
 	<%= form_tag user_profil_picture_index_path(@user), multipart: true do %>
