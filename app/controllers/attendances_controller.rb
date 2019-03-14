@@ -24,6 +24,7 @@ end
 def destroy
   @attendance = Attendance.find(params[:id])
   @attendance.destroy
+  redirect_to request.referrer
 end
 
   private
