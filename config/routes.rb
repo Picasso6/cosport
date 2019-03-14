@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'opinions/create'
   get 'events/show'
   get 'events/index'
   devise_for :users, :controllers => { registrations: 'registrations' }
