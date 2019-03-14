@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'events/show'
   get 'events/index'
   devise_for :users, :controllers => { registrations: 'registrations' }
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :index ] do
     resources :profil_picture, only: [:create]
+    resources :opinions, only: [:create, :new]
   end
   resources :homes, only: [:index]
   root 'home#index'

@@ -12,12 +12,12 @@ class User < ApplicationRecord
   validates :last_name, presence: true, length: { in: 3..30}
   validates :description, length: { maximum: 150}
 
+  has_many :sent_opinions, foreign_key: 'sender_id', class_name: "Opinion"
+  has_many :received_opinions, foreign_key: 'recipient_id', class_name: "Opinion"
   has_many :comments, dependent: :destroy
   has_many :events, foreign_key: 'owner_id', class_name: "Event", dependent: :destroy
   has_many :attendances, foreign_key: 'attendee_id', class_name: "Attendance", dependent: :destroy
   has_many :events, through: :attendances, dependent: :destroy
-
-
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now

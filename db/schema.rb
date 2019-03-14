@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2019_03_14_102110) do
 
   # These are extensions that must be enabled in order to support this database
@@ -76,6 +77,16 @@ ActiveRecord::Schema.define(version: 2019_03_14_102110) do
     t.index ["city_id"], name: "index_events_on_city_id"
     t.index ["owner_id"], name: "index_events_on_owner_id"
     t.index ["sport_id"], name: "index_events_on_sport_id"
+  end
+
+  create_table "opinions", force: :cascade do |t|
+    t.text "content"
+    t.bigint "recipient_id"
+    t.bigint "sender_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_opinions_on_recipient_id"
+    t.index ["sender_id"], name: "index_opinions_on_sender_id"
   end
 
   create_table "sports", force: :cascade do |t|
