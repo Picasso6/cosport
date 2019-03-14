@@ -6,8 +6,8 @@ def create
       @attendance = Attendance.new(attendee_id: current_user.id, event_id: @event.id)
       if @attendance.save
         redirect_to request.referrer
-      
       end
+  end
 
 end
 
