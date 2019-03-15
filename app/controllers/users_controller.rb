@@ -11,9 +11,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @opinion = Opinion.where(recipient_id: @user)
   end
-  
+
   def edit
-  	
+  	puts "*****************************************************************"
   end
 
 end
