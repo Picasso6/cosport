@@ -17,6 +17,7 @@ class EventsController < ApplicationController
 
   def create
     date = (params[:start_date] + " " + params[:hour_start]).in_time_zone
+    puts date
     @event = Event.new(title: params[:title], description: params[:description], start_date: date, duration: params[:duration], sport_id: params[:sport_id], city_id: params[:city_id], owner_id: current_user.id)
     if @event.save
       redirect_to event_path(@event.id)
