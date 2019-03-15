@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :index ] do
     resources :profil_picture, only: [:create]
-    resources :opinions, only: [:create, :new]
+    resources :opinions, only: [:create, :new, :destroy]
   end
   resources :homes, only: [:index]
   root 'home#index'
