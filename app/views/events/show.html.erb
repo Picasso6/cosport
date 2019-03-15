@@ -1,5 +1,6 @@
 <h2> EVENT SHOW </h2>
 
+<p><%= @event.id %></p>
 <p><%= @event.title %></p>
 <p><%= @event.start_date.ctime %></p>
 
@@ -23,4 +24,5 @@
 
 <% @comment.each do |comment| %>
 	<p><a href="<%= user_path(comment.user_id) %>"><%= comment.user.first_name %></a> dit : <%= comment.content %></p>
+	<%= button_to "delete", event_comment_path(@event.id, comment.id), :method => :delete %> 
 <% end %>
