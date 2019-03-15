@@ -36,8 +36,9 @@
   <% end %>
 
   <hr>
-  <h3>Vos cosports</h3>
-  <h5>(liste des evenements que vous avez créés ou auxquels vous participez)</h5>
+<%if current_user.id == @user.id%>
+  <h3> Vos cosports </h3>
+  <h5> (liste des evenements que vous avez créés ou auxquels vous participez) </h5>
 
 
   <%i = 0%>
@@ -73,4 +74,6 @@
       <% i = i+1 %>
 
         <hr>
-  <%end%>
+  <% end%>
+
+<% end%>
