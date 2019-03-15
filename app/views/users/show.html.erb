@@ -1,4 +1,8 @@
-<%= image_tag @user.profil_picture, alt: 'profil_picture' %>
+<%if @user.profil_picture.attached?%>
+  <%= image_tag @user.profil_picture, alt: 'profil_picture' %>
+<%else%>
+  <p>pas encore de profil_picture</p>
+<% end %>
 <h1><%= @user.first_name %> <%= @user.last_name %></h1>
 
 <% if current_user.id == @user.id %>
@@ -16,43 +20,8 @@
 
 <p>---------------------------------------------------</p>
 
-<%if @user.profil_picture.attached?%>
-  <%= image_tag @user.profil_picture, alt: 'profil_picture' %>
-<%else%>
-	<p>pas encore de profil_picture</p>
-<% end %>
-
-
-<% if current_user.id == @user.id %>
-  <h3>Changer profil_picture ?</h3>
-	<%= form_tag user_profil_picture_index_path(@user), multipart: true do %>
-  	<%= file_field_tag :profil_picture %>
-  	<%= submit_tag "mettre à jour" %>
-  <% end %>
-
-  <p>add level sport</p>
-  <%= form_tag users_sports_create_path, :method => 'get' do %>
-    <%= label_tag 'Sport' %>
-    <p><%= select_tag :sport, options_for_select(@sport.all.collect{ |sport| [sport.sport_name, sport.id] }.insert(0, "")) %></p>
-    <%= label_tag 'Level' %>
-    <p><%= select_tag :level, options_for_select(@level_sport.collect{ |sport| [sport] }.insert(0, "")) %></p>
-  <%= submit_tag "add", :name => nil %>
-  <% end %>
-<% end %>
-<br><br>
-
 <% @user.users_sports.each do |level_sport| %>
   <p>level: <%= level_sport.sport.sport_name %> (<%= level_sport.level_user %>)</p>
-<% end %>
-
-<br><br>
-<p><%= @user.first_name %></p>
-<p><%= @user.last_name %></p>
-<p><%= @user.gender %></p>
-<p><%= @user.email %></p>
-<p><%= @user.phone_number %></p>
-<% if @user.level != nil%>
-	<p><%= @user.level %></p>
 <% end %>
 
 <%= form_tag(user_opinions_path(@user.id), method: :post ) do %>

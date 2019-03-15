@@ -77,11 +77,16 @@
 <%= link_to "Back", :back %>
 
 <p>---edit info secondary profil---</p>
-
+*
+<p>add level sport</p>
 <%= form_tag users_sports_create_path, :method => 'get' do %>
   <%= label_tag 'Sport' %>
   <p><%= select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }.insert(0, "")) %></p>
   <%= label_tag 'Level' %>
   <p><%= select_tag :level, options_for_select(UsersSport.level_sport.collect{ |sport| [sport] }.insert(0, "")) %></p>
   <%= submit_tag "add", :name => nil %>
+<% end %>
+
+<% @user.users_sports.each do |level_sport| %>
+  <p>level: <%= level_sport.sport.sport_name %> (<%= level_sport.level_user %>)</p>
 <% end %>
