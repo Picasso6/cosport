@@ -1,0 +1,8 @@
+
+// METHOD FOR LOAD MORE BUTTON
+$('.event-wrap').append('<%= j render(@events) %>');
+<% if @events.next_page %>
+  $('.next_page').attr('href','<%= events_path(:page => @events.next_page) %>');
+<% else %>
+  $('.more').remove();
+<% end %>
