@@ -9,4 +9,12 @@ class OpinionsController < ApplicationController
 	end
   end
 
+  def destroy
+  	puts "*****************************"
+  	puts params
+	@opinion = Opinion.find(params[:id])
+    @opinion.destroy
+    redirect_to request.referrer
+  end
+
 end
