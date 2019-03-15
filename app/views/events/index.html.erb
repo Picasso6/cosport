@@ -1,21 +1,29 @@
 
 
-
-<%array = @events.map { |evt| evt.start_date.strftime("%F") } %>
-<br>
-
-<% array.sort.uniq.each do |date| %>
-
-  <% if @events.where(start_date: date).exists?%>
-  <% event_date = @events.where(start_date: date)[0].start_date  %>
-  <%= @days_array_fr[event_date.wday]%>  <%= event_date.strftime("%e")%>   <%=@months_array_fr[event_date.strftime("%m").to_i] %>   <%= event_date.strftime("%Y")%>
-  <br>
-  <% @events.where(start_date: date).each do |event|%>
-     <%=link_to event.title , event_path(event.id) , method: "get" %>
+<%i = 0%>
+<% while i < @events_hash.length %>
+  <h3>
+    <%= @days_array_fr[@events_hash.keys[i].wday]%>
+    <%= @events_hash.keys[i].strftime("%e")%>
+    <%= @months_array_fr[@events_hash.keys[i].strftime("%m").to_i]%>
+    <%= @events_hash.keys[i].strftime("%Y") %>
+  </h3>
 
     <br>
-  <% end %>
-  <hr>
-    <% end %>
 
-<% end %>
+  <%events_by_hour = @events_hash.values[i].group_by_hour_of_day { |evt| (evt.start_date+ Time.now.gmt_offset).utc.strftime("%T,%L")} %>
+
+   <%j =0 %>
+      <% while j< events_by_hour.length %>
+      <h5><%= events_by_hour.keys[j]%>H </h5>
+         <% events_by_hour.values[j].sort_by(&:start_date).each do |event|%>
+             <%= link_to event.title , event_path(event.id) , method: "get" %><br>
+         <%end%>
+        <% j +=1 %>
+        <br>
+      <% end %>
+
+    <% i = i+1 %>
+
+      <hr>
+<%end%>
