@@ -1,4 +1,9 @@
 
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+
+<% if current_user.id == @user.id %>
+<%= link_to "Edit", edit_user_registration_path, class: "nav-link" %>
+<% end %>
 <%if @user.profil_picture.attached?%>
   <%= image_tag @user.profil_picture, alt: 'profil_picture' %>
 <%else%>
