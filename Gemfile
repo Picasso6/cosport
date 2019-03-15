@@ -8,7 +8,7 @@ gem 'rails-ujs'
 gem 'dotenv-rails'
 gem 'table_print'
 gem 'jquery-rails'
-
+gem 'groupdate'
 gem 'faker'
 #gem 'gmaps4rails'
 

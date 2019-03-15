@@ -5,11 +5,15 @@
   	<p>pas encore de profil_picture</p>
   <% end %>
 
+
+<% if current_user.id == @user.id %>
   <h3>Changer profil_picture ?</h3>
 	<%= form_tag user_profil_picture_index_path(@user), multipart: true do %>
   	<%= file_field_tag :profil_picture %>
   	<%= submit_tag "mettre à jour" %>
   <% end %>
+<% end %>
+
   <br><br>
   <p><%= @user.first_name %></p>
   <p><%= @user.last_name %></p>
@@ -28,4 +32,5 @@
 
   <% @opinion.each do |opinion| %>
     <p><a href="<%= user_path(opinion.sender) %>"><%= opinion.sender.first_name %></a> dit : <%= opinion.content %></p>
+    <%= button_to "delete", user_opinion_path(@user.id, opinion.id), :method => :delete %>
   <% end %>
