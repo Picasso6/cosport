@@ -9,4 +9,10 @@ class UsersSportsController < ApplicationController
   	end
   end
 
+  def destroy
+	@user_sport = UsersSport.find(params[:id])
+    @user_sport.destroy
+    redirect_to request.referrer
+  end
+
 end

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-  	puts "*****************************************************************"
+
   end
 
 end

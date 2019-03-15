@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index, :edit, :update] do
     resources :profil_picture, only: [:create]
     resources :opinions, only: [:create, :new, :destroy]
-    resources :users_sports, only: [:create]
+    resources :users_sports, only: [:create, :destroy]
   end
   resources :homes, only: [:index]
   root 'home#index'

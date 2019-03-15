@@ -89,4 +89,5 @@
 
 <% @user.users_sports.each do |level_sport| %>
   <p>level: <%= level_sport.sport.sport_name %> (<%= level_sport.level_user %>)</p>
+  <%= button_to "delete", user_users_sport_path(@user.id, level_sport.id), :method => :delete %>
 <% end %>
