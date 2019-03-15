@@ -272,6 +272,9 @@
         <% if current_user %>
           <li class="nav-item" ><%= link_to "Admin Page", admin_root_path, class: "nav-link" %></li>
         <%  end %>
+        <% if current_user.admin == true %>
+        <li class="nav-item" ><%= link_to "Page Admin", admin_root_path,  class: "nav-link" %></li>
+        <% end %>
       <% else %>
         <li class="nav-item" ><%= link_to "Connexion", new_user_session_path, class: "nav-link" %></li>
         <li class="nav-item" ><%= link_to "Inscription", new_user_registration_path, class: "nav-link" %></li>

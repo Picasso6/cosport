@@ -1,15 +1,29 @@
-<h2> EVENT SHOW </h2>
+<h2> <%= @event.title %> </h2>
 
-<p><%= @event.title %></p>
-<p><%= @event.start_date.ctime %></p>
+
+<p>le <%= @event.start_date.asctime %></p>
+<p>par <%= User.find(@event.owner_id).last_name%> <%= User.find(@event.owner_id).first_name%></p>
+<p>à <%= City.find(@event.city_id).city_name%></p>
+<p>pour  <%= Sport.find(@event.sport_id).sport_name%></p>
+<% if Attendance.where(event_id: @event.id).exists?%>
+	<p>avec</p>
+	<%  Attendance.where(event_id: @event.id).each do |participation|%>
+<%= link_to user_path(participation.attendee_id) do %>
+	<%=	User.find(participation.attendee_id).first_name %> <%=User.find(participation.attendee_id).last_name %>
+<% end%>
+	<% end%>
+<% end%>
 
 <% if @event.start_date < (Time.now + Time.now.gmt_offset).utc %>
-	<h3>l'event a deja commencé</h3>
+	<h3>L'event est deja commencé</h3>
 <% else %>
 	<% if @event.owner_id == current_user.id %>
-		<h3>admin</h3>
+		<h3>Vous êtes le créateur de ce cosport</h3>
 	<% elsif current_user.attendances.where(event_id: @event.id).exists? && @event.owner_id != current_user.id%>
-		<h3>deja inscrit</h3>
+		<h3> Vous êtes inscrit à ce cosport </h3>
+		<br>
+		<% attendance = Attendance.where(event_id: @event.id, attendee_id: current_user.id)[0] %>
+		<%= link_to "SE DÉSINSCRIRE DE CE COSPORT !", event_attendance_path(@event.id, attendance.id) ,method: "delete" %>
 	<% else %>
 	<%=link_to "REJOINDRE CE COSPORT !", event_attendances_path(@event.id) ,method: "post" %>
 	<% end %>
