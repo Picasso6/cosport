@@ -6,11 +6,11 @@
   <body>
     <h1>Salut <%= @user.first_name %> !</h1>
     <p>
-      Y a un pélo il s'est ajouté à ton event <%= @attendance.event.title %>. C <%= @attendance.attendee.first_name %>
+      <%= @attendance.attendee.first_name %> <%= @attendance.attendee.last_name %> a demandé à participer à <%= @attendance.event.title %>.
     </p>
     <p>
-      Pour gérer tes participations : <%= @url %>.
+      Pour gérer tes participations, va <%= link_to("ICI", edit_event_attendance_url(@attendance.event.id, @attendance.id)) %>.
     </p>
-    <p> À très vite sur monsite.fr !
+    <p> À très vite sur CoSport ! </p>
   </body>
 </html>
