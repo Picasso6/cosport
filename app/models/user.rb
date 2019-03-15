@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_one_attached :profil_picture
 
   validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "dont valid email" }
-  validates :first_name, presence: true, length: { in: 3..30}
+  validates :first_name, presence: true, length: { in: 1..30}
   validates :last_name, presence: true, length: { in: 3..30}
   validates :description, length: { maximum: 150}
 

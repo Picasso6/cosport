@@ -1,21 +1,10 @@
-
-
-
-<%array = @events.map { |evt| evt.start_date.strftime("%F") } %>
-<br>
-
-<% array.sort.uniq.each do |date| %>
-
-  <% if @events.where(start_date: date).exists?%>
-  <% event_date = @events.where(start_date: date)[0].start_date  %>
-  <%= @days_array_fr[event_date.wday]%>  <%= event_date.strftime("%e")%>   <%=@months_array_fr[event_date.strftime("%m").to_i] %>   <%= event_date.strftime("%Y")%>
-  <br>
-  <% @events.where(start_date: date).each do |event|%>
-     <%=link_to event.title , event_path(event.id) , method: "get" %>
-
-    <br>
+<%= paginate @events %>
+<!-- METHOD FOR LOAD MORE BUTTON -->
+  <div class="event-wrap py-5">
+    <%= render @events %>
+  </div>
+  <% if @events.next_page %>
+    <div class="event more py-5 mb-5">
+      <%= link_to 'Load More', events_path(:page => @events.next_page), :class => 'next_page py-5 mb-5', :remote => true if @events.next_page %>
+    </div>
   <% end %>
-  <hr>
-    <% end %>
-
-<% end %>

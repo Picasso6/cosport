@@ -45,8 +45,9 @@ gem 'jbuilder', '~> 2.5'
 #front gem
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
-gem 'will_paginate', '~> 3.0.5'
-gem 'bootstrap-will_paginate', '~> 0.0.10'
+# gem 'will_paginate', '~> 3.0.5'
+# gem 'bootstrap-will_paginate', '~> 0.0.10'
+gem 'kaminari'
 
 
 # Use Capistrano for deployment

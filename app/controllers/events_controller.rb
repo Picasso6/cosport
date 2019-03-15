@@ -10,9 +10,14 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.search(params)
+    @events = Event.page(params[:page]) 
+     respond_to do |format|
+       format.html
+       format.js
+     end
     @months_array_fr = [ nil, "Janvier", "Fevrier" ," Mars" , "Avril" , "Mai" , "Juin" ,"Juillet", "Août" , "Septembre" , "Octobre" , "Novembre" ,"Décembre"]
     @days_array_fr = ["Dimanche" , "Lundi "," Mardi" , "Mercredi" ,"Jeudi" , "Vendredi", "Samedi" ]
+
   end
 
   def create
