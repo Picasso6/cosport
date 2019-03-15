@@ -11,6 +11,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.search(params)
+    @events_hash = @events.group_by_day { |evt| evt.start_date }
     @months_array_fr = [ nil, "Janvier", "Fevrier" ," Mars" , "Avril" , "Mai" , "Juin" ,"Juillet", "Août" , "Septembre" , "Octobre" , "Novembre" ,"Décembre"]
     @days_array_fr = ["Dimanche" , "Lundi "," Mardi" , "Mercredi" ,"Jeudi" , "Vendredi", "Samedi" ]
   end
