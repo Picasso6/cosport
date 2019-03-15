@@ -2,7 +2,7 @@ class UsersSportsController < ApplicationController
   
   def create
   	puts "******************************************"
-  	puts params[:sport].class
+  	puts params
   	@user_sport = UsersSport.new(user_id: current_user.id, sport_id: params[:sport])
   	puts "///////////////////////////////////////////"
   	puts @user_sport.sport
