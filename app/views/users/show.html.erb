@@ -1,42 +1,43 @@
+<%if @user.profil_picture.attached?%>
+  <%= image_tag @user.profil_picture, alt: 'profil_picture' %>
+<%else%>
+  <p>pas encore de profil_picture</p>
+<% end %>
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
 
-  <%if @user.profil_picture.attached?%>
-    <%= image_tag @user.profil_picture, alt: 'profil_picture' %>
-  <%else%>
-  	<p>Pas encore de profil_picture</p>
-  <% end %>
-
-
-<% if current_user && current_user.id == @user.id %>
-  <h3>Modifier la photo ?</h3>
-	<%= form_tag user_profil_picture_index_path(@user), multipart: true do %>
-  	<%= file_field_tag :profil_picture %>
-  	<%= submit_tag "mettre à jour" %>
-  <% end %>
+<% if current_user.id == @user.id %>
+  <%= link_to "Edit", edit_user_registration_path, class: "nav-link" %>
 <% end %>
 
-  <br><br>
-  <p><%= @user.first_name %></p>
-  <p><%= @user.last_name %></p>
-  <p><%= @user.gender %></p>
-  <% if current_user.id == @user.id %>
+<p>first_name: <%= @user.first_name %></p>
+<p>last_name: <%= @user.last_name %></p>
+<p>gender: <%= @user.gender %></p>
+<% if current_user.id == @user.id %>
   <p><%= @user.email %></p>
   <p><%= @user.phone_number %></p>
-  <% end %>
-  <% if @user.level != nil%>
-  	<p><%= @user.level %></p>
-  <% end %>
+<% end %>
+<% if @user.level != nil%>
+  <p>level genreral: <%= @user.level %></p>
+<% end %>
 
-    <%= form_tag(user_opinions_path(@user.id), method: :post ) do %>
-      <%= label_tag 'opinions' %>
-      <%= text_area_tag 'content' %>
-      <%= submit_tag "Create opi" %>
-    <% end %>
+<p>---------------------------------------------------</p>
 
-  <% @opinion.each do |opinion| %>
-    <p><a href="<%= user_path(opinion.sender) %>"><%= opinion.sender.first_name %></a> dit : <%= opinion.content %></p>
-    <%= button_to "delete", user_opinion_path(@user.id, opinion.id), :method => :delete %>
-  <% end %>
-_______________
+<% @user.users_sports.each do |level_sport| %>
+  <p>level: <%= level_sport.sport.sport_name %> (<%= level_sport.level_user %>)</p>
+<% end %>
+
+<%= form_tag(user_opinions_path(@user.id), method: :post ) do %>
+  <%= label_tag 'opinions' %>
+  <%= text_area_tag 'content' %>
+  <%= submit_tag "Create opi" %>  
+<% end %>
+
+<% @opinion.each do |opinion| %>
+  <p><a href="<%= user_path(opinion.sender) %>"><%= opinion.sender.first_name %></a> dit : <%= opinion.content %></p>
+  <%= button_to "delete", user_opinion_path(@user.id, opinion.id), :method => :delete %>
+<% end %>
+_______________________________
+
   <hr>
 <%if  current_user && current_user.id == @user.id %>
   <h3> Vos cosports </h3>
@@ -79,4 +80,3 @@ _______________
   <% end%>
 
 <% end%>
-________________

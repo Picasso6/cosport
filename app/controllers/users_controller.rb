@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   end
 
   def show
+  	@sport = Sport.all
+  	@level_sport = UsersSport.level_sport
     @user = User.find(params[:id])
     @opinion = Opinion.where(recipient_id: @user)
     @events = []
@@ -14,6 +16,10 @@ class UsersController < ApplicationController
     @events_hash = @events.group_by_day { |evt| evt.start_date }
     @months_array_fr = [ nil, "Janvier", "Fevrier" ," Mars" , "Avril" , "Mai" , "Juin" ,"Juillet", "Août" , "Septembre" , "Octobre" , "Novembre" ,"Décembre"]
     @days_array_fr = ["Dimanche" , "Lundi "," Mardi" , "Mercredi" ,"Jeudi" , "Vendredi", "Samedi" ]
+  end
+
+  def edit
+
   end
 
 end
