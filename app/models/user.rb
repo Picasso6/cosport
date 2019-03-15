@@ -1,5 +1,6 @@
 class User < ApplicationRecord
    after_create :welcome_send
+   after_create :level_0
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -34,6 +35,11 @@ class User < ApplicationRecord
     else
       return qualification_array[self.level[sport_id-1]]
     end
+  end
+
+  def level_0
+    self.level = 0
+    self.save
   end
 
 
