@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   end
 
   def show
+  	@sport = Sport.all
+  	@level_sport = UsersSport.level_sport
     @user = User.find(params[:id])
     @opinion = Opinion.where(recipient_id: @user)
   end
