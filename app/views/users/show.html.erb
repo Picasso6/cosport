@@ -2,12 +2,12 @@
   <%if @user.profil_picture.attached?%>
     <%= image_tag @user.profil_picture, alt: 'profil_picture' %>
   <%else%>
-  	<p>pas encore de profil_picture</p>
+  	<p>Pas encore de profil_picture</p>
   <% end %>
 
 
 <% if current_user.id == @user.id %>
-  <h3>Changer profil_picture ?</h3>
+  <h3>Modifier la photo ?</h3>
 	<%= form_tag user_profil_picture_index_path(@user), multipart: true do %>
   	<%= file_field_tag :profil_picture %>
   	<%= submit_tag "mettre à jour" %>
@@ -27,10 +27,50 @@
     <%= form_tag(user_opinions_path(@user.id), method: :post ) do %>
       <%= label_tag 'opinions' %>
       <%= text_area_tag 'content' %>
-      <%= submit_tag "Create opi" %>  
+      <%= submit_tag "Create opi" %>
     <% end %>
 
   <% @opinion.each do |opinion| %>
     <p><a href="<%= user_path(opinion.sender) %>"><%= opinion.sender.first_name %></a> dit : <%= opinion.content %></p>
     <%= button_to "delete", user_opinion_path(@user.id, opinion.id), :method => :delete %>
   <% end %>
+
+  <hr>
+  <h3>Vos cosports</h3>
+  <h5>(liste des evenements que vous avez créés ou auxquels vous participez)</h5>
+
+
+  <%i = 0%>
+  <% while i < @events_hash.length %>
+
+      <%= @days_array_fr[@events_hash.keys[i].wday]%>
+      <%= @events_hash.keys[i].strftime("%e")%>
+      <%= @months_array_fr[@events_hash.keys[i].strftime("%m").to_i]%>
+      <%= @events_hash.keys[i].strftime("%Y") %>
+
+      <br>
+
+    <%events_by_hour = @events_hash.values[i].group_by_hour_of_day { |evt| (evt.start_date+ Time.now.gmt_offset).utc.strftime("%T,%L")} %>
+
+     <%j =0 %>
+        <% while j< events_by_hour.length %>
+        <%= events_by_hour.keys[j]%>H
+        <br>
+           <% events_by_hour.values[j].sort_by(&:start_date).each do |event|%>
+               <%= link_to event.title , event_path(event.id) , method: "get" %>
+               <%if Attendance.where(event_id: event.id, attendee_id: current_user.id).exists?%>
+               <% attendance = Attendance.where(event_id: event.id, attendee_id: current_user.id)[0] %>
+           		<%= link_to "SE DÉSINSCRIRE DE CE COSPORT !", event_attendance_path(event.id, attendance.id) ,method: "delete" %><br>
+              <%else%>
+                (VOUS ÊTES  L'INITIATEUR DE CE COSPORT)
+                <br>
+              <%end%>
+           <%end%>
+          <% j +=1 %>
+          <br>
+        <% end %>
+
+      <% i = i+1 %>
+
+        <hr>
+  <%end%>
