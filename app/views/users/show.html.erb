@@ -32,4 +32,5 @@
 
   <% @opinion.each do |opinion| %>
     <p><a href="<%= user_path(opinion.sender) %>"><%= opinion.sender.first_name %></a> dit : <%= opinion.content %></p>
+    <%= button_to "delete", user_opinion_path(@user.id, opinion.id), :method => :delete %>
   <% end %>
