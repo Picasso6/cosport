@@ -19,7 +19,7 @@ end
 def update
   @attendance = Attendance.find(params[:id])
   @attendance.update(validation: true)
-  redirect_to request.referrer
+  redirect_to event_path(@attendance.event.show)
 end
 
 def destroy
