@@ -6,7 +6,7 @@
   <% end %>
 
 
-<% if current_user.id == @user.id %>
+<% if current_user && current_user.id == @user.id %>
   <h3>Modifier la photo ?</h3>
 	<%= form_tag user_profil_picture_index_path(@user), multipart: true do %>
   	<%= file_field_tag :profil_picture %>
@@ -18,8 +18,10 @@
   <p><%= @user.first_name %></p>
   <p><%= @user.last_name %></p>
   <p><%= @user.gender %></p>
+  <% if current_user.id == @user.id %>
   <p><%= @user.email %></p>
   <p><%= @user.phone_number %></p>
+  <% end %>
   <% if @user.level != nil%>
   	<p><%= @user.level %></p>
   <% end %>
@@ -34,9 +36,9 @@
     <p><a href="<%= user_path(opinion.sender) %>"><%= opinion.sender.first_name %></a> dit : <%= opinion.content %></p>
     <%= button_to "delete", user_opinion_path(@user.id, opinion.id), :method => :delete %>
   <% end %>
-
+_______________
   <hr>
-<%if current_user.id == @user.id%>
+<%if  current_user && current_user.id == @user.id %>
   <h3> Vos cosports </h3>
   <h5> (liste des evenements que vous avez créés ou auxquels vous participez) </h5>
 
@@ -77,3 +79,4 @@
   <% end%>
 
 <% end%>
+________________
