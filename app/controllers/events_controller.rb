@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.page(params[:page]) 
+    @events = Event.search(params).page(params[:page]).per(10)
      respond_to do |format|
        format.html
        format.js
