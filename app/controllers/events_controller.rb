@@ -17,19 +17,9 @@ class EventsController < ApplicationController
 
   def create
     puts "paramsr***********"
-    puts params['hour_start'].inspect
-    hour = params['hour_start'][0,2].to_i
-    puts "hour***********"
-    puts hour.inspect
-    minute = params['hour_start'][0,2].to_i
-    puts "minute************"
-    puts minute
-    @event = Event.new(title: params[:title], description: params[:description], duration: params[:duration], sport_id: params[:sport_id], city_id: params[:city_id], owner_id: current_user.id)
-    @event.start_date = (params["start_date"].to_time + hour.hours + minute.minutes).to_datetime
-    puts "@event.startdate.class*****************"
-    puts @event.start_date.class
-    puts "@event(10).startdate.class*****************"
-    puts Event.all.find(10).start_date.class
+    date = (params[:start_date] + " " + params[:hour_start]).in_time_zone
+    puts date
+    @event = Event.new(title: params[:title], description: params[:description], start_date: date, duration: params[:duration], sport_id: params[:sport_id], city_id: params[:city_id], owner_id: current_user.id)
     if @event.save
       redirect_to event_path(@event.id)
     else

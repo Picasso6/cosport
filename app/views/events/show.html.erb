@@ -14,8 +14,13 @@
 	<% end%>
 <% end%>
 
+
+<p><%= @event.id %></p>
+<p><%= @event.title %></p>
+<p><%= @event.start_date.ctime %></p>
+
 <% if @event.start_date < (Time.now + Time.now.gmt_offset).utc %>
-	<h3>L'event est deja commencé</h3>
+
 <% else %>
 	<% if @event.owner_id == current_user.id %>
 		<h3>Vous êtes le créateur de ce cosport</h3>
@@ -37,4 +42,5 @@
 
 <% @comment.each do |comment| %>
 	<p><a href="<%= user_path(comment.user_id) %>"><%= comment.user.first_name %></a> dit : <%= comment.content %></p>
+	<%= button_to "delete", event_comment_path(@event.id, comment.id), :method => :delete %>
 <% end %>
