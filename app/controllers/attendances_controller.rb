@@ -19,7 +19,9 @@ end
 def update
   @attendance = Attendance.find(params[:id])
   @attendance.update(validation: true)
-  redirect_to event_path(@attendance.event.show)
+  @attendance.attendee.level += 1
+  @attendance.attendee.save
+  redirect_to event_path(@attendance.event.id)
 end
 
 def destroy
