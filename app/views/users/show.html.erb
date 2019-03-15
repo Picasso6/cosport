@@ -15,6 +15,7 @@
 <% if current_user.id == @user.id %>
   <p><%= @user.email %></p>
   <p><%= @user.phone_number %></p>
+<% end %>
 <% if @user.level != nil%>
   <p>level genreral: <%= @user.level %></p>
 <% end %>
