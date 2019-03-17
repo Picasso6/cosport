@@ -20,7 +20,6 @@
 <p><%= @event.start_date.ctime %></p>
 
 <% if @event.start_date < (Time.now + Time.now.gmt_offset).utc %>
-	<h3>l'event a deja commencé</h3>
 
 <% else %>
 	<% if @event.owner_id == current_user.id %>
@@ -43,5 +42,5 @@
 
 <% @comment.each do |comment| %>
 	<p><a href="<%= user_path(comment.user_id) %>"><%= comment.user.first_name %></a> dit : <%= comment.content %></p>
-	<%= button_to "delete", event_comment_path(@event.id, comment.id), :method => :delete %> 
+	<%= button_to "delete", event_comment_path(@event.id, comment.id), :method => :delete %>
 <% end %>
