@@ -11,9 +11,9 @@
             <h5 class="f-light mb-5">Cosport : immédiat, simple et gratuit </h5>
         </div>
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form>
-            <div class="form-row form-landing-page">
-              <%= form_tag events_path, :method => 'get', :id => 'events_search', class: "" do %>
+              <%= form_tag events_index_path, :method => 'get', :id => 'events_search', class: "" do %>
+              <div class="form-row form-landing-page">
+
               <div class="col-12 col-md-3 mb-md-0">
                     <p><%=select_tag :city, options_for_select(City.all.collect{ |city| [city.city_name, city.id] }.insert(0, "Ville")), class: "form-control form-control-xs" %> </p>
                       </div>
@@ -28,7 +28,6 @@
                     </div>
                 <% end %>
               </div>
-          </form>
         </div>
 
       </div>
