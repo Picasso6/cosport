@@ -4,6 +4,9 @@ class Event < ApplicationRecord
   belongs_to :owner, class_name: "User"
   has_many :attendees, through: :attendances
   has_many :comments
+  validates :title, presence: true, length: { maximum: 20}
+  validates :description, presence: true, lenght: { maximum: 500}
+  validates :start_date, presence: true
 
 
   def self.search(params)
