@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   include EventsHelper
-  before_action :authenticate_user, only: [:new , :show]
+  before_action :authenticate_user!, only: [:new , :show]
   before_action :not_validated_yet, only: [:show]
 
 
@@ -30,11 +30,6 @@ class EventsController < ApplicationController
 
   private
 
-  def authenticate_user
-   unless current_user
-     #flash[:danger] = "Please log in."
-     redirect_to new_user_session_path
-   end
- end
+
 
 end
