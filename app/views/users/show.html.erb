@@ -17,7 +17,7 @@
   <p><%= @user.phone_number %></p>
 <% end %>
 <% if @user.level != nil%>
-  <p>level genreral: <%= @user.level %></p>
+  <p>level genreral: <%= @user.level %> <%= @level %></p>
 <% end %>
 
 <p>---------------------------------------------------</p>
@@ -29,7 +29,7 @@
 <%= form_tag(user_opinions_path(@user.id), method: :post ) do %>
   <%= label_tag 'opinions' %>
   <%= text_area_tag 'content' %>
-  <%= submit_tag "Create opi" %>  
+  <%= submit_tag "Create opi" %>
 <% end %>
 
 <% @opinion.each do |opinion| %>
