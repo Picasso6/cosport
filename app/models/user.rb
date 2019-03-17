@@ -8,9 +8,10 @@ class User < ApplicationRecord
   has_one_attached :profil_picture
 
   validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "dont valid email" }
-  validates :first_name, presence: true, length: { in: 3..30}
-  validates :last_name, presence: true, length: { in: 3..30}
-  validates :description, length: { maximum: 150}
+  validates :first_name, presence: true, length: { in: 3..30 }
+  validates :last_name, presence: true, length: { in: 3..30 }
+  validates :phone_number, length: { is: 10 }
+  validates :description, length: { maximum: 150 }  
 
   has_many :users_sports
   has_many :sports, through: :users_sports
