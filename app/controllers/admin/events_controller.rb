@@ -16,6 +16,8 @@ class Admin::EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.validation = true
     @event.save
+    @event.owner.level += 5
+    @event.owner.save
     redirect_to request.referrer
   end
 
