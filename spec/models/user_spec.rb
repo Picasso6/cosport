@@ -7,7 +7,6 @@ RSpec.describe User, type: :model do
    end
   
   it "has a valid factory" do
-    # teste toujours tes factories pour voir si elles sont valides
     expect(build(:user)).to be_valid
   end
 
@@ -33,11 +32,11 @@ RSpec.describe User, type: :model do
       it { expect(@user).to validate_length_of(:description).is_at_most(150) }
     end
 
-   	describe "#phone_number" do
-   		puts @user.phone_number
-      it { expect(@user).to validate_length_of(:phone_number).is_at_least(10) }
-      it { expect(@user).to validate_length_of(:phone_number).is_at_most(10) }
-    end
+   	#describe "#phone_number" do
+    #  it { expect(@user).to validate_length_of(:phone_number).is_at_least(10) }
+    #  it { expect(@user).to validate_length_of(:phone_number).is_at_most(10) }
+    #end
+
   end
 
 end

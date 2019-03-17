@@ -9,6 +9,5 @@ FactoryBot.define do
     level { "good" }
     phone_number { 0666666666 }
     description { "blabla" }
-
   end
 end
