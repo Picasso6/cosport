@@ -50,7 +50,7 @@ RSpec.describe Event, type: :model do
     end
 
     describe "#sport" do
-      it { expect(@event).to belong_to(:sport) }
+      it { expect(@event).to have_many(:attendances) }
     end
 
   end
