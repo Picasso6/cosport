@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_18_121720) do
+ActiveRecord::Schema.define(version: 2019_03_18_165118) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +51,8 @@ ActiveRecord::Schema.define(version: 2019_03_18_121720) do
     t.string "city_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "latitude", precision: 15, scale: 13
+    t.decimal "longitude", precision: 15, scale: 13
   end
 
   create_table "comments", force: :cascade do |t|
@@ -73,6 +76,8 @@ ActiveRecord::Schema.define(version: 2019_03_18_121720) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "validation"
+    t.decimal "latitude", precision: 15, scale: 13
+    t.decimal "longitude", precision: 15, scale: 13
     t.index ["city_id"], name: "index_events_on_city_id"
     t.index ["owner_id"], name: "index_events_on_owner_id"
     t.index ["sport_id"], name: "index_events_on_sport_id"
