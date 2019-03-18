@@ -4,12 +4,10 @@ RSpec.describe Opinion, type: :model do
 
    before(:each) do 
      @opinion = FactoryBot.create(:opinion)
-     @user = FactoryBot.create(:user)
    end
   
   it "has a valid factory" do
     expect(build(:opinion)).to be_valid
-    expect(build(:user)).to be_valid
   end
 
   context "validation" do
