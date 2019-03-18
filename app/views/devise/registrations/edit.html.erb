@@ -9,6 +9,20 @@
     <%= submit_tag "mettre à jour" %>
 <% end %>
 <br><br>
+<p>add level sport</p>
+<%= form_tag users_sports_create_path, :method => 'get' do %>
+  <%= label_tag 'Sport' %>
+  <p><%= select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }.insert(0, "")) %></p>
+  <%= label_tag 'Level' %>
+  <p><%= select_tag :level, options_for_select(UsersSport.level_sport.collect{ |sport| [sport] }.insert(0, "")) %></p>
+  <%= submit_tag "add", :name => nil %>
+<% end %>
+
+<% @user.users_sports.each do |level_sport| %>
+  <p>level: <%= level_sport.sport.sport_name %> (<%= level_sport.level_user %>)</p>
+  <%= button_to "delete", user_users_sport_path(@user.id, level_sport.id), :method => :delete %>
+<% end %>
+
 <p>--- edit info general profil ---</p>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -57,19 +71,7 @@
     <% end %>
   </div>
 
-  <p>add level sport</p>
-  <%= form_tag users_sports_create_path, :method => 'get' do %>
-    <%= label_tag 'Sport' %>
-    <p><%= select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }.insert(0, "")) %></p>
-    <%= label_tag 'Level' %>
-    <p><%= select_tag :level, options_for_select(UsersSport.level_sport.collect{ |sport| [sport] }.insert(0, "")) %></p>
-    <%= submit_tag "add", :name => nil %>
-  <% end %>
 
-  <% @user.users_sports.each do |level_sport| %>
-    <p>level: <%= level_sport.sport.sport_name %> (<%= level_sport.level_user %>)</p>
-    <%= button_to "delete", user_users_sport_path(@user.id, level_sport.id), :method => :delete %>
-  <% end %>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
