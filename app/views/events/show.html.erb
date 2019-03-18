@@ -47,6 +47,6 @@
 <%= javascript_include_tag 'show_event_map' %>
 
 <script>
-	var marker = L.marker([50.6305089,3.0706414]).addTo(map);
-	marker.bindPopup("<h3>ICI C'EST LILLE BOLOSS!!</h3>");
+	var marker = L.marker([<%=@event.latitude%>,<%=@event.longitude%>]).addTo(map);
+	marker.bindPopup("<h3><%=@event.description%></h3>");
 </script>

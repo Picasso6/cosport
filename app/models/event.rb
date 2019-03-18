@@ -4,7 +4,7 @@ class Event < ApplicationRecord
   belongs_to :owner, class_name: "User"
   has_many :attendees, through: :attendances
   has_many :comments
-  validates :title, presence: true, length: { maximum: 20}
+  validates :title, presence: true, length: { maximum: 100}
   validates :description, presence: true, length: { maximum: 500}
   validates :start_date, presence: true
 
