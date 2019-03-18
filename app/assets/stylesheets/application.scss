@@ -15,39 +15,73 @@
  *= require_self
 */
 
-
 /* Asap */
 @font-face {
 font-family: 'Asap';
-src: url(asset-path('Asap/Asap-Bold.ttf')) format('truetype');
-src: url(asset-path('Asap/Asap-BoldItalic.ttf')) format('truetype');
-src: url(asset-path('Asap/Asap-Italic.ttf')) format('truetype');
-src: url(asset-path('Asap/Asap-Medium.ttf')) format('truetype');
-src: url(asset-path('Asap/Asap-MediumItalic.ttf')) format('truetype');
-src: url(asset-path('Asap/Asap-Regular.ttf')) format('truetype');
-src: url(asset-path('Asap/Asap-SemiBoldItalic.ttf')) format('truetype');
-src: url(asset-path('Asap/Asap-SemiBold.ttf')) format('truetype');
+font-weight: 400;
+font-style: normal;
+src: url('Asap/Asap-Regular.ttf') format('truetype');
 }
+@font-face {
+font-family: 'Asap';
+font-weight: 500;
+font-style: normal;
+src: url('Asap/Asap-Medium.ttf') format('truetype');
+}
+@font-face {
+font-family: 'Asap';
+font-weight: 600;
+src: url('Asap/Asap-MediumItalic.ttf') format('truetype');
+}
+@font-face {
+font-family: 'Asap';
+font-weight: 700;
+font-style: normal;
+src: url('Asap/Asap-Bold.ttf') format('truetype');
+}
+
 
 
 /* Changa */
 @font-face {
 font-family: 'Changa';
-src: url('Changa/Changa-Bold.ttf') format('truetype');
-src: url('Changa/Changa-ExtraBold.ttf') format('truetype');
-src: url('Changa/Changa-ExtraLight.ttf') format('truetype');
+font-weight: 300;
+font-style: normal;
 src: url('Changa/Changa-Light.ttf') format('truetype');
-src: url('Changa/Changa-Medium.ttf') format('truetype');
-src: url('Changa/Changa-Regular.ttf') format('truetype');
-src: url('Changa/Changa-SemiBold.ttf') format('truetype');
 }
+@font-face {
+font-family: 'Changa';
+font-weight: 400;
+font-style: normal;
+src: url('Changa/Changa-Regular.ttf') format('truetype');
+}
+@font-face {
+font-family: 'Changa';
+font-weight: 500;
+font-style: normal;
+src: url('Changa/Changa-Medium.ttf') format('truetype');
+}
+@font-face {
+font-family: 'Changa';
+font-weight: 700;
+font-style: normal;
+src: url('Changa/Changa-Bold.ttf') format('truetype');
+}
+
+@font-face {
+font-family: 'Changa';
+font-weight: 800;
+font-style: normal;
+src: url('Changa/Changa-ExtraBold.ttf') format('truetype');
+}
+
 
 
 /* Montserrat */
 @font-face {
 font-family: 'Montserrat';
 src: url('Montserrat/Montserrat-Regular.ttf') format('truetype');
-font-weight: normal;
+font-weight: 400;
 font-style: normal;
 }
 @font-face {
@@ -65,13 +99,13 @@ font-style: normal;
 @font-face {
 font-family: 'Montserrat';
 src: url('Montserrat/Montserrat-Bold.ttf') format('truetype');
-font-weight: 600;
+font-weight: 700;
 font-style: normal;
 }
 @font-face {
 font-family: 'Montserrat';
 src: url('Montserrat/Montserrat-Black.ttf') format('truetype');
-font-weight: 800;
+font-weight: 900;
 font-style: normal;
 }
 
@@ -80,12 +114,12 @@ font-style: normal;
 /* League Spartan */
 @font-face {
     font-family: 'League Spartan';
-    src: url('leaguespartan-bold.eot');
-    src: url('leaguespartan-bold.eot?#iefix') format('embedded-opentype'),
-         url('leaguespartan-bold.woff2') format('woff2'),
-         url('leaguespartan-bold.woff') format('woff'),
-         url('leaguespartan-bold.ttf') format('truetype'),
-         url('leaguespartan-bold.svg#league_spartanbold') format('svg');
+    src: url('leagueSpartan/leaguespartan-bold.eot');
+    src: url('leagueSpartan/leaguespartan-bold.eot?#iefix') format('embedded-opentype'),
+         url('leagueSpartan/leaguespartan-bold.woff2') format('woff2'),
+         url('leagueSpartan/leaguespartan-bold.woff') format('woff'),
+         url('leagueSpartan/leaguespartan-bold.ttf') format('truetype'),
+         url('leagueSpartan/leaguespartan-bold.svg#league_spartanbold') format('svg');
     font-weight: bold;
     font-style: normal;
 
@@ -169,6 +203,30 @@ $m-color-2: #bababa;
     FONTS STYLE
 ----------------------------------------------------- */
 //LOGO font
+$f-thin: 100;
+$f-light: 300;
+$f-regular: 400;
+$f-medium: 500;
+$f-medium-italic: 600;
+$f-bold: 700;
+$f-extra-bold: 800;
+$f-black: 900;
+
+$font-1: 'Montserrat';
+$font-2: 'Asap';
+$font-3: 'Changa';
+
+.f-thin {font-weight: $f-thin;}
+.f-regular {font-weight: $f-regular;}
+.f-medium {font-weight: $f-medium;}
+.f-medium-italic {font-weight: $f-medium-italic;}
+.f-bold {font-weight: $f-bold;}
+.f-extra {font-weight: $f-extra-bold;}
+.f-black {font-weight: $f-black;}
+
+.font-1 {font-family: $font-1;}
+.font-2 {font-family: $font-2;}
+.font-3 {font-family: $font-3;}
 
 
 
@@ -177,17 +235,14 @@ $m-color-2: #bababa;
 ----------------------------------------------------- */
 // logo
 .our-logo { width: 100px;}
-.our-logo-typo {
-  font-family: 'Montserrat',Helvetica, Arial, sans-serif;
-  font-weight: 800;
-}
+
 // banners
 
 div.container-fluid { padding: 0px; }
 header.masthead {
   position: relative;
   background-color: #343a40;
-  background: url("../img/bg-masthead.jpg") no-repeat center center;
+  // background: url("../img/bg-masthead.jpg") no-repeat center center;
   background-size: cover;
   padding-top: 8rem;
   padding-bottom: 8rem;
@@ -200,7 +255,7 @@ header.masthead .overlay {
   width: 100%;
   top: 0;
   left: 0;
-  opacity: 0.3;
+  // opacity: 0.3;
 }
 
 header.masthead h1 {
@@ -216,3 +271,7 @@ header.masthead h1 {
     font-size: 3rem;
   }
 }
+
+
+// form control landing-page
+.form-landing-page {align-items: baseline;}
