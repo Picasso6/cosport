@@ -10,15 +10,11 @@ class EventsController < ApplicationController
   end
 
   def index
-    if params[:city] || params[:sport] || params[:start_date] || params[:hour_start]
-      @events = Event.search(params)
-    else
-      @events = Event.all
-    end
-    @events_hash = @events.group_by_day { |evt| evt.start_date }
-    @months_array_fr = [ nil, "Janvier", "Fevrier" ," Mars" , "Avril" , "Mai" , "Juin" ,"Juillet", "Août" , "Septembre" , "Octobre" , "Novembre" ,"Décembre"]
-    @days_array_fr = ["Dimanche" , "Lundi "," Mardi" , "Mercredi" ,"Jeudi" , "Vendredi", "Samedi"]
-  end
+   @events = Event.search(params)
+   @events_hash = @events.group_by_day { |evt| evt.start_date }
+   @months_array_fr = [ nil, "Janvier", "Fevrier" ," Mars" , "Avril" , "Mai" , "Juin" ,"Juillet", "Août" , "Septembre" , "Octobre" , "Novembre" ,"Décembre"]
+   @days_array_fr = ["Dimanche" , "Lundi "," Mardi" , "Mercredi" ,"Jeudi" , "Vendredi", "Samedi" ]
+ end 
 
   def create
     puts "paramsr***********"
