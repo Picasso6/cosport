@@ -243,37 +243,75 @@
           </g>
         </svg>
       </a>
-      <ul class="navbar-nav mr-auto f-bold font-3">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+        <ul class="navbar-nav mr-auto f-bold font-3">
         <li class="nav-item active">
           <%= link_to "COSPORT", root_path, class: "nav-link secondary-color our-logo-typo " %>
         </li>
-        <li class="nav-item">
-          <%= link_to "EVENTS", events_path, class: "nav-link secondary-color" %>
-        </li>
+      </ul>
+
+
+          <% if current_user %>
+
+      <ul class="navbar-nav">
         <li class="nav-item">
           <%= link_to "USERS", users_path, class: "nav-link secondary-color" %>
         </li>
         <li class="nav-item">
           <%= link_to "+ EVENT", new_event_path, class: "nav-link secondary-color" %>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              test
+            </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
         <li class="nav-item">
-          <% if current_user %>
-              <%= link_to "PROFIL", user_path(current_user.id), class: "nav-link secondary-color" %>
-          <% end %>
+              <%= link_to "PROFIL", user_path(current_user.id), class: "secondary-color" %>
         </li>
-      </ul>
-      <ul class="navbar-nav">
-        <% if current_user %>
-          <li class="nav-item" ><%= link_to "Deconnexion", destroy_user_session_path, method: "delete", class: "nav-link" %></li>
-          <% if current_user %>
-            <li class="nav-item" ><%= link_to "Admin Page", admin_root_path, class: "nav-link" %></li>
-          <%  end %>
-          <% if current_user.admin == true %>
-          <li class="nav-item" ><%= link_to "Page Admin", admin_root_path,  class: "nav-link" %></li>
-          <% end %>
+          <li class="nav-item" >
+            <%= link_to "Deconnexion", destroy_user_session_path, method: "delete", class: "nav-link" %>
+          </li>
+          <% if current_user && current_user.admin == true%>
+            <li class="nav-item" >
+              <%= link_to "Admin Page", admin_root_path, class: "nav-link" %>
+            </li>
+          </ul>
+        <%  end %>
+
+
         <% else %>
-          <li class="nav-item" ><%= link_to "Connexion", new_user_session_path, class: "nav-link" %></li>
-          <li class="nav-item" ><%= link_to "Inscription", new_user_registration_path, class: "nav-link" %></li>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to "EVENTS", events_path, class: "nav-link secondary-color" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "USERS", users_path, class: "nav-link secondary-color" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "+ EVENT", new_event_path, class: "nav-link secondary-color" %>
+          </li>
+          <li class="nav-item">
+          </li>
+          <li class="nav-item" >
+            <%= link_to "Inscription", new_user_registration_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item" >
+            <%= link_to "Connexion", new_user_session_path, class: "nav-link" %>
+          </li>
+
+            </ul>
+        </div>
         <% end %>
-      </ul>
+
     </nav>

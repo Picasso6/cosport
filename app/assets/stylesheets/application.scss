@@ -277,9 +277,21 @@ header.masthead h1 {
 }
 
 
-// form control landing-page
-.form-landing-page {align-items: baseline;}
-
+// // form control landing-page
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(2.25rem + 12px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
 
 
 /* ---------------------------------------------------
@@ -318,17 +330,12 @@ div.sticky {
   border-left: 1px solid $s-color-1;
 }
 
-
-#card-event .card-detail-badge {
-        background: #f2d900;
-        text-align: center;
-        border-radius: 30px 30px 30px 30px;
-        color: #000;
-        padding: 5px 10px;
-        font-size: 14px;
-    }
-
-
+#card-event img.profil-picture {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 50px;
+}
 
 #card-event .card:hover {
             background: #fff;
@@ -337,45 +344,6 @@ div.sticky {
             transition: all 0.3s ease;
         }
 
-#card-event .card-image-overlay {
-        font-size: 20px;
-
-    }
-
-
-#card-event .card-image-overlay span {
-            display: inline-block;
-        }
-
-
-#card-event .ad-btn {
-        text-transform: uppercase;
-        width: 150px;
-        height: 40px;
-        border-radius: 80px;
-        font-size: 16px;
-        line-height: 35px;
-        text-align: center;
-        border: 3px solid #e6de08;
-        display: block;
-        text-decoration: none;
-        margin: 20px auto 1px auto;
-        color: #000;
-        overflow: hidden;
-        position: relative;
-        background-color: #e6de08;
-    }
-
-#card-event .ad-btn:hover {
-            background-color: #e6de08;
-            color: #1e1717;
-            border: 2px solid #e6de08;
-            background: transparent;
-            transition: all 0.3s ease;
-            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
-        }
-
-#card-event .ad-title h5 {
-        text-transform: uppercase;
-        font-size: 18px;
+  .my-group .form-control{
+          width:50%;
     }

@@ -20,6 +20,13 @@
             <div class="card rounded p-2 my-3">
               <span class="sport-notify-badge rounded-right"><%= event.sport.sport_name %></span>
               <div class="card-title">
+                <span class="profil-picture">
+                  <%if event.owner.profil_picture.attached?%>
+                    <%= image_tag event.owner.profil_picture, alt: 'profil_picture' %>
+                  <%else%>
+                    <%= image_tag "person.png", alt: 'profil_picture', class: "profil-picture" %>
+                  <% end %>
+                </span>
                 <%= link_to event.title.capitalize.to_s , event_path(event.id) , method: "get" %>
                 </div>
                   <div class="card-body">
@@ -33,25 +40,3 @@
     <%end%>
   </div>
 </div>
-
-
-<div class="col-md-4">
-        <div class="card rounded">
-            <div class="card-image">
-                <span class="card-notify-badge">Low KMS</span>
-                <span class="card-notify-year">2018</span>
-                <img class="img-fluid" src="https://imageonthefly.autodatadirect.com/images/?USER=eDealer&PW=edealer872&IMG=USC80HOC011A021001.jpg&width=440&height=262" alt="Alternate Text" />
-            </div>
-            <div class="card-image-overlay m-auto">
-                <span class="card-detail-badge">Used</span>
-                <span class="card-detail-badge">$28,000.00</span>
-                <span class="card-detail-badge">13000 Kms</span>
-            </div>
-            <div class="card-body text-center">
-                <div class="ad-title m-auto">
-                    <h5>Honda Accord LX</h5>
-                </div>
-                <a class="ad-btn" href="#">View</a>
-            </div>
-        </div>
-    </div>
