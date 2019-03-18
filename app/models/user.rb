@@ -1,5 +1,6 @@
 class User < ApplicationRecord
    after_create :welcome_send
+   after_create :level_0
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,11 +8,10 @@ class User < ApplicationRecord
 
   has_one_attached :profil_picture
 
-  validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "dont valid email" }
-  validates :first_name, presence: true, length: { in: 3..30 }
-  validates :last_name, presence: true, length: { in: 3..30 }
-  validates :description, length: { maximum: 150 }  
-  validates :phone_number, presence: true
+  validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "Email not valid" }
+  validates :first_name, presence: true, length: { in: 1..30}
+  validates :last_name, presence: true, length: { in: 1..30}
+  validates :description, length: { maximum: 150}
 
   has_many :users_sports
   has_many :sports, through: :users_sports
@@ -35,6 +35,11 @@ class User < ApplicationRecord
     else
       return qualification_array[self.level[sport_id-1]]
     end
+  end
+
+  def level_0
+    self.level = 0
+    self.save
   end
 
 
