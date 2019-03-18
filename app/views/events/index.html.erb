@@ -1,29 +1,52 @@
+<div>
+  <%= form_tag events_index_path, :method => 'get', :id => 'events_search' do %>
 
+    <p><%= label_tag 'City' %> </p>
+    <p><%=select_tag :city, options_for_select(City.all.collect{ |city| [city.city_name, city.id] }.insert(0, "")) %> </p>
 
-<%i = 0%>
-<% while i < @events_hash.length %>
-  <h3>
-    <%= @days_array_fr[@events_hash.keys[i].wday]%>
-    <%= @events_hash.keys[i].strftime("%e")%>
-    <%= @months_array_fr[@events_hash.keys[i].strftime("%m").to_i]%>
-    <%= @events_hash.keys[i].strftime("%Y") %>
-  </h3>
+    <p><%= label_tag 'Sport' %></p>
+    <p><%=select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }.insert(0, "")) %></p>
+    <div class="form-group" >
+      <%= label_tag 'Date' %>
+      <%= date_field_tag 'start_date', @start_date, class: "form-control "  %>
+    </div>
 
+    <div class="form-group" >
+      <%= label_tag 'À partir de' %>
+      <br>
+      <%= time_field 'hour_start', class: "form-control " %>
+    </div>
+    <%= submit_tag "Search", :name => nil %>
+
+  <% end %>
+</div>
+
+<div>
+  <%i = 0%>
+  <% while i < @events_hash.length %>
+    <h3>
+      <%= @days_array_fr[@events_hash.keys[i].wday]%>
+      <%= @events_hash.keys[i].strftime("%e")%>
+      <%= @months_array_fr[@events_hash.keys[i].strftime("%m").to_i]%>
+      <%= @events_hash.keys[i].strftime("%Y") %>
+    </h3>
     <br>
 
   <%events_by_hour = @events_hash.values[i].group_by_hour_of_day { |evt| (evt.start_date+ Time.now.gmt_offset).utc.strftime("%T,%L")} %>
 
-   <%j =0 %>
-      <% while j< events_by_hour.length %>
-      <h5><%= events_by_hour.keys[j]%>H </h5>
-         <% events_by_hour.values[j].sort_by(&:start_date).each do |event|%>
-             <%= link_to event.title , event_path(event.id) , method: "get" %><br>
-         <%end%>
-        <% j +=1 %>
-        <br>
-      <% end %>
-
+  <%j =0 %>
+  <% while j< events_by_hour.length %>
+    <h5><%= events_by_hour.keys[j]%>H </h5>
+      <% events_by_hour.values[j].sort_by(&:start_date).each do |event|%>
+        <%= link_to event.title , event_path(event.id) , method: "get" %><br>
+        <% if event.start_date < (Time.now + Time.now.gmt_offset).utc %>
+          <p>inscription terminée</p>
+        <% end %>
+      <%end%>
+      <% j +=1 %>
+      <br>
+    <% end %>
     <% i = i+1 %>
-
-      <hr>
-<%end%>
+    <hr>
+  <%end%>
+</div>

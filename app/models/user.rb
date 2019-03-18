@@ -1,10 +1,9 @@
 class User < ApplicationRecord
-   after_create :welcome_send
    after_create :level_0
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 
   has_one_attached :profil_picture
 
@@ -12,6 +11,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { in: 1..30}
   validates :last_name, presence: true, length: { in: 1..30}
   validates :description, length: { maximum: 150}
+  validates :phone_number, presence: true, length: { is: 10}
 
   has_many :users_sports
   has_many :sports, through: :users_sports
@@ -22,7 +22,7 @@ class User < ApplicationRecord
   has_many :events, foreign_key: 'owner_id', class_name: "Event", dependent: :destroy
   has_many :attendances, foreign_key: 'attendee_id', class_name: "Attendance", dependent: :destroy
   has_many :events, through: :attendances, dependent: :destroy
-
+  
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
