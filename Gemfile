@@ -10,7 +10,7 @@ gem 'table_print'
 gem 'jquery-rails'
 gem 'groupdate'
 gem 'faker'
-#gem 'gmaps4rails'
+gem 'leaflet-rails'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
