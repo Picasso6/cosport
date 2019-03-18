@@ -35,14 +35,42 @@ RSpec.describe User, type: :model do
       it { expect(@user).to validate_length_of(:description).is_at_most(150) }
     end
 
-    describe "#level" do
-      #it { expect(@user.level).to be_a(Integer) }
-    end
-
    	describe "#phone_number" do
    	  it { expect(@user.description).to be_a(String) }
    	  it { expect(@user).to validate_presence_of(:phone_number) }
       it { expect(@user).to validate_length_of(:phone_number).is_equal_to(10) }  
+    end
+
+  end
+
+  context "associations" do
+
+    describe "#users_sports" do
+      it { expect(@user).to have_many(:users_sports) }
+    end
+
+    describe "#sports" do
+      it { expect(@user).to have_many(:sports) }
+    end
+
+    describe "#sent_opinions" do
+      it { expect(@user).to have_many(:sent_opinions) }
+    end
+
+    describe "#received_opinions" do
+      it { expect(@user).to have_many(:received_opinions) }
+    end
+
+    describe "#comments" do
+      it { expect(@user).to have_many(:comments) }
+    end
+
+    describe "#events" do
+      it { expect(@user).to have_many(:events) }
+    end
+
+    describe "#attendances" do
+      it { expect(@user).to have_many(:attendances) }
     end
 
   end
