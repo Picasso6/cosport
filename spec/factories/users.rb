@@ -8,6 +8,6 @@ FactoryBot.define do
     gender { Faker::Gender.binary_type }
     level { "good" }
     phone_number { 0666666666 }
-    description { "blabla" }
+    description { "médium" }
   end
 end
