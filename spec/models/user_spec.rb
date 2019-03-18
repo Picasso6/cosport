@@ -17,29 +17,32 @@ RSpec.describe User, type: :model do
     end
 
     describe "#first_name" do
+      it { expect(@user.first_name).to be_a(String) }
       it { expect(@user).to validate_presence_of(:first_name) }
-      it { expect(@user).to validate_length_of(:first_name).is_at_least(3) }
+      it { expect(@user).to validate_length_of(:first_name).is_at_least(1) }
       it { expect(@user).to validate_length_of(:first_name).is_at_most(30) }
     end
 
     describe "#last_name" do
+      it { expect(@user.last_name).to be_a(String) }
       it { expect(@user).to validate_presence_of(:last_name) }
-      it { expect(@user).to validate_length_of(:last_name).is_at_least(3) }
+      it { expect(@user).to validate_length_of(:last_name).is_at_least(1) }
       it { expect(@user).to validate_length_of(:last_name).is_at_most(30) }
     end
 
     describe "#description" do
+      it { expect(@user.description).to be_a(String) }
       it { expect(@user).to validate_length_of(:description).is_at_most(150) }
     end
 
     describe "#level" do
-      it { expect(@user).to validate_presence_of(:level) }
+      #it { expect(@user.level).to be_a(Integer) }
     end
 
    	describe "#phone_number" do
+   	  it { expect(@user.description).to be_a(String) }
    	  it { expect(@user).to validate_presence_of(:phone_number) }
-    #  it { expect(@user).to validate_length_of(:phone_number).is_at_least(10) }
-    #  it { expect(@user).to validate_length_of(:phone_number).is_at_most(10) }
+      it { expect(@user).to validate_length_of(:phone_number).is_equal_to(10) }  
     end
 
   end

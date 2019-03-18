@@ -6,8 +6,7 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password(8) }
     gender { Faker::Gender.binary_type }
-    level { "good" }
-    phone_number { 0666666666 }
-    description { "médium" }
+    phone_number { "0666666666" }
+    description { "blabla" }
   end
 end

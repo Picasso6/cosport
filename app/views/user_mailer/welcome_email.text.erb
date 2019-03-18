@@ -3,6 +3,6 @@ Salut <%= @user.first_name %> et bienvenue chez nous !
 
 Tu t'es inscrit sur Cosport en utilisant l'e-mail suivant : <%= @user.email %>.
 
-Pour accéder à ton espace client, connecte-toi via : <%#= link_to("cosport.herokuapp.com/users/sign_in", new_user_session_url) %>. <!-- probelem avec les test :S -->
+Pour accéder à ton espace client, connecte-toi via : <%= link_to("cosport.herokuapp.com/users/sign_in", new_user_session_url) %>.
 
 À très vite sur CoSport !

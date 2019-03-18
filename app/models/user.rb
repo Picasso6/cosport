@@ -12,6 +12,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { in: 1..30}
   validates :last_name, presence: true, length: { in: 1..30}
   validates :description, length: { maximum: 150}
+  validates :phone_number, presence: true, length: { is: 10}
 
   has_many :users_sports
   has_many :sports, through: :users_sports
