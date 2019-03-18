@@ -10,22 +10,20 @@ class Event < ApplicationRecord
 
 
   def self.search(params)
-    puts params
-    # if params['start_date'] != ""
-    #   hour = params['hour_start'].values[0].to_time.strftime('%H').to_i
-    #   minute = params['hour_start'].values[0].to_time.strftime('%M').to_i
-    #   @given_start_date = (params["start_date"].to_time + hour.hours + minute.minutes).to_datetime
-    # end
     if params["city"] != "Ville" && params["sport"] != "Sport" && params["start_date"] != ""
-      where(["city_id = ? and sport_id = ? and start_date >= ?", "#{params["city"]}", "#{params["sport"]}", "#{params["start_date"].to_datetime}"])
+      where(["city_id = ? and sport_id = ? and start_date >= ? and validation = ? and start_date >= ?", "#{params["city"]}", "#{params["sport"]}", "#{params["start_date"].to_datetime}", "#{true}", "#{DateTime.now}"])
     elsif params["city"] != "Ville" && params["sport"] == "Sport" && params["start_date"] == ""
-      where(["city_id = ?", "#{params["city"]}"])
+      where(["city_id = ? and validation = ? and start_date >= ?", "#{params["city"]}", "#{true}", "#{DateTime.now}"])
     elsif params["city"] == "Ville" && params["sport"] != "Sport" && params["start_date"] == ""
-      where(["sport_id = ?", "#{params["sport"]}"])
+      where(["sport_id = ? and validation = ? and start_date >= ?", "#{params["sport"]}", "#{true}", "#{DateTime.now}"])
     elsif params["city"] != "Ville" && params["sport"] != "Sport" && params["start_date"] == ""
-      where(["city_id = ? and sport_id = ?", "#{params["city"]}", "#{params["sport"]}"])
+      where(["city_id = ? and sport_id = ? and validation = ? and start_date >= ?", "#{params["city"]}", "#{params["sport"]}", "#{true}", "#{DateTime.now}"])
+    elsif params["city"] != "Ville" && params["sport"] += "Sport" && params["start_date"] != ""
+      where(["city_id = ? and start_date >= ? and validation = ? and start_date >= ?", "#{params["city"]}", "#{params["start_date"].to_datetime}", "#{true}", "#{DateTime.now}"])
+    elsif params["city"] == "Ville" && params["sport"] != "Sport" && params["start_date"] != ""
+      where(["sport_id = ? and start_date >= ? and validation = ? and start_date >= ?", "#{params["sport"]}", "#{params["start_date"].to_datetime}", "#{true}", "#{DateTime.now}"])
     else
-      all
+      where(["validation = ? and start_date >= ?", "#{true}", "#{DateTime.now}"])
     end
   end
 

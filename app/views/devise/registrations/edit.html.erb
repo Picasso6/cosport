@@ -1,12 +1,28 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 <br><br>
 <p>--- edit photo profil ---</p>
+<%if @user.profil_picture.attached?%>
 <%= image_tag @user.profil_picture, alt: 'profil_picture' %>
+<% end %>
 <%= form_tag user_profil_picture_index_path(@user), multipart: true do %>
     <%= file_field_tag :profil_picture %>
     <%= submit_tag "mettre à jour" %>
 <% end %>
 <br><br>
+<p>add level sport</p>
+<%= form_tag users_sports_create_path, :method => 'get' do %>
+  <%= label_tag 'Sport' %>
+  <p><%= select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }.insert(0, "")) %></p>
+  <%= label_tag 'Level' %>
+  <p><%= select_tag :level, options_for_select(UsersSport.level_sport.collect{ |sport| [sport] }.insert(0, "")) %></p>
+  <%= submit_tag "add", :name => nil %>
+<% end %>
+
+<% @user.users_sports.each do |level_sport| %>
+  <p>level: <%= level_sport.sport.sport_name %> (<%= level_sport.level_user %>)</p>
+  <%= button_to "delete", user_users_sport_path(@user.id, level_sport.id), :method => :delete %>
+<% end %>
+
 <p>--- edit info general profil ---</p>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -33,12 +49,12 @@
 
   <div class="field">
     <%= f.label :gender %><br />
-    <%= f.text_field :gender, autofocus: true, autocomplete: "gender" %>
+    <%= f.select :gender, ['Homme', 'Femme']%>
   </div>
 
   <div class="field">
-    <%= f.label :level %><br />
-    <%= f.text_field :level, autofocus: true, autocomplete: "level" %>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, autofocus: true, autocomplete: "description" %>
   </div>
 
 
@@ -54,6 +70,8 @@
       <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
+
+
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
@@ -75,19 +93,3 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
-
-<p>---edit info secondary profil---</p>
-*
-<p>add level sport</p>
-<%= form_tag users_sports_create_path, :method => 'get' do %>
-  <%= label_tag 'Sport' %>
-  <p><%= select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }.insert(0, "")) %></p>
-  <%= label_tag 'Level' %>
-  <p><%= select_tag :level, options_for_select(UsersSport.level_sport.collect{ |sport| [sport] }.insert(0, "")) %></p>
-  <%= submit_tag "add", :name => nil %>
-<% end %>
-
-<% @user.users_sports.each do |level_sport| %>
-  <p>level: <%= level_sport.sport.sport_name %> (<%= level_sport.level_user %>)</p>
-  <%= button_to "delete", user_users_sport_path(@user.id, level_sport.id), :method => :delete %>
-<% end %>
