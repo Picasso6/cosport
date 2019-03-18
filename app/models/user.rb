@@ -1,10 +1,9 @@
 class User < ApplicationRecord
-   after_create :welcome_send
    after_create :level_0
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 
   has_one_attached :profil_picture
 
