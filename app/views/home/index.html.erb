@@ -21,7 +21,7 @@
                         <p><%=select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }.insert(0, "Sport")), class:"form-control" %></p>
                       </div>
                         <div class="col-12 col-md-3 mb-md-0">
-                          <%= date_field_tag 'start_date', @start_date, class: "form-control "  %>
+                          <%= date_field_tag 'start_date', @start_date, class: "form-control"%>
                         </div>
                       <div class="col-12 col-md-3">
                       <%= submit_tag "Search", :name => nil, class: "btn btn-block btn-lg btn-primary" %>
@@ -33,7 +33,6 @@
       </div>
     </div>
   </header>
-
 
 
 

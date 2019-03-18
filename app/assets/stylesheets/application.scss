@@ -1,4 +1,5 @@
 @import "bootstrap";
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -15,69 +16,9 @@
  *= require_self
 */
 
-/* Asap */
-@font-face {
-font-family: 'Asap';
-font-weight: 400;
-font-style: normal;
-src: url('Asap/Asap-Regular.ttf') format('truetype');
-}
-@font-face {
-font-family: 'Asap';
-font-weight: 500;
-font-style: normal;
-src: url('Asap/Asap-Medium.ttf') format('truetype');
-}
-@font-face {
-font-family: 'Asap';
-font-weight: 600;
-src: url('Asap/Asap-MediumItalic.ttf') format('truetype');
-}
-@font-face {
-font-family: 'Asap';
-font-weight: 700;
-font-style: normal;
-src: url('Asap/Asap-Bold.ttf') format('truetype');
-}
 
 
-
-/* Changa */
-@font-face {
-font-family: 'Changa';
-font-weight: 300;
-font-style: normal;
-src: url('Changa/Changa-Light.ttf') format('truetype');
-}
-@font-face {
-font-family: 'Changa';
-font-weight: 400;
-font-style: normal;
-src: url('Changa/Changa-Regular.ttf') format('truetype');
-}
-@font-face {
-font-family: 'Changa';
-font-weight: 500;
-font-style: normal;
-src: url('Changa/Changa-Medium.ttf') format('truetype');
-}
-@font-face {
-font-family: 'Changa';
-font-weight: 700;
-font-style: normal;
-src: url('Changa/Changa-Bold.ttf') format('truetype');
-}
-
-@font-face {
-font-family: 'Changa';
-font-weight: 800;
-font-style: normal;
-src: url('Changa/Changa-ExtraBold.ttf') format('truetype');
-}
-
-
-
-/* Montserrat */
+/* Montserrat  => font-1 */
 @font-face {
 font-family: 'Montserrat';
 src: url('Montserrat/Montserrat-Regular.ttf') format('truetype');
@@ -109,21 +50,138 @@ font-weight: 900;
 font-style: normal;
 }
 
-
-
-/* League Spartan */
+/* Asap font-2 */
 @font-face {
-    font-family: 'League Spartan';
-    src: url('leagueSpartan/leaguespartan-bold.eot');
-    src: url('leagueSpartan/leaguespartan-bold.eot?#iefix') format('embedded-opentype'),
-         url('leagueSpartan/leaguespartan-bold.woff2') format('woff2'),
-         url('leagueSpartan/leaguespartan-bold.woff') format('woff'),
-         url('leagueSpartan/leaguespartan-bold.ttf') format('truetype'),
-         url('leagueSpartan/leaguespartan-bold.svg#league_spartanbold') format('svg');
-    font-weight: bold;
-    font-style: normal;
-
+font-family: 'Asap';
+font-weight: 400;
+font-style: normal;
+src: url('Asap/Asap-Regular.ttf') format('truetype');
 }
+@font-face {
+font-family: 'Asap';
+font-weight: 500;
+font-style: normal;
+src: url('Asap/Asap-Medium.ttf') format('truetype');
+}
+@font-face {
+font-family: 'Asap';
+font-weight: 600;
+src: url('Asap/Asap-MediumItalic.ttf') format('truetype');
+}
+@font-face {
+font-family: 'Asap';
+font-weight: 700;
+font-style: normal;
+src: url('Asap/Asap-Bold.ttf') format('truetype');
+}
+
+/* SportingGrotesque font-3 */
+@font-face {
+font-family: 'Sporting';
+font-weight: 400;
+font-style: normal;
+src: url('SportingGrotesque/SportingGrotesque-Regular.otf') format('opentype');
+}
+@font-face {
+font-family: 'Sporting';
+font-weight: 700;
+font-style: normal;
+src: url('SportingGrotesque/SportingGrotesque-Bold.otf') format('opentype');
+}
+
+/* Metropolis  => font-4 */
+@font-face {
+font-family: 'Metropolis';
+src: url('Metropolis/Metropolis-Regular.otf') format('opentype');
+font-weight: 400;
+font-style: normal;
+}
+@font-face {
+font-family: 'Metropolis';
+src: url('Metropolis/Metropolis-Thin.otf') format('opentype');
+font-weight: 100;
+font-style: normal;
+}
+@font-face {
+font-family: 'Metropolis';
+src: url('Metropolis/Metropolis-Medium.otf') format('opentype');
+font-weight: 500;
+font-style: normal;
+}
+@font-face {
+font-family: 'Metropolis';
+src: url('Metropolis/Metropolis-Bold.otf') format('opentype');
+font-weight: 700;
+font-style: normal;
+}
+@font-face {
+font-family: 'Metropolis';
+src: url('Metropolis/Metropolis-Black.otf') format('opentype');
+font-weight: 900;
+font-style: normal;
+}
+
+
+/* ---------------------------------------------------
+    COLORS STYLE
+----------------------------------------------------- */
+// color main
+$f-color-1: #ff815a;   //corail
+$f-color-2: #6f4dff;   //electric-purple
+$f-color-3: #2ff4b7;   //green-pepsi
+
+.primary-color { color: $f-color-1 !important; }
+.secondary-color { color: $f-color-2 !important; }
+.third-color { color: $f-color-3 !important; }
+
+// color shade/grey
+$s-color-1: #e2e0df;
+$s-color-2: #575757;
+$s-color-3: #080416;
+
+.light-color { background-color: $s-color-1; }
+.medium-color{ background-color: $s-color-2; }
+.strong-color { background-color: $s-color-3; }
+
+// color for background
+$m-color-1: #f1efeb;
+$m-color-2: #bababa;
+
+.primary-color-bg { background-color: $m-color-1;}
+.secondary-color-bg { background-color: $m-color-2;}
+
+/* ---------------------------------------------------
+    FONTS STYLE
+----------------------------------------------------- */
+//LOGO font
+$f-thin: 100;
+$f-light: 300;
+$f-regular: 400;
+$f-medium: 500;
+$f-medium-italic: 600;
+$f-bold: 700;
+$f-extra-bold: 800;
+$f-black: 900;
+
+$font-1: 'Montserrat';
+$font-2: 'Asap';
+$font-3: 'Sporting';
+$font-4: 'Metropolis';
+
+.f-thin {font-weight: $f-thin;}
+.f-regular {font-weight: $f-regular;}
+.f-medium {font-weight: $f-medium;}
+.f-medium-italic {font-weight: $f-medium-italic;}
+.f-bold {font-weight: $f-bold;}
+.f-extra {font-weight: $f-extra-bold;}
+.f-black {font-weight: $f-black;}
+
+.font-1 {font-family: $font-1;}
+.font-2 {font-family: $font-2;}
+.font-3 {font-family: $font-3;}
+.font-4 {font-family: $font-4;}
+
+
 
 
 
@@ -157,76 +215,22 @@ font-style: normal;
  }
 
  .affix {
-   padding-top: 0.2em !important;
-   padding-bottom: 0.2em !important;
+   // padding-top: 0.2em !important;
+   // padding-bottom: 0.2em !important;
    -webkit-transition:padding 0.2s linear;
    -moz-transition:padding 0.2s linear;
    -o-transition:padding 0.2s linear;
    transition:padding 0.2s linear;
  }
 
+.border-bottom-nav {
+  border-bottom: 0.6px solid $m-color-2;
+  z-index: 10000 !important;
+}
 
  section {
      min-height:calc(100% - 70px);
 }
-
-
-/* ---------------------------------------------------
-    COLORS STYLE
------------------------------------------------------ */
-// color main
-$f-color-1: #ff815a;   //corail
-$f-color-2: #6f4dff;   //electric-purple
-$f-color-3: #2ff4b7;   //green-pepsi
-
-.primary-color { background-color: $f-color-1; }
-.secondary-color { background-color: $f-color-2; }
-.third-color { background-color: $f-color-3; }
-
-// color shade/grey
-$s-color-1: #e2e0df;
-$s-color-2: #575757;
-$s-color-3: #080416;
-
-.light-color { background-color: $s-color-1; }
-.medium-color{ background-color: $s-color-2; }
-.strong-color { background-color: $s-color-3; }
-
-// color for background
-$m-color-1: #f1efeb;
-$m-color-2: #bababa;
-
-.primary-color-bg { background-color: $m-color-1;}
-.secondary-color-bg { background-color: $m-color-2;}
-
-/* ---------------------------------------------------
-    FONTS STYLE
------------------------------------------------------ */
-//LOGO font
-$f-thin: 100;
-$f-light: 300;
-$f-regular: 400;
-$f-medium: 500;
-$f-medium-italic: 600;
-$f-bold: 700;
-$f-extra-bold: 800;
-$f-black: 900;
-
-$font-1: 'Montserrat';
-$font-2: 'Asap';
-$font-3: 'Changa';
-
-.f-thin {font-weight: $f-thin;}
-.f-regular {font-weight: $f-regular;}
-.f-medium {font-weight: $f-medium;}
-.f-medium-italic {font-weight: $f-medium-italic;}
-.f-bold {font-weight: $f-bold;}
-.f-extra {font-weight: $f-extra-bold;}
-.f-black {font-weight: $f-black;}
-
-.font-1 {font-family: $font-1;}
-.font-2 {font-family: $font-2;}
-.font-3 {font-family: $font-3;}
 
 
 
@@ -275,3 +279,103 @@ header.masthead h1 {
 
 // form control landing-page
 .form-landing-page {align-items: baseline;}
+
+
+
+/* ---------------------------------------------------
+    EVENT PAGE (events#index)
+----------------------------------------------------- */
+
+//cards style for sport events
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 7.07rem;
+  background-color: #ffffff;
+  padding: 10px;
+  z-index: 9999 !important;
+}
+/* Category Ads */
+
+#card-event {
+    margin: 30px 0 30px 0;
+
+}
+
+
+#card-event .sport-notify-badge {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  /* background: #ff815a; */
+  text-align: center;
+  color: $f-color-1;
+  font-size: 14px;
+  width: 120px;
+  height: 25px;
+  padding: 0px 0px 0 0;
+  border-bottom: $s-color-1 1px solid;
+  border-left: 1px solid $s-color-1;
+}
+
+
+#card-event .card-detail-badge {
+        background: #f2d900;
+        text-align: center;
+        border-radius: 30px 30px 30px 30px;
+        color: #000;
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+
+
+#card-event .card:hover {
+            background: #fff;
+            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+#card-event .card-image-overlay {
+        font-size: 20px;
+
+    }
+
+
+#card-event .card-image-overlay span {
+            display: inline-block;
+        }
+
+
+#card-event .ad-btn {
+        text-transform: uppercase;
+        width: 150px;
+        height: 40px;
+        border-radius: 80px;
+        font-size: 16px;
+        line-height: 35px;
+        text-align: center;
+        border: 3px solid #e6de08;
+        display: block;
+        text-decoration: none;
+        margin: 20px auto 1px auto;
+        color: #000;
+        overflow: hidden;
+        position: relative;
+        background-color: #e6de08;
+    }
+
+#card-event .ad-btn:hover {
+            background-color: #e6de08;
+            color: #1e1717;
+            border: 2px solid #e6de08;
+            background: transparent;
+            transition: all 0.3s ease;
+            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+        }
+
+#card-event .ad-title h5 {
+        text-transform: uppercase;
+        font-size: 18px;
+    }

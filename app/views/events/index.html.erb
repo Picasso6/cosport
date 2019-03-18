@@ -1,29 +1,57 @@
+<div id="card-event">
 
+  <div class="col-md-9 col-lg-7 col-xl-6 mx-auto">
 
-<%i = 0%>
-<% while i < @events_hash.length %>
-  <h3>
-    <%= @days_array_fr[@events_hash.keys[i].wday]%>
-    <%= @events_hash.keys[i].strftime("%e")%>
-    <%= @months_array_fr[@events_hash.keys[i].strftime("%m").to_i]%>
-    <%= @events_hash.keys[i].strftime("%Y") %>
-  </h3>
-
-    <br>
-
-  <%events_by_hour = @events_hash.values[i].group_by_hour_of_day { |evt| (evt.start_date+ Time.now.gmt_offset).utc.strftime("%T,%L")} %>
-
-   <%j =0 %>
+  <%i = 0%>
+    <% while i < @events_hash.length %>
+      <div class="sticky font-1">
+        <h5>
+          <%= @days_array_fr[@events_hash.keys[i].wday]%>
+          <%= @events_hash.keys[i].strftime("%e")%>
+          <%= @months_array_fr[@events_hash.keys[i].strftime("%m").to_i]%>
+          <%= @events_hash.keys[i].strftime("%Y") %>
+        </h5>
+      </div>
+      <%events_by_hour = @events_hash.values[i].group_by_hour_of_day { |evt| (evt.start_date+ Time.now.gmt_offset).utc.strftime("%T,%L")} %>
+    <%j =0 %>
       <% while j< events_by_hour.length %>
-      <h5><%= events_by_hour.keys[j]%>H </h5>
-         <% events_by_hour.values[j].sort_by(&:start_date).each do |event|%>
-             <%= link_to event.title , event_path(event.id) , method: "get" %><br>
-         <%end%>
-        <% j +=1 %>
-        <br>
-      <% end %>
+        <!-- <h6><%= events_by_hour.keys[j]%>H </h6> -->
+          <% events_by_hour.values[j].sort_by(&:start_date).each do |event|%>
+            <div class="card rounded p-2 my-3">
+              <span class="sport-notify-badge rounded-right"><%= event.sport.sport_name %></span>
+              <div class="card-title">
+                <%= link_to event.title.capitalize.to_s , event_path(event.id) , method: "get" %>
+                </div>
+                  <div class="card-body">
+                    <%=  event.description  %>
+                  </div>
+                </div>
+             <%end%>
+            <% j +=1 %>
+          <% end %>
+        <% i = i+1 %>
+    <%end%>
+  </div>
+</div>
 
-    <% i = i+1 %>
 
-      <hr>
-<%end%>
+<div class="col-md-4">
+        <div class="card rounded">
+            <div class="card-image">
+                <span class="card-notify-badge">Low KMS</span>
+                <span class="card-notify-year">2018</span>
+                <img class="img-fluid" src="https://imageonthefly.autodatadirect.com/images/?USER=eDealer&PW=edealer872&IMG=USC80HOC011A021001.jpg&width=440&height=262" alt="Alternate Text" />
+            </div>
+            <div class="card-image-overlay m-auto">
+                <span class="card-detail-badge">Used</span>
+                <span class="card-detail-badge">$28,000.00</span>
+                <span class="card-detail-badge">13000 Kms</span>
+            </div>
+            <div class="card-body text-center">
+                <div class="ad-title m-auto">
+                    <h5>Honda Accord LX</h5>
+                </div>
+                <a class="ad-btn" href="#">View</a>
+            </div>
+        </div>
+    </div>
