@@ -49,8 +49,16 @@ RSpec.describe Event, type: :model do
       it { expect(@event).to belong_to(:sport) }
     end
 
-    describe "#sport" do
+    describe "#attendances" do
       it { expect(@event).to have_many(:attendances) }
+    end
+
+    describe "#attendees" do
+      it { expect(@event).to have_many(:attendees) }
+    end
+
+    describe "#comments" do
+      it { expect(@event).to have_many(:comments) }
     end
 
   end
