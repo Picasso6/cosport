@@ -13,15 +13,27 @@ RSpec.describe Comment, type: :model do
   context "validation" do
 
     it "is valid with valid attributes" do
-      expect(@comment).to be_a(comment)
+      expect(@comment).to be_a(Comment)
     end
 
-   
+    describe "#content" do
+      it { expect(@comment.content).to be_a(String) }
+      it { expect(@comment).to validate_presence_of(:content) }
+      it { expect(@comment).to validate_length_of(:content).is_at_least(10) }
+      it { expect(@comment).to validate_length_of(:content).is_at_most(200) }
+    end
+
   end
 
   context "associations" do
 
-  
+    describe "#event" do
+      it { expect(@comment).to belong_to(:event) }
+    end
+
+    describe "#user" do
+      it { expect(@comment).to belong_to(:user) }
+    end
 
   end
 end
