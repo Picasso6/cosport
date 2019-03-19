@@ -149,9 +149,14 @@ $s-color-1: #f1f1f15e;
 $s-color-2: #575757;
 $s-color-3: #080416;
 
-.light-color { background-color: $s-color-1; }
-.medium-color{ background-color: $s-color-2; }
-.strong-color { background-color: $s-color-3; }
+.light-color { color: $s-color-1; }
+.medium-color{ color: $s-color-2; }
+.strong-color { color: $s-color-3; }
+
+//color shade/grey/bg
+.light-color-bg { background-color: $s-color-1; }
+.medium-color-bg{ background-color: $s-color-2; }
+.strong-color-bg { background-color: $s-color-3; }
 
 // color for background
 $m-color-1: #f1efeb;
@@ -325,6 +330,13 @@ span.ico-search::before {
     box-shadow: 0 0 0 0.2rem rgb(255, 129, 90);
 }
 
+//form devise
+a.links-devise:hover {
+    color: #ff815a;
+    border-bottom: 1px solid #ff815a;
+    text-decoration: none;
+}
+
 /* ---------------------------------------------------
     LANDING PAGE (home#index)
 ----------------------------------------------------- */
@@ -334,6 +346,7 @@ span.ico-search::before {
 // banners
 
 div.container-fluid { padding: 0px; }
+
 header.masthead {
   position: relative;
   background-color: #343a40;
@@ -344,7 +357,19 @@ header.masthead {
   color: $f-color-2;
 }
 
-header.masthead .overlay {
+header.masthead-2 {
+  position: relative;
+  background-color: #343a40;
+  background-size: cover;
+  padding-top: 2rem;
+  padding-bottom: 8rem;
+  color: $f-color-2;
+}
+
+header.mhead-2 {  background: url("banner2.png") no-repeat center center; }
+header.mhead-3 {  background: url("banner6.png") no-repeat center center; }
+
+ .overlay {
   position: absolute;
   // background-color: #212529;
   height: 100%;
