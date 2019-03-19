@@ -276,6 +276,7 @@ span.ico-search::before {
  margin: 10px 10px 0 0;
 }
 
+img.icon-social { width: auto; max-height: 100px;}
 
 .icon-color:before {
   background-color: $f-color-2;
@@ -287,6 +288,9 @@ span.ico-search::before {
   z-index: 10000 !important;
 }
 
+.dropdown-menu {
+    left: -3rem;
+}
  section {
      min-height:calc(100% - 70px);
 }
@@ -329,6 +333,9 @@ span.ico-search::before {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgb(255, 129, 90);
 }
+
+
+
 
 //form devise
 a.links-devise:hover {
@@ -404,6 +411,27 @@ h5.f-light.mb-5 {
 }
 
 
+.features-icons {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.features-icons .features-icons-item {
+  max-width: 20rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon {
+  height: 7rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon i {
+  font-size: 4.5rem;
+}
+
+.features-icons .features-icons-item:hover .features-icons-icon i {
+  font-size: 5rem;
+}
+
 
 /* ---------------------------------------------------
     EVENT PAGE (events#index)
@@ -458,3 +486,25 @@ div.sticky {
   .my-group .form-control{
           width:50%;
     }
+
+
+
+    /* ---------------------------------------------------
+      MEDIA QUERIES (events#index)
+    ----------------------------------------------------- */
+
+
+    // Small devices (landscape phones, less than 768px)
+    @media (max-width: 767.98px) {
+      .form-row.form-landing-page {
+        padding: 10px 50px 0px 50px;
+      }
+      header.masthead {
+        position: relative;
+        padding-top: 0rem;
+      }
+      h2.f-bold {
+        font-size: 2.2rem;
+        padding: 0rem 5rem 1rem 5rem;
+      }
+     }
