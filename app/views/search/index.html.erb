@@ -1,23 +1,21 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xl-9 mx-auto font-1">
-      <h2 class="f-bold"> Le sport où tu veux, quand tu veux</h2>
-        <h5 class="f-light mb-5">Cosport : immédiat, simple et gratuit </h5>
-    </div>
-    <div class="col-md-10 col-lg-9 col-xl-7 mx-auto">
-            <%= form_tag events_index_path, :method => 'get', :id => 'events_search', class: "" do %>
-          <div class="form-row form-landing-page">
+  <div class="row pt-5">
 
-          <div class="col-12 col-md-3 mb-md-0">
+    <div class="col-md-10 col-lg-9 col-xl-7 mx-auto pt-5">
+            <%= form_tag events_index_path, :method => 'get', :id => 'events_search', class: "" do %>
+
+          <div class="form-column form-landing-page">
+
+          <div class="col-12 col-md-7 mb-md-0 mx-auto">
                 <p><%=select_tag :city, options_for_select(City.all.collect{ |city| [city.city_name, city.id] }.insert(0, "Ville")), class: "form-control form-control-xs" %> </p>
                   </div>
-                  <div class="col-12 col-md-3 mb-md-0">
+                  <div class="col-12 col-md-7 mb-md-0 mx-auto">
                     <p><%=select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }.insert(0, "Sport")), class:"form-control" %></p>
                   </div>
-                    <div class="col-12 col-md-4 mb-md-0">
+                    <div class="col-12 col-md-7 mb-md-0 mx-auto">
                     <p>  <%= date_field_tag 'start_date', @start_date, class: "form-control"%></p>
                     </div>
-                  <div class="col-12 col-md-2">
+                  <div class="col-12 col-md-7 mb-md-0 mx-auto">
                   <%= submit_tag "Search", :name => nil, class: "btn btn-block btn-lg btn-primary" %>
                 </div>
             <% end %>
