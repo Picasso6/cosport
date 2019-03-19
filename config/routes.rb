@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     resources :opinions, only: [:create, :new, :destroy]
     resources :users_sports, only: [:create, :destroy]
   end
+
+  resources :search, only: [:index]
+  
   resources :homes, only: [:index]
   root 'home#index'
 
