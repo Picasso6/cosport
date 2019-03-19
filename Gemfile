@@ -7,7 +7,6 @@ gem "aws-sdk-s3", require: false
 gem 'rails-ujs'
 gem 'dotenv-rails'
 gem 'table_print'
-gem 'jquery-rails'
 gem 'groupdate'
 gem 'faker'
 gem 'leaflet-rails'
@@ -45,7 +44,6 @@ gem 'jbuilder', '~> 2.5'
 #front gem
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

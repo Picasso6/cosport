@@ -41,6 +41,7 @@ Sport.create!(sport_name: "Tennis de Table" )
 Sport.create!(sport_name: "Badminton" )
 puts "Sport categories generated"
 
+
 20.times do
  event_random = Event.create!(title: Faker::Company.bs[0..19], description: Faker::Hipster.sentence, start_date: Faker::Date.forward(23), duration: 30, city_id: City.all.sample.id, sport_id: Sport.all.sample.id ,owner_id: User.all.sample.id)
 end
@@ -51,4 +52,4 @@ puts "Events faker generated"
  comment_random = Comment.create!(content: Faker::Hipster.sentence , user_id: User.all.sample.id,event_id: Event.all.sample.id  )
 end
 
-puts "Comments faker generated"
+puts "Comments faker generated"  

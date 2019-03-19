@@ -10,8 +10,8 @@
           <h2 class="f-bold"> Le sport où tu veux, quand tu veux</h2>
             <h5 class="f-light mb-5">Cosport : immédiat, simple et gratuit </h5>
         </div>
-        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-              <%= form_tag events_index_path, :method => 'get', :id => 'events_search', class: "" do %>
+        <div class="col-md-10 col-lg-9 col-xl-7 mx-auto">
+                <%= form_tag events_index_path, :method => 'get', :id => 'events_search', class: "" do %>
               <div class="form-row form-landing-page">
 
               <div class="col-12 col-md-3 mb-md-0">
@@ -20,24 +20,30 @@
                       <div class="col-12 col-md-3 mb-md-0">
                         <p><%=select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }.insert(0, "Sport")), class:"form-control" %></p>
                       </div>
-                        <div class="col-12 col-md-3 mb-md-0">
-                          <%= date_field_tag 'start_date', @start_date, class: "form-control "  %>
+                        <div class="col-12 col-md-4 mb-md-0">
+                        <p>  <%= date_field_tag 'start_date', @start_date, class: "form-control"%></p>
                         </div>
-                      <div class="col-12 col-md-3">
+                      <div class="col-12 col-md-2">
                       <%= submit_tag "Search", :name => nil, class: "btn btn-block btn-lg btn-primary" %>
                     </div>
                 <% end %>
               </div>
-        </div>
+            </div>
 
       </div>
     </div>
   </header>
 
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-6 ml-auto font-1 text-center">
+      <%= image_tag("person.png") %>
+    </div>
+    <div class="col-xl-6 mr-auto font-1">
+      ho
+    </div>
+  </div>
+</div>
 
-
-
-
-
-    </section><!-- end of section content -->
+</section><!-- end of section content -->
