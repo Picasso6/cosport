@@ -34,16 +34,41 @@
     </div>
   </header>
 
+</section><!-- end of section content -->
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xl-6 ml-auto font-1 text-center">
-      <%= image_tag("person.png") %>
-    </div>
-    <div class="col-xl-6 mr-auto font-1">
-      ho
+
+<section class="features-icons bg-light text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+          <div class="d-flex icon-medium mx-auto">
+            <%= image_tag('icon-instant', class: "icon-social mx-auto pb-4")%>
+          </div>
+          <h3>Rapidité</h3>
+          <p class="lead mb-0">Une envie sportive mais personne pour vous accompagner ? Sur Cosport, vous allez forcément trouver une annonce qui vous correspond !</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+          <div class="d-flex icon-medium mx-auto">
+            <%= image_tag('icon-heart', class: "icon-social mx-auto pb-4")%>
+          </div>
+          <h3>Communauté</h3>
+          <p class="lead mb-0">Rencontrez les nombreux sportifs près de chez vous et nouez de nouvelles affinités en progressant ensemble.</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+          <div class="d-flex icon-medium mx-auto">
+            <%= image_tag('icon-comet', class: "icon-social mx-auto pb-4")%>
+          </div>
+          <h3>Facilité</h3>
+          <p class="lead mb-0">Cosport, rien de plus facile, vous postez votre annonce, vous validez la présence des intéressés, petit échange par mail ou sms, et c’est parti !</p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-</section><!-- end of section content -->
+<%= javascript_include_tag "home" %>
