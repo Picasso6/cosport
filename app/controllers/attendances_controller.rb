@@ -1,34 +1,41 @@
 class AttendancesController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
-def create
-  unless already_attended?
-      @event = Event.find(params[:event_id])
-      @attendance = Attendance.new(attendee_id: current_user.id, event_id: @event.id)
-      if @attendance.save
-        redirect_to request.referrer
+  def create
+    unless already_attended?
+        @event = Event.find(params[:event_id])
+        @attendance = Attendance.new(attendee_id: current_user.id, event_id: @event.id)
+        if @attendance.save
+          flash[:notice] = "Votre demande de participation est en attente de validation."
+          redirect_to event_path(@attendance.event.id)
+        else
+          flash[:danger] = "Erreur lors de la demande de participation."
+          redirect_to request.referrer
+        end
       end
+    end
+
+
+
+  def edit
+    @attendance = Attendance.find(params[:id])
   end
 
-end
+  def update
+    @attendance = Attendance.find(params[:id])
+    @attendance.update(validation: true)
+    @attendance.attendee.level += 1
+    @attendance.attendee.save
+    redirect_to event_path(@attendance.event.id)
+  end
 
-def edit
-  @attendance = Attendance.find(params[:id])
-end
-
-def update
-  @attendance = Attendance.find(params[:id])
-  @attendance.update(validation: true)
-  @attendance.attendee.level += 1
-  @attendance.attendee.save
-  redirect_to event_path(@attendance.event.id)
-end
-
-def destroy
-  @attendance = Attendance.find(params[:id])
-  @attendance.destroy
-  redirect_to request.referrer
-end
+  def destroy
+    @attendance = Attendance.find(params[:id])
+    if @attendance.destroy
+      flash[:notice] = "Vous vous être desinscrit de cette annonce."
+      redirect_to request.referrer
+    end
+  end
 
   private
 
