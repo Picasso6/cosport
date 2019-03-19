@@ -9,7 +9,7 @@ gem 'dotenv-rails'
 gem 'table_print'
 gem 'groupdate'
 gem 'faker'
-#gem 'gmaps4rails'
+gem 'leaflet-rails'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -54,7 +54,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
-  gem "factory_bot_rails", "~> 4.0"
+  gem "factory_bot_rails"
   gem 'rspec-rails', '~> 3.7'
 
 end
@@ -73,7 +73,8 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
 
-  gem 'shoulda-matchers', '~> 3.1'  # => short syntax test
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
   gem 'nyan-cat-formatter'     # => fun
 
   # Easy installation and use of chromedriver to run system tests with Chrome

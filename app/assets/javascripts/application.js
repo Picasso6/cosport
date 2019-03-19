@@ -16,6 +16,9 @@
 //= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
+//= require leaflet
+//= require new_event_map
+//= require show_event_map
 //= require_tree .
 
 

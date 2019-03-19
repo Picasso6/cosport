@@ -1,3 +1,4 @@
+@import "leaflet";
 @import "bootstrap";
 
 /*
@@ -17,8 +18,22 @@
 */
 
 
+<<<<<<< HEAD
 
 /* Montserrat  => font-1 */
+=======
+/*Leaflet CSS*/
+#new-event-map
+{ height: 300px;
+  width: 100%;
+}
+#show-event-map
+{ height: 300px;
+  width: 100%;
+}
+
+/* Asap */
+>>>>>>> master
 @font-face {
 font-family: 'Montserrat';
 src: url('Montserrat/Montserrat-Regular.ttf') format('truetype');

@@ -9,17 +9,22 @@
 require 'faker'
 
 15.times do
- user_random = User.create!(first_name: Faker::Name.first_name ,last_name: Faker::Name.last_name ,email: Faker::Internet.email, password: Faker::Internet.password(8), gender: Faker::Gender.binary_type , level: "good")
+ user_random = User.create!(first_name: Faker::Name.first_name ,last_name: Faker::Name.last_name ,email: Faker::Internet.email, password: Faker::Internet.password(8), gender: Faker::Gender.binary_type, phone_number: "0666666666")
 end
 puts "Users faker generated"
 
 
-# description: Faker::Hipster.sentence ,
-# phone_number :Faker::PhoneNumber.cell_phone
 
-10.times do
- city_random = City.create!(city_name: Faker::Address.city )
-end
+City.create!(city_name: "Paris", latitude: 48.85661, longitude: 2.351499)
+City.create!(city_name: "Lyon", latitude: 45.757814, longitude: 4.832011)
+City.create!(city_name: "Marseille", latitude: 43.296174, longitude: 5.369953)
+City.create!(city_name: "Toulouse", latitude: 43.604462, longitude: 1.444247)
+City.create!(city_name: "Bordeaux", latitude: 44.841225, longitude: -0.580036)
+City.create!(city_name: "Lille", latitude: 50.630509, longitude: 3.070641)
+City.create!(city_name: "Nice", latitude: 43.700936, longitude: 7.268391)
+City.create!(city_name: "Nantes", latitude: 47.218637, longitude: -1.554136)
+City.create!(city_name: "Strasbourg", latitude: 48.584614, longitude: 7.750713)
+City.create!(city_name: "Rennes", latitude: 48.111339, longitude: -1.68002)
 puts "Cities faker generated"
 
 Sport.create!(sport_name: "Football" )
@@ -28,11 +33,16 @@ Sport.create!(sport_name: "Pétanque" )
 Sport.create!(sport_name: "Running" )
 Sport.create!(sport_name: "Tennis" )
 Sport.create!(sport_name: "Natation" )
-
+Sport.create!(sport_name: "Escalade" )
+Sport.create!(sport_name: "Basketball" )
+Sport.create!(sport_name: "Roller" )
+Sport.create!(sport_name: "Volley" )
+Sport.create!(sport_name: "Tennis de Table" )
+Sport.create!(sport_name: "Badminton" )
 puts "Sport categories generated"
 
 20.times do
- event_random = Event.create!(title: Faker::Company.bs, description: Faker::Hipster.sentence, start_date: Faker::Date.forward(23), duration: 30, city_id: rand(1..City.count), sport_id: rand(1..Sport.count) ,owner_id: rand(1..User.count))
+ event_random = Event.create!(title: Faker::Company.bs[0..19], description: Faker::Hipster.sentence, start_date: Faker::Date.forward(23), duration: 30, city_id: rand(1..City.count), sport_id: rand(1..Sport.count) ,owner_id: rand(1..User.count))
 end
 
 puts "Events faker generated"
