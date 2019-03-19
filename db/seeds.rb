@@ -15,21 +15,6 @@ require 'faker'
 
 
 
-<<<<<<< HEAD
-# 10.times do
-#  city_random = City.create!(city_name: Faker::Address.city )
-# end
-# puts "Cities faker generated"
-#
-# Sport.create!(sport_name: "Football" )
-# Sport.create!(sport_name: "Handball" )
-# Sport.create!(sport_name: "Pétanque" )
-# Sport.create!(sport_name: "Running" )
-# Sport.create!(sport_name: "Tennis" )
-# Sport.create!(sport_name: "Natation" )
-#
-# puts "Sport categories generated"
-=======
 City.create!(city_name: "Paris", latitude: 48.85661, longitude: 2.351499)
 City.create!(city_name: "Lyon", latitude: 45.757814, longitude: 4.832011)
 City.create!(city_name: "Marseille", latitude: 43.296174, longitude: 5.369953)
@@ -55,7 +40,7 @@ Sport.create!(sport_name: "Volley" )
 Sport.create!(sport_name: "Tennis de Table" )
 Sport.create!(sport_name: "Badminton" )
 puts "Sport categories generated"
->>>>>>> bca20da57880a206d31bfe12065fd6c39c02cc75
+
 
 20.times do
  event_random = Event.create!(title: Faker::Company.bs, description: Faker::Hipster.sentence, start_date: Faker::Date.forward(23), duration: 30, city_id: 1, sport_id: rand(1..Sport.count) ,owner_id: rand(1..User.count), latitude: Faker::Address.latitude , longitude: Faker::Address.longitude)
