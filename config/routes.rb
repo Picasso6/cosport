@@ -30,4 +30,6 @@ Rails.application.routes.draw do
     root 'admin#index'
     resources :users, :events
   end
+
+  resources :maps, only: [:index,]
 end
