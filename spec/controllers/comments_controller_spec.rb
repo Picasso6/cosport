@@ -4,7 +4,7 @@ RSpec.describe CommentsController, type: :controller do
 
  	describe 'POST #create' do
 
- 		context 'invalid params' do
+ 		context 'valid params' do
 
  			before(:each) do
 
@@ -24,7 +24,7 @@ RSpec.describe CommentsController, type: :controller do
 
  	describe 'POST #destroy' do
 
- 		context 'invalid params' do
+ 		context 'valid params' do
 
  			before(:each) do
 
