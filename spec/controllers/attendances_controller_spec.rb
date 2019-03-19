@@ -12,7 +12,7 @@ RSpec.describe AttendancesController, type: :controller do
  				post :create, params: {event_id: FactoryBot.create( :event )}
  			end
 
- 			it 'should return an error' do 				
+ 			it 'should return 302' do 				
  				expect(response).to have_http_status(302)
  			end
  		end
@@ -28,9 +28,13 @@ RSpec.describe AttendancesController, type: :controller do
  				get :edit, params: {id: FactoryBot.create( :attendance ), event_id: FactoryBot.create( :event )}
  			end
 
- 			it 'should return an error' do 				
+ 			it 'should return 200' do 				
  				expect(response).to have_http_status(200)
  			end
+
+ 			it "returns success" do
+        		expect(response).to be_successful
+      		end
  		end
  	end
 
@@ -44,7 +48,7 @@ RSpec.describe AttendancesController, type: :controller do
  				patch :update, params: {id: FactoryBot.create( :attendance ), event_id: FactoryBot.create( :event )}
  			end
 
- 			it 'should return an error' do 				
+ 			it 'should return 302' do 				
  				expect(response).to have_http_status(302)
  			end
  		end
@@ -60,7 +64,7 @@ RSpec.describe AttendancesController, type: :controller do
  				delete :update, params: {id: FactoryBot.create( :attendance ), event_id: FactoryBot.create( :event )}
  			end
 
- 			it 'should return an error' do 				
+ 			it 'should return 302' do 				
  				expect(response).to have_http_status(302)
  			end
  		end

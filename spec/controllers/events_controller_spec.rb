@@ -45,7 +45,7 @@ RSpec.describe EventsController, type: :controller do
  				get :index
  			end
 
- 			it "returns http success" do
+ 			it "returns success" do
         		expect(response).to be_successful
       		end
 

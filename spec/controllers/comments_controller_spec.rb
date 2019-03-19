@@ -14,12 +14,10 @@ RSpec.describe CommentsController, type: :controller do
 
  			end
 
- 			it 'should return an error' do 				
+ 			it 'should return 302' do 				
  				expect(response).to have_http_status(302)
  			end
-
  		end
-
  	end
 
  	describe 'POST #destroy' do
@@ -34,12 +32,9 @@ RSpec.describe CommentsController, type: :controller do
 
  			end
 
- 			it 'should return an error' do 				
+ 			it 'should return 302' do 				
  				expect(response).to have_http_status(302)
  			end
-
  		end
-
  	end
-
  end

@@ -5,14 +5,11 @@ class EventsController < ApplicationController
 
 
   def show
-    puts "***************************************************************"
-    puts params
   	@event = Event.find(params["id"])
     @comment = @event.comments
   end
 
   def index
-    puts "/////////////////////////////////index////////////////////////////"
     if params[:city] || params[:sport] || params[:start_date] || params[:hour_start]
       @events = Event.search(params)
     else
@@ -24,16 +21,12 @@ class EventsController < ApplicationController
   end
 
   def create
-    puts "paramsr********************************************************"
-    puts params
     date = (params[:start_date] + " " + params[:hour_start]).in_time_zone
     puts date
     @event = Event.new(title: params[:title], description: params[:description], start_date: date, duration: params[:duration], sport_id: params[:sport_id], city_id: params[:city_id], owner_id: current_user.id)
     if @event.save
-      puts "ififiififififififiififif"
       redirect_to event_path(@event.id)
     else
-      puts "lelelelelellelelelellelele"
       render :new
     end
   end
