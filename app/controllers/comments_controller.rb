@@ -5,14 +5,14 @@ class CommentsController < ApplicationController
 		if @comment.save
 			redirect_to request.referrer
 		else
-			redirect_to request.referrer
+			redirect_to request.referrer, status: :unprocessable_entity
 		end
 	end
 
 	def destroy
 		@comment = Comment.find(params[:id])
     	@comment.destroy
-    	redirect_to request.referrer
+    	redirect_to request.referrer, status: 1
 	end
 
 end
