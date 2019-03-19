@@ -51,11 +51,6 @@ require 'faker'
  event_random = Event.create!(title: Faker::Company.bs[0..19], description: Faker::Hipster.sentence, start_date: Faker::Date.forward(23), duration: 30, city_id: City.all.sample.id, sport_id: Sport.all.sample.id ,owner_id: User.all.sample.id, latitude: a.abs-100 , longitude:  b.abs-100)
  puts event_random.errors.full_messages
 
- # puts "longitude class= "
- #  a = Faker::Address.longitude
- #  puts a.class
- # puts "longitude tronqué au round = "
- # puts a.round(7)
 end
 
 puts "Events faker generated"
