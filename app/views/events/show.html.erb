@@ -45,8 +45,3 @@
 </div>
 
 <%= javascript_include_tag 'show_event_map' %>
-
-<script>
-	var marker = L.marker([<%=@event.latitude%>,<%=@event.longitude%>]).addTo(map);
-	marker.bindPopup("<h3><%=@event.description%></h3>");
-</script>

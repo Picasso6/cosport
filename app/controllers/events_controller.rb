@@ -6,6 +6,11 @@ class EventsController < ApplicationController
 
   def show
   	@event = Event.find(params["id"])
+    gon.event = @event
+    gon.owner = @event.owner
+    gon.sport = @event.sport
+    gon.user = current_user
+    gon.attendance = current_user.attendances.where(event_id: @event.id).exists? && @event.owner_id != current_user.id
     @comment = @event.comments
   end
 

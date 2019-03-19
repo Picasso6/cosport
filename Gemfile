@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'groupdate'
 gem 'faker'
 gem 'leaflet-rails'
+gem 'gon'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -69,7 +70,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener'
-  
+
 end
 
 group :test do
