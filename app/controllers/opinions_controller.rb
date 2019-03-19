@@ -17,3 +17,4 @@ class OpinionsController < ApplicationController
   end
 
 end
+
