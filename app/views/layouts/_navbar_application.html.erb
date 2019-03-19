@@ -1,4 +1,4 @@
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top navbar-expand-sm  bg-white border-bottom-nav">
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top navbar-expand-sm  bg-white border-bottom-nav px-5">
       <a class="navbar-brand" href="<%=root_path%>">
         <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="0 0 274.4862671 194.9902496" enable-background="new 0 0 274.4862671 194.9902496" xml:space="preserve" class="our-logo">
@@ -247,7 +247,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse pr-5" id="navbarNavDropdown">
 
         <ul class="navbar-nav mr-auto f-bold font-4">
         <li class="nav-item active">
@@ -259,32 +259,29 @@
           <% if current_user %>
 
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <%= link_to "USERS", users_path, class: "nav-link secondary-color" %>
+        <li class="nav-item icon-xlarge">
+          <span class="ico-map icon-color">
+           <%= link_to "Parcourir les évènements", new_event_path, class: "nav-link secondary-color" %>
+          </span>
         </li>
-        <li class="nav-item">
-          <%= link_to "+ EVENT", new_event_path, class: "nav-link secondary-color" %>
+        <li class="nav-item icon-medium">
+          <span class="ico-search icon-color">
+           <%= link_to "Rechercher", search_index_path, class: "nav-link secondary-color" %>
+          </span>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              test
-            </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-        <li class="nav-item">
-              <%= link_to "PROFIL", user_path(current_user.id), class: "secondary-color" %>
+        <li class="nav-item icon-large">
+          <span class="ico-plus icon-color">
+           <%= link_to "Proposer un créneau", new_event_path, class: "nav-link secondary-color" %>
+          </span>
         </li>
-          <li class="nav-item" >
-            <%= link_to "Deconnexion", destroy_user_session_path, method: "delete", class: "nav-link" %>
-          </li>
-          <% if current_user && current_user.admin == true%>
-            <li class="nav-item" >
-              <%= link_to "Admin Page", admin_root_path, class: "nav-link" %>
+        <li class="nav-item dropdown show">
+          <%= link_to 'Profil', '#', class: "nav-link secondary-color dropdown-toggle", 'data-toggle' => 'dropdown', role: "button", aria:{haspopup:"true", expanded:"false"}, id:"dropdownMenuLink" %>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <%= link_to "PROFIL", user_path(current_user.id), class: "nav-link dropdown-item" %>
+              <%= link_to "Deconnexion", destroy_user_session_path, method: "delete", class: "nav-link dropdown-item" %>
+              <% if current_user && current_user.admin == true%>
+              <%= link_to "Admin Page", admin_root_path, class: "nav-link dropdown-item" %>
+            </div>
             </li>
           </ul>
         <%  end %>
