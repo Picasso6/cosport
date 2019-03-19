@@ -3,9 +3,11 @@ class OpinionsController < ApplicationController
   def create
   	@opinion = Opinion.new(content: params[:content], recipient_id: params[:user_id], sender_id: current_user.id)
   	if @opinion.save
+      puts "fifififiifififififfiif"
   		redirect_to request.referrer
   	else
-  		redirect_to request.referrer
+      puts "elellelelelellelele"
+  		redirect_to request.referrer, status: :unprocessable_entity
   	end
   end
 
