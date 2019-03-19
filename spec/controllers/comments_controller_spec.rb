@@ -10,7 +10,7 @@ RSpec.describe CommentsController, type: :controller do
 
  				login_with FactoryBot.create( :user )
  				request.env['HTTP_REFERER'] = '/'
- 				post :create, params: {event_id: FactoryBot.create( :event ).id, content: ""}
+ 				post :create, params: {event_id: FactoryBot.create( :event ).id, content: "balbalbalbalbalblablabla"}
 
  			end
 
@@ -21,5 +21,25 @@ RSpec.describe CommentsController, type: :controller do
  		end
 
  	end
- 	
+
+ 	describe 'POST #destroy' do
+
+ 		context 'invalid params' do
+
+ 			before(:each) do
+
+ 				login_with FactoryBot.create( :user )
+ 				request.env['HTTP_REFERER'] = '/'
+ 				post :destroy, params: {event_id: FactoryBot.create( :event ).id, id: FactoryBot.create( :comment ).id}
+
+ 			end
+
+ 			it 'should return an error' do 				
+ 				expect(response).to have_http_status(302)
+ 			end
+
+ 		end
+
+ 	end
+
  end
