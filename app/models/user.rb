@@ -1,5 +1,6 @@
 class User < ApplicationRecord
    after_create :level_0
+   # after_create :alert
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -18,12 +19,12 @@ class User < ApplicationRecord
 
   has_many :sent_opinions, foreign_key: 'sender_id', class_name: "Opinion"
   has_many :received_opinions, foreign_key: 'recipient_id', class_name: "Opinion"
-  
+
   has_many :comments, dependent: :destroy
   has_many :events, foreign_key: 'owner_id', class_name: "Event", dependent: :destroy
   has_many :attendances, foreign_key: 'attendee_id', class_name: "Attendance", dependent: :destroy
   has_many :events, through: :attendances, dependent: :destroy
-  
+
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
@@ -42,6 +43,12 @@ class User < ApplicationRecord
     self.level = 0
     self.save
   end
+
+  # def alert
+  #   if User
+  #   flash[:notice] = "Votre compte a bien été créé, merci de le valider grace au lien envoyer sur votre adresse email."
+  #   redirect_to root_path
+  # end
 
 
 end
