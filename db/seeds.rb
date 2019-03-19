@@ -48,13 +48,10 @@ require 'faker'
  event_random = Event.create!(title: Faker::Company.bs[0..19], description: Faker::Hipster.sentence, start_date: Faker::Date.forward(23), duration: 30, city_id: City.all.sample.id, sport_id: Sport.all.sample.id ,owner_id: User.all.sample.id, latitude: a.abs-100 , longitude:  b.abs-100)
  puts event_random.errors.full_messages
 
-<<<<<<< HEAD
-=======
 
 
 20.times do
  event_random = Event.create!(title: Faker::Company.bs[0..19], description: Faker::Hipster.sentence, start_date: Faker::Date.forward(23), duration: 30, city_id: City.all.sample.id, sport_id: Sport.all.sample.id ,owner_id: User.all.sample.id)
->>>>>>> 9efb9e70ccbd97edae3f097d19de499a24e1037c
 end
 
 puts "Events faker generated"
@@ -63,5 +60,4 @@ puts "Events faker generated"
  comment_random = Comment.create!(content: Faker::Hipster.sentence , user_id: User.all.sample.id,event_id: Event.all.sample.id  )
 end
 
-puts "Comments faker generated"  
-
+puts "Comments faker generated"
