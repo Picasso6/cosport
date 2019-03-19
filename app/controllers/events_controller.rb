@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   include EventsHelper
   before_action :authenticate_user!, only: [:new , :show]
   before_action :not_validated_yet, only: [:show]
+  before_action :same_id, only: [:edit]
 
 
   def show
