@@ -20,11 +20,27 @@
 
 
 
-// $(window).scroll(function() {
-//   /* affix after scrolling 100px */
-//   if ($(document).scrollTop() > 100) {
-//     $('.navbar').addClass('affix');
-//   } else {
-//     $('.navbar').removeClass('affix');
-//   }
-// });
+$(document).ready(function(){
+
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  };
+
+});
+
+
+
+  // function randomImage(){
+  //   var images = [
+  //    'banner.png',
+  //    'banner2.png',
+  //    'banner3.png'];
+  //   var size = images.length;
+  //   var x = Math.floor(size * Math.random());
+  //   console.log(x);
+  //   var element = document.getElementsByClassName('masthead');
+  //   console.log(element);
+  //   element[0].style["background"] = "url('images[x]')";
+  // }
+  //
+  // document.addEventListener("DOMContentLoaded", randomImage);
