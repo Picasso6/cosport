@@ -297,6 +297,9 @@ span.ico-search::before {
   background-color: $f-color-1;
   border: 0px;
 }
+.btn-primary:hover {
+  background-color: $f-color-2;
+}
 
 //form
 .form-control {
