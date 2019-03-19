@@ -15,9 +15,7 @@ RSpec.describe AttendancesController, type: :controller do
  			it 'should return an error' do 				
  				expect(response).to have_http_status(302)
  			end
-
  		end
-
  	end
 
  	describe 'GET #edit' do
@@ -33,9 +31,7 @@ RSpec.describe AttendancesController, type: :controller do
  			it 'should return an error' do 				
  				expect(response).to have_http_status(200)
  			end
-
  		end
-
  	end
 
  	describe 'patch #update' do
@@ -51,9 +47,7 @@ RSpec.describe AttendancesController, type: :controller do
  			it 'should return an error' do 				
  				expect(response).to have_http_status(302)
  			end
-
  		end
-
  	end
 
  	describe 'DELETE #destroy' do
@@ -69,9 +63,6 @@ RSpec.describe AttendancesController, type: :controller do
  			it 'should return an error' do 				
  				expect(response).to have_http_status(302)
  			end
-
  		end
-
  	end
-
 end

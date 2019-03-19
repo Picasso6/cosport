@@ -5,6 +5,8 @@ class EventsController < ApplicationController
 
 
   def show
+    puts "***************************************************************"
+    puts params
   	@event = Event.find(params["id"])
     @comment = @event.comments
   end
