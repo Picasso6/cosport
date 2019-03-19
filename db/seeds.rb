@@ -44,24 +44,21 @@ require 'faker'
 
 15.times do
  a =  Faker::Address.longitude
- puts "longitude faker ="
  b =  Faker::Address.latitude
- puts "longitude faker ="
- puts a
  event_random = Event.create!(title: Faker::Company.bs[0..19], description: Faker::Hipster.sentence, start_date: Faker::Date.forward(23), duration: 30, city_id: City.all.sample.id, sport_id: Sport.all.sample.id ,owner_id: User.all.sample.id, latitude: a.abs-100 , longitude:  b.abs-100)
  puts event_random.errors.full_messages
 
- # puts "longitude class= "
- #  a = Faker::Address.longitude
- #  puts a.class
- # puts "longitude tronqué au round = "
- # puts a.round(7)
+
+
+20.times do
+ event_random = Event.create!(title: Faker::Company.bs[0..19], description: Faker::Hipster.sentence, start_date: Faker::Date.forward(23), duration: 30, city_id: City.all.sample.id, sport_id: Sport.all.sample.id ,owner_id: User.all.sample.id)
 end
 
 puts "Events faker generated"
 
-# 10.times do
-#  comment_random = Comment.create!(content: Faker::Hipster.sentence , user_id: User.all.sample.id,event_id: Event.all.sample.id  )
-# end
-#
-# puts "Comments faker generated"
+10.times do
+ comment_random = Comment.create!(content: Faker::Hipster.sentence , user_id: User.all.sample.id,event_id: Event.all.sample.id  )
+end
+
+puts "Comments faker generated"  
+

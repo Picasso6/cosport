@@ -1,27 +1,44 @@
-<%i = 0%>
-<% while i < @events_hash.length %>
-  <h3>
-    <%= @days_array_fr[@events_hash.keys[i].wday]%>
-    <%= @events_hash.keys[i].strftime("%e")%>
-    <%= @months_array_fr[@events_hash.keys[i].strftime("%m").to_i]%>
-    <%= @events_hash.keys[i].strftime("%Y") %>
-  </h3>
 
-    <br>
+<div id="card-event">
 
-  <%events_by_hour = @events_hash.values[i].group_by_hour_of_day { |evt| (evt.start_date+ Time.now.gmt_offset).utc.strftime("%T,%L")} %>
+  <div class="col-md-9 col-lg-7 col-xl-6 mx-auto">
 
-   <%j =0 %>
+  <%i = 0%>
+    <% while i < @events_hash.length %>
+      <div class="sticky font-1">
+        <h5>
+          <%= @days_array_fr[@events_hash.keys[i].wday]%>
+          <%= @events_hash.keys[i].strftime("%e")%>
+          <%= @months_array_fr[@events_hash.keys[i].strftime("%m").to_i]%>
+          <%= @events_hash.keys[i].strftime("%Y") %>
+        </h5>
+      </div>
+      <%events_by_hour = @events_hash.values[i].group_by_hour_of_day { |evt| (evt.start_date+ Time.now.gmt_offset).utc.strftime("%T,%L")} %>
+    <%j =0 %>
       <% while j< events_by_hour.length %>
-      <h5><%= events_by_hour.keys[j]%>H </h5>
-         <% events_by_hour.values[j].sort_by(&:start_date).each do |event|%>
-             <%= link_to event.title , event_path(event.id) , method: "get" %><br>
-         <%end%>
-        <% j +=1 %>
-        <br>
-      <% end %>
+        <!-- <h6><%= events_by_hour.keys[j]%>H </h6> -->
+          <% events_by_hour.values[j].sort_by(&:start_date).each do |event|%>
+            <div class="card rounded p-2 my-3">
+              <span class="sport-notify-badge rounded-right"><%= event.sport.sport_name %></span>
+              <div class="card-title">
+                <span class="profil-picture">
+                  <%if event.owner.profil_picture.attached?%>
+                    <%= image_tag event.owner.profil_picture, alt: 'profil_picture' %>
+                  <%else%>
+                    <%= image_tag "person.png", alt: 'profil_picture', class: "profil-picture" %>
+                  <% end %>
+                </span>
+                <%= link_to event.title.capitalize.to_s , event_path(event.id) , method: "get" %>
+                </div>
+                  <div class="card-body">
+                    <%=  event.description  %>
+                  </div>
+                </div>
+             <%end%>
+            <% j +=1 %>
+          <% end %>
+        <% i = i+1 %>
+    <%end%>
+  </div>
+</div>
 
-    <% i = i+1 %>
-
-      <hr>
-<%end%> 

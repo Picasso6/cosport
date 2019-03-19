@@ -29,6 +29,11 @@
 	<% end %>
 <% end %>
 
+<% if current_user.id == @event.owner.id %>
+<%= link_to "Editer l'évènement", edit_event_path(@event.id) %>
+<%= link_to "Supprimer l'évènement", event_path(@event.id),:data => {:confirm => 'Are you sure?'}, method: "delete" %>
+<% end %>
+
 <%= form_tag(event_comments_path(@event.id), method: :post ) do %>
     <%= label_tag 'comments' %>
     <%= text_area_tag 'content' %>
