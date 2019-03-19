@@ -42,7 +42,7 @@ RSpec.describe EventsController, type: :controller do
  			before(:each) do
  				login_with FactoryBot.create( :user )
  				request.env['HTTP_REFERER'] = '/'
- 				get :index
+ 				get :index, params: { start_date: "", city: "Ville", sport: "Sport" }
  			end
 
  			it "returns success" do

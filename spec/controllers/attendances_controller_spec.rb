@@ -52,6 +52,19 @@ RSpec.describe AttendancesController, type: :controller do
  				expect(response).to have_http_status(302)
  			end
  		end
+
+ #		context 'invalid params' do
+#
+ #			before(:each) do
+ #				login_with FactoryBot.create( :user )
+ #				request.env['HTTP_REFERER'] = '/'
+ #				patch :update, params: {id: FactoryBot.create( :attendance ), event_id: FactoryBot.create( :event )}
+ #			end
+#
+ 		#	it 'should return 422' do 				
+ 		#		expect(response).to have_http_status(422)
+ 		#	end
+ 		#end
  	end
 
  	describe 'DELETE #destroy' do
