@@ -8,10 +8,17 @@
 
 require 'faker'
 
+<<<<<<< HEAD
 # 15.times do
 #  user_random = User.create!(first_name: Faker::Name.first_name ,last_name: Faker::Name.last_name ,email: Faker::Internet.email, password: Faker::Internet.password(8), gender: Faker::Gender.binary_type)
 # end
 # puts "Users faker generated"
+=======
+15.times do
+ user_random = User.create!(first_name: Faker::Name.first_name ,last_name: Faker::Name.last_name ,email: Faker::Internet.email, password: Faker::Internet.password(8), gender: Faker::Gender.binary_type, phone_number: "0666666666")
+end
+puts "Users faker generated"
+>>>>>>> 3524ef01e5079fb7eaba2e2401b77b6afe181ebd
 
 
 
@@ -43,7 +50,11 @@ puts "Sport categories generated"
 
 
 20.times do
+<<<<<<< HEAD
  event_random = Event.create!(title: Faker::Company.bs, description: Faker::Hipster.sentence, start_date: Faker::Date.forward(23), duration: 30, city_id: 1, sport_id: rand(1..Sport.count) ,owner_id: rand(1..User.count), latitude: Faker::Address.latitude , longitude: Faker::Address.longitude)
+=======
+ event_random = Event.create!(title: Faker::Company.bs[0..19], description: Faker::Hipster.sentence, start_date: Faker::Date.forward(23), duration: 30, city_id: rand(1..City.count), sport_id: rand(1..Sport.count) ,owner_id: rand(1..User.count))
+>>>>>>> 3524ef01e5079fb7eaba2e2401b77b6afe181ebd
 end
 
 puts "Events faker generated"
