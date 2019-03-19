@@ -5,8 +5,12 @@
     <%= include_gon %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name=viewport content="width=1024, initial-scale=1">
+
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application'%>
 
@@ -15,10 +19,12 @@
 
   <body>
     <%= render "layouts/navbar_application"  %>
+    <%= render 'layouts/flash' %>
     <div class="content">
       <%= yield %>
 
     </div>
     <%= render "layouts/footer_application"  %>
+
   </body>
 </html>

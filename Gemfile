@@ -7,7 +7,6 @@ gem "aws-sdk-s3", require: false
 gem 'rails-ujs'
 gem 'dotenv-rails'
 gem 'table_print'
-gem 'jquery-rails'
 gem 'groupdate'
 gem 'faker'
 gem 'leaflet-rails'
@@ -46,7 +45,6 @@ gem 'jbuilder', '~> 2.5'
 #front gem
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -89,6 +87,7 @@ end
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
 end
+
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
