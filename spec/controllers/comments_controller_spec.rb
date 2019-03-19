@@ -61,6 +61,10 @@ RSpec.describe CommentsController, type: :controller do
  			it 'should return comment destroy' do 				
  				expect(response).to have_http_status(1)
  			end
+
+ 			it 'comment is persisted' do
+ 				expect(Comment.count).to eq(0)
+ 			end
  		end
  	end
  end

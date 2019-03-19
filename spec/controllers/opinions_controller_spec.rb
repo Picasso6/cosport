@@ -61,6 +61,10 @@ RSpec.describe OpinionsController, type: :controller do
  			it 'should return 302' do 				
  				expect(response).to have_http_status(302)
  			end
+
+ 			it 'opinion is not persisted' do
+ 				expect(Opinion.count).to eq(0)
+ 			end
  		end
  	end
 end
