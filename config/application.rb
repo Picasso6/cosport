@@ -19,7 +19,7 @@ module Cosport
     config.serve_static_assets = true
 
 
-    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+    #config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.assets.initialize_on_precompile = false
     #config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
 
