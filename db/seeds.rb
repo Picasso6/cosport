@@ -60,5 +60,4 @@ puts "Events faker generated"
  comment_random = Comment.create!(content: Faker::Hipster.sentence , user_id: User.all.sample.id,event_id: Event.all.sample.id  )
 end
 
-puts "Comments faker generated"  
-
+puts "Comments faker generated"
