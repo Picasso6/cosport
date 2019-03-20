@@ -19,7 +19,7 @@
 
     <div class="form-group" >
           <%= label_tag 'Ville' %>
-          <%=select_tag 'city_id', options_for_select(City.all.collect{ |city| [city.city_name, city.id] }) %>
+          <%=select_tag 'city_id', options_for_select(City.all.collect{ |city| [city.city_name, city.id] })  %>
     </div>
 
     <div id="new-event-map">
