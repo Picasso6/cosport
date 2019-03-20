@@ -37,13 +37,9 @@ class EventsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-
-=======
   def edit
     @event = Event.find(params["id"])
   end
->>>>>>> master
 
   def update
     @event = Event.find(params["id"])
