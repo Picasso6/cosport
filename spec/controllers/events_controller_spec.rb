@@ -109,7 +109,6 @@ RSpec.describe EventsController, type: :controller do
  		end
  	end
 
-
  	describe 'DELETE #destroy' do
 
  		context 'valid params' do
