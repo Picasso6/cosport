@@ -3,6 +3,30 @@ var cityValue = selectTag.value;
 var map;
 mapCity()
 
+function mapCity()
+{
+  <%City.all.each do |city|%>
+  if (selectTag.value === "<%=city.id%>")
+  {
+    map = L.map('new-event-map').setView([<%=city.latitude%>,<%=city.longitude%>],14);
+    L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',{maxZoom :100}).addTo(map);
+    document.getElementById("lat-form").value = <%=city.latitude%>;
+    document.getElementById("lgn-form").value = <%=city.longitude%>;
+  }
+  <%end%>
+}
+
+function centerCityMap()
+{
+  <%City.all.each do |city|%>
+  if (selectTag.value == "<%=city.id%>")
+  {
+    map.setView([<%=city.latitude%>,<%=city.longitude%>],14);
+    document.getElementById("lat-form").value = <%=city.latitude%>;
+    document.getElementById("lgn-form").value = <%=city.longitude%>;
+  }
+  <%end%>
+}
 
 var theMarker = {};
 
