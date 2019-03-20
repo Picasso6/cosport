@@ -7,14 +7,14 @@ class CommentsController < ApplicationController
 			redirect_to request.referrer
 		else
 			flash[:danger] = "Erreur lors de la demande de participation."
-			redirect_to request.referrer
+			redirect_to request.referrer, status: :unprocessable_entity
 		end
 	end
 
 	def destroy
 		@comment = Comment.find(params[:id])
     	@comment.destroy
-    	redirect_to request.referrer
+    	redirect_to request.referrer, status: 1
 	end
 
 end
