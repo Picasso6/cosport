@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @opinion = Opinion.where(recipient_id: @user)
     @events = []
-    Event.where(owner_id: current_user.id, validation: true).each {|evt| @events << evt }
+    Event.where(owner_id: current_user.id).each {|evt| @events << evt }
     Attendance.where(attendee_id: current_user.id, validation: true).each {|atd| @events << Event.find(atd.event_id)}
     @events_hash = @events.group_by_day { |evt| evt.start_date }
     @months_array_fr = [ nil, "Janvier", "Fevrier" ," Mars" , "Avril" , "Mai" , "Juin" ,"Juillet", "Août" , "Septembre" , "Octobre" , "Novembre" ,"Décembre"]
