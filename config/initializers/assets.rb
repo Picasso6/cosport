@@ -14,7 +14,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile = ['*.erb']
 Rails.application.config.assets.precompile = ['*.js']
-Rails.application.config.assets.precompile += ['edge/ink-falling_edge.js']
+#Rails.application.config.assets.precompile += ['edge/ink-falling_edge.js']
 Rails.application.config.assets.precompile += %w( new_event_map.js.erb )
 Rails.application.config.assets.precompile += %w( show_event_map.js.erb )
 Rails.application.config.assets.precompile += %w( home.js )
