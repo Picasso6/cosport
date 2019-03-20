@@ -21,24 +21,19 @@ class EventsController < ApplicationController
    @days_array_fr = ["Dimanche" , "Lundi "," Mardi" , "Mercredi" ,"Jeudi" , "Vendredi", "Samedi" ]
  end
 
-  def create
-    date = (params[:start_date] + " " + params[:hour_start]).in_time_zone
-<<<<<<< HEAD
-    @event = Event.create(title: params[:title], description: params[:description], start_date: date, duration: params[:duration], sport_id: params[:sport_id], city_id: params[:city_id], owner_id: current_user.id)
-    @event.owner.level += 5
-    @event.owner.save
-=======
-
-    @event = Event.create(title: params[:title], description: params[:description], start_date: date, duration: params[:duration], sport_id: params[:sport_id], city_id: params[:city_id], owner_id: current_user.id,latitude: params[:latitude],  longitude: params[:longitude])
->>>>>>> delivery/mgx
-    if @event.errors.any?
-      flash[:danger] = "Problème avec la création de l'annonce."
-      redirect_to request.referrer
-    else
-      flash[:notice] = "Annonce créé avec succès."
-      redirect_to root_path
-    end
-  end
+ def create
+   date = (params[:start_date] + " " + params[:hour_start]).in_time_zone
+   @event = Event.create(title: params[:title], description: params[:description], start_date: date, duration: params[:duration], sport_id: params[:sport_id], city_id: params[:city_id], owner_id: current_user.id)
+   @event.owner.level += 5
+   @event.owner.save
+   if @event.errors.any?
+     flash[:danger] = "Problème avec la création de l'annonce."
+     redirect_to request.referrer
+   else
+     flash[:notice] = "Annonce créé avec succès."
+     redirect_to root_path
+   end
+ end
 
   def edit
     @event = Event.find(params["id"])
@@ -70,4 +65,9 @@ class EventsController < ApplicationController
       redirect_to root_path
     end
   end
+
+
+
+
+
 end
