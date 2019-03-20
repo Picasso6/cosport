@@ -108,4 +108,25 @@ RSpec.describe EventsController, type: :controller do
  			end
  		end
  	end
+
+
+ 	describe 'DELETE #destroy' do
+
+ 		context 'valid params' do
+
+ 			before(:each) do
+ 				login_with FactoryBot.create( :user )
+ 				request.env['HTTP_REFERER'] = '/'
+ 				post :destroy, params: {id: FactoryBot.create( :event ).id}
+ 			end
+
+ 			it 'should return comment destroy' do 				
+ 				expect(response).to have_http_status(1)
+ 			end
+
+ 			it 'comment is persisted' do
+ 				expect(Comment.count).to eq(0)
+ 			end
+ 		end
+ 	end
 end

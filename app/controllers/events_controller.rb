@@ -44,11 +44,9 @@ class EventsController < ApplicationController
     date = (params[:event][:start_date] + " " + params[:hour_start]).in_time_zone
     @event.update(title: params[:event][:title], start_date: date, sport_id: params[:event][:sport_id], city_id: params[:event][:city_id], duration: params[:event][:duration], description: params[:event][:description])
     if @event.errors.any?
-      puts "false**********************************"
       flash[:danger] = "L'édition d'annonce n'a pas fonctionné."
       redirect_to request.referrer, status: :unprocessable_entity
     else
-      puts "true************************************"
       flash[:notice] = "Votre évènement a bien été édité."
       redirect_to event_path(@event.id)
     end
@@ -58,7 +56,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     if @event.destroy
       flash[:notice] = "Vous avez correctement supprimer votre annonce."
-      redirect_to root_path
+      redirect_to root_path, status: 1
     end
   end
 end
