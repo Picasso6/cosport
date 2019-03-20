@@ -3,8 +3,9 @@ var parisLongitude =  2.349014 ;
 var map ;
 
 <% event_today = Event.all %>
-getMapAsync();
 
+
+getMapAsync();
 
 
 function initMapWithoutGeolocation()
@@ -39,6 +40,21 @@ function failure()
 function getMapAsync()
 {
     setTimeout(function() {navigator.geolocation.getCurrentPosition(success,failure)},1);
-    return map;
+}
 
+function createMapCircles()
+{
+  console.log("createMapCircles OP");
+  <% event_today.each do |event| %>
+     var randomNumber = Math.floor(Math.random() * 490) - 245;
+     randomNumber = randomNumber/100000;
+     var latitude = Number(<%=event.latitude%>) + randomNumber;
+     var longitude = Number(<%=event.longitude%>) + randomNumber;
+     circle = L.circle([latitude ,longitude], {radius: 250}).addTo(map);
+     circle.bindPopup("<%=event.sport.sport_name%> avec <%=event.owner.first_name%> ");
+     circle.on('click', function()
+       {
+       window.location = "events/<%=event.id%>"
+       })
+  <%end %>
 }
