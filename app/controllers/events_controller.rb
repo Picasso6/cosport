@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     @event = Event.create(title: params[:title], description: params[:description], start_date: date, duration: params[:duration], sport_id: params[:sport_id], city_id: params[:city_id], owner_id: current_user.id,latitude: params[:latitude],  longitude: params[:longitude])
     if @event.errors.any?
       flash[:danger] = "La création d'annonce n'a pas fonctionné."
-      redirect_to request.referrer
+      redirect_to request.referrer, status: :unprocessable_entity
     else
       flash[:notice] = "Annonce créé avec succès. En attente de validation."
       redirect_to root_path
@@ -44,10 +44,11 @@ class EventsController < ApplicationController
     date = (params[:event][:start_date] + " " + params[:hour_start]).in_time_zone
     @event.update(title: params[:event][:title], start_date: date, sport_id: params[:event][:sport_id], city_id: params[:event][:city_id], duration: params[:event][:duration], description: params[:event][:description])
     if @event.errors.any?
+      puts "false**********************************"
       flash[:danger] = "L'édition d'annonce n'a pas fonctionné."
-      redirect_to request.referrer
-
+      redirect_to request.referrer, status: :unprocessable_entity
     else
+      puts "true************************************"
       flash[:notice] = "Votre évènement a bien été édité."
       redirect_to event_path(@event.id)
     end
