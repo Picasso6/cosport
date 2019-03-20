@@ -17,6 +17,7 @@
 //= require activestorage
 //= require turbolinks
 //= require leaflet
+//= require home
 //= require new_event_map
 //= require show_event_map
 //= require main_map
@@ -32,7 +33,11 @@ $(document).ready(function(){
 
 });
 
+console.log("hello");
 
+
+
+$('.dropdown-toggle').dropdown()
 
   // function randomImage(){
   //   var images = [

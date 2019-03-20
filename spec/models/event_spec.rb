@@ -19,7 +19,7 @@ RSpec.describe Event, type: :model do
     describe "#title" do
       it { expect(@event.title).to be_a(String) }
       it { expect(@event).to validate_presence_of(:title) }
-      it { expect(@event).to validate_length_of(:title).is_at_most(20) }
+      it { expect(@event).to validate_length_of(:title).is_at_most(60) }
     end
 
     describe "#description" do

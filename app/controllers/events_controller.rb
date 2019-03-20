@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
   include EventsHelper
   before_action :authenticate_user!, only: [:new , :show]
-  before_action :not_validated_yet, only: [:show]
   before_action :same_id, only: [:edit]
 
   
@@ -26,11 +25,14 @@ class EventsController < ApplicationController
     date = (params[:start_date] + " " + params[:hour_start]).in_time_zone
 
     @event = Event.create(title: params[:title], description: params[:description], start_date: date, duration: params[:duration], sport_id: params[:sport_id], city_id: params[:city_id], owner_id: current_user.id,latitude: params[:latitude],  longitude: params[:longitude])
+    @event.owner.level += 5
+    @event.owner.save
+
     if @event.errors.any?
-      flash[:danger] = "La création d'annonce n'a pas fonctionné."
+      flash[:danger] = "Problème avec la création de l'annonce."
       redirect_to request.referrer
     else
-      flash[:notice] = "Annonce créé avec succès. En attente de validation."
+      flash[:notice] = "Annonce créé avec succès."
       redirect_to root_path
     end
   end
@@ -55,14 +57,14 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
+    if Attendance.exists?(event: @event)
+      Attendance.where(event: @event).each do |attendance|
+        attendance.destroy
+      end
+    end
     if @event.destroy
       flash[:notice] = "Vous avez correctement supprimer votre annonce."
       redirect_to root_path
     end
   end
-
-
-
-
-
 end
