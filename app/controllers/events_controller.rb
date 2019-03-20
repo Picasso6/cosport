@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   before_action :not_validated_yet, only: [:show]
   before_action :same_id, only: [:edit]
 
-
+  
   def show
   	@event = Event.find(params["id"])
     gon.event = @event
