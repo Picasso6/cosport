@@ -301,6 +301,32 @@ img.icon-social { width: auto; max-height: 200px;}
       COMPONENTS BOOTSTRAP STYLE
 ----------------------------------------------------- */
 
+// basic
+:root {
+  --mainColor: #ff815a;
+}
+a.event-landing-page {
+  background:
+     linear-gradient(
+       to bottom, var(--mainColor) 0%,
+       var(--mainColor) 100%
+     );
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    background-size: 4px 4px;
+  color: #6c685c;
+  text-decoration: none;
+  transition: background-size .2s;
+}
+
+a.event-landing-page:hover {
+  color: #000;
+  text-decoration: none;
+  background-size: 4px 50px;
+}
+
+
+
 //button
 .btn-primary {
   background-color: $f-color-1;

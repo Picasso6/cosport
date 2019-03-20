@@ -72,8 +72,16 @@
 </section>
 
 
-<section class="bg-light">
+<section class="">
   <div class="container">
+    <div class="row align-items-center font-4 ">
+      <div class="col-lg-8">
+        <h5 class="f-bold">Quels sports faites vous ? </h5>
+      </div>
+      <div class="col-lg-4 text-right">
+        <h5 class="f-regular">Nos derniers créneaux sportifs</h5>
+      </div>
+    </div>
     <div class="row">
       <% @events_last.each do |event| %>
           <div class="col-lg-3">
@@ -87,7 +95,7 @@
                   <%= image_tag "person.png", alt: 'profil_picture', class: "profil-picture-home" %>
                 <% end %>
                 </span>
-                <%= link_to event.title.capitalize.to_s , event_path(event.id) , method: "get" %>
+                <%= link_to event.title.capitalize.to_s , event_path(event.id) , method: "get", class:"event-landing-page" %>
                 </div>
                 <div class="card-body">
                 <%=  event.start_date.to_datetime  %>
