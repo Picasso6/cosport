@@ -34,16 +34,77 @@
     </div>
   </header>
 
+</section><!-- end of section content -->
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xl-6 ml-auto font-1 text-center">
-      <%= image_tag("person.png") %>
-    </div>
-    <div class="col-xl-6 mr-auto font-1">
-      ho
+
+<section class="features-icons bg-light text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+          <div class="d-flex icon-medium mx-auto">
+            <%= image_tag('icon-instant', class: "icon-social mx-auto pb-4")%>
+          </div>
+          <h3>Rapidité</h3>
+          <p class="lead mb-0 p-3">Une envie sportive mais personne pour vous accompagner ? Sur Cosport, vous allez forcément trouver une annonce qui vous correspond !</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+          <div class="d-flex icon-medium mx-auto">
+            <%= image_tag('icon-heart', class: "icon-social mx-auto pb-4")%>
+          </div>
+          <h3>Communauté</h3>
+          <p class="lead mb-0 p-3">Rencontrez les nombreux sportifs près de chez vous et nouez de nouvelles affinités en progressant ensemble.</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+          <div class="d-flex icon-medium mx-auto">
+            <%= image_tag('icon-comet', class: "icon-social mx-auto pb-4")%>
+          </div>
+          <h3>Facilité</h3>
+          <p class="lead mb-0 p-3">Cosport, rien de plus facile, vous postez votre annonce, vous validez la présence des intéressés, petit échange par mail ou sms, et c’est parti !</p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-</section><!-- end of section content -->
+
+<section class="">
+  <div class="container">
+    <div class="row align-items-center font-4 ">
+      <div class="col-lg-8">
+        <h5 class="f-bold">Quels sports faites vous ? </h5>
+      </div>
+      <div class="col-lg-4 text-right">
+        <h5 class="f-regular">Nos derniers créneaux sportifs</h5>
+      </div>
+    </div>
+    <div class="row">
+      <% @events_last.each do |event| %>
+          <div class="col-lg-3">
+            <div class="card rounded p-2 my-3" style="max-height: 180px;">
+            <span class="sport-notify-badge rounded-right"><%= event.sport.sport_name %></span>
+            <div class="card-title">
+              <span class="profil-picture">
+                <%if event.owner.profil_picture.attached?%>
+                  <%= image_tag event.owner.profil_picture, alt: 'profil_picture' %>
+                <%else%>
+                  <%= image_tag "person.png", alt: 'profil_picture', class: "profil-picture-home" %>
+                <% end %>
+                </span>
+                <%= link_to event.title.capitalize.to_s , event_path(event.id) , method: "get", class:"event-landing-page" %>
+                </div>
+                <div class="card-body">
+                <%=  event.start_date.to_datetime  %>
+                </div>
+              </div>
+            </div>
+         <%end%>
+    </div>
+  </div>
+</section>
+
+<%= javascript_include_tag "home" %>
