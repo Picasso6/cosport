@@ -1,3 +1,4 @@
+
 var map = L.map('new-event-map').setView([50.639,3.0706414],15);
 L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',{maxZoom :100}).addTo(map);
 
