@@ -8,7 +8,8 @@ Rails.application.routes.draw do
 
 
 
-  resources :events, only: [:show, :index , :new , :create] do
+
+  resources :events do
     resources :comments, only: [:create, :new]
     resources :comments, only: [:create, :new, :destroy]
     resources :attendances, only: [:create, :edit, :update, :destroy]
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :search, only: [:index]
-  
+
   resources :homes, only: [:index]
   root 'home#index'
 
@@ -30,4 +31,6 @@ Rails.application.routes.draw do
     root 'admin#index'
     resources :users, :events
   end
+
+  resources :maps, only: [:index,]
 end

@@ -20,6 +20,7 @@
 //= require home
 //= require new_event_map
 //= require show_event_map
+//= require main_map
 //= require_tree .
 
 

@@ -4,12 +4,7 @@ class Admin::EventsController < ApplicationController
   before_action :check_if_admin
 
   def index
-    @unvalidatedevent = []
-    Event.all.each do |event|
-      unless event.validation?
-        @unvalidatedevent << event
-      end
-    end
+    @event = Event.where("start_date >= ?", "#{DateTime.now}")
   end
 
   def update
@@ -23,6 +18,11 @@ class Admin::EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
+    if Attendance.exists?(event: @event)
+      Attendance.where(event: @event).each do |attendance|
+        attendance.destroy
+      end
+    end
     @event.destroy
     redirect_to request.referrer
   end

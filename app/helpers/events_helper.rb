@@ -1,7 +1,8 @@
 module EventsHelper
-  def not_validated_yet
+
+  def same_id
     event = Event.find(params[:id])
-   if event.validation != true && current_user.admin != true
+   unless current_user[:id] == event.owner.id
       redirect_to root_path
     end
   end

@@ -1,4 +1,4 @@
-<% @unvalidatedevent.each do |event| %>
+<% @event.each do |event| %>
 <div>
 
   <%=link_to event.title , event_path(event.id) , method: "get" %>
@@ -23,8 +23,7 @@
           </p>
         <% end %>
         <p><%= event.description%></p>
-        <p><a class="font-weight-light text-success small" href="<%=admin_event_path(event.id)%> " data-method="PATCH">Validate</a>
-         <a class="font-weight-light text-danger small" href="<%=admin_event_path(event.id)%> " data-method="DELETE">Delete</a></p>
+        <%= link_to "Supprimer l'évènement", admin_event_path(event.id),:data => {:confirm => 'Êtes vous sure ?'}, method: "delete" %>
       <hr>
     </div>
 
