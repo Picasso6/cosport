@@ -52,6 +52,7 @@ function createMapCircles()
      var longitude = Number(<%=event.longitude%>) + randomNumber;
      circle = L.circle([latitude ,longitude], {radius: 250}).addTo(map);
      circle.bindPopup("<%=event.sport.sport_name%> avec <%=event.owner.first_name%> ");
+     console.log("<%=event%> geolocalised")
      circle.on('click', function()
        {
        window.location = "events/<%=event.id%>"
