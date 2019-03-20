@@ -22,6 +22,3 @@ map.on('click',function(e){
   document.getElementById("lat-form").value = lat;
   document.getElementById("lgn-form").value = lon;
 });
-
-
-//
