@@ -32,7 +32,11 @@ $(document).ready(function(){
 
 });
 
+console.log("hello");
 
+
+
+$('.dropdown-toggle').dropdown()
 
   // function randomImage(){
   //   var images = [
