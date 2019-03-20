@@ -71,4 +71,32 @@
   </div>
 </section>
 
+
+<section class="bg-light">
+  <div class="container">
+    <div class="row">
+      <% @events_last.each do |event| %>
+          <div class="col-lg-3">
+            <div class="card rounded p-2 my-3" style="max-height: 180px;">
+            <span class="sport-notify-badge rounded-right"><%= event.sport.sport_name %></span>
+            <div class="card-title">
+              <span class="profil-picture">
+                <%if event.owner.profil_picture.attached?%>
+                  <%= image_tag event.owner.profil_picture, alt: 'profil_picture' %>
+                <%else%>
+                  <%= image_tag "person.png", alt: 'profil_picture', class: "profil-picture-home" %>
+                <% end %>
+                </span>
+                <%= link_to event.title.capitalize.to_s , event_path(event.id) , method: "get" %>
+                </div>
+                <div class="card-body">
+                <%=  event.start_date.to_datetime  %>
+                </div>
+              </div>
+            </div>
+         <%end%>
+    </div>
+  </div>
+</section>
+
 <%= javascript_include_tag "home" %>
