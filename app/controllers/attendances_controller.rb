@@ -47,7 +47,7 @@ class AttendancesController < ApplicationController
     if @attendance.attendee == current_user &&  @attendance.destroy
       flash[:notice] = "Vous vous être desinscrit de cette annonce."
       redirect_to request.referrer
-    else
+    elsif @attendance.destroy
       redirect_to request.referrer
     end
   end
