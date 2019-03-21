@@ -18,6 +18,173 @@
  *= require css/custom.scss
 
  */
+ /* Montserrat > font-1 */
+ @font-face {
+ font-family: 'Montserrat';
+ src: url('Montserrat/Montserrat-Regular.ttf') format('truetype');
+ font-weight: 400;
+ font-style: normal;
+ }
+ @font-face {
+ font-family: 'Montserrat';
+ src: url('Montserrat/Montserrat-Thin.ttf') format('truetype');
+ font-weight: 100;
+ font-style: normal;
+ }
+ @font-face {
+ font-family: 'Montserrat';
+ src: url('Montserrat/Montserrat-Medium.ttf') format('truetype');
+ font-weight: 500;
+ font-style: normal;
+ }
+ @font-face {
+ font-family: 'Montserrat';
+ src: url('Montserrat/Montserrat-Bold.ttf') format('truetype');
+ font-weight: 700;
+ font-style: normal;
+ }
+ @font-face {
+ font-family: 'Montserrat';
+ src: url('Montserrat/Montserrat-Black.ttf') format('truetype');
+ font-weight: 900;
+ font-style: normal;
+ }
+
+ /* Asap font-2 */
+ @font-face {
+ font-family: 'Asap';
+ font-weight: 400;
+ font-style: normal;
+ src: url('Asap/Asap-Regular.ttf') format('truetype');
+ }
+ @font-face {
+ font-family: 'Asap';
+ font-weight: 500;
+ font-style: normal;
+ src: url('Asap/Asap-Medium.ttf') format('truetype');
+ }
+ @font-face {
+ font-family: 'Asap';
+ font-weight: 600;
+ src: url('Asap/Asap-MediumItalic.ttf') format('truetype');
+ }
+ @font-face {
+ font-family: 'Asap';
+ font-weight: 700;
+ font-style: normal;
+ src: url('Asap/Asap-Bold.ttf') format('truetype');
+ }
+
+ /* SportingGrotesque font-3 */
+ @font-face {
+ font-family: 'Sporting';
+ font-weight: 400;
+ font-style: normal;
+ src: url('SportingGrotesque/SportingGrotesque-Regular.otf') format('opentype');
+ }
+ @font-face {
+ font-family: 'Sporting';
+ font-weight: 700;
+ font-style: normal;
+ src: url('SportingGrotesque/SportingGrotesque-Bold.otf') format('opentype');
+ }
+
+ /* Metropolis  => font-4 */
+ @font-face {
+ font-family: 'Metropolis';
+ src: url('Metropolis/Metropolis-Regular.otf') format('opentype');
+ font-weight: 400;
+ font-style: normal;
+ }
+ @font-face {
+ font-family: 'Metropolis';
+ src: url('Metropolis/Metropolis-Thin.otf') format('opentype');
+ font-weight: 100;
+ font-style: normal;
+ }
+ @font-face {
+ font-family: 'Metropolis';
+ src: url('Metropolis/Metropolis-Medium.otf') format('opentype');
+ font-weight: 500;
+ font-style: normal;
+ }
+ @font-face {
+ font-family: 'Metropolis';
+ src: url('Metropolis/Metropolis-Bold.otf') format('opentype');
+ font-weight: 700;
+ font-style: normal;
+ }
+ @font-face {
+ font-family: 'Metropolis';
+ src: url('Metropolis/Metropolis-Black.otf') format('opentype');
+ font-weight: 900;
+ font-style: normal;
+ }
+
+
+ /* ---------------------------------------------------
+     COLORS STYLE
+ ----------------------------------------------------- */
+ // color main
+ $f-color-1: #ff815a;   //corail
+ $f-color-2: #6f4dff;   //electric-purple
+ $f-color-3: #2ff4b7;   //green-pepsi
+
+ .primary-color { color: $f-color-1 !important; }
+ .secondary-color { color: $f-color-2 !important; }
+ .third-color { color: $f-color-3 !important; }
+
+ // color shade/grey
+ $s-color-1: #f1f1f15e;
+ $s-color-2: #575757;
+ $s-color-3: #080416;
+
+ .light-color { color: $s-color-1; }
+ .medium-color{ color: $s-color-2; }
+ .strong-color { color: $s-color-3; }
+
+ //color shade/grey/bg
+ .light-color-bg { background-color: $s-color-1; }
+ .medium-color-bg{ background-color: $s-color-2; }
+ .strong-color-bg { background-color: $s-color-3; }
+
+ // color for background
+ $m-color-1: #f1efeb;
+ $m-color-2: #bababa;
+
+ .primary-color-bg { background-color: $m-color-1;}
+ .secondary-color-bg { background-color: $m-color-2;}
+
+ /* ---------------------------------------------------
+     FONTS STYLE
+ ----------------------------------------------------- */
+ //LOGO font
+ $f-thin: 100;
+ $f-light: 300;
+ $f-regular: 400;
+ $f-medium: 500;
+ $f-medium-italic: 600;
+ $f-bold: 700;
+ $f-extra-bold: 800;
+ $f-black: 900;
+
+ $font-1: 'Montserrat';
+ $font-2: 'Asap';
+ $font-3: 'Sporting';
+ $font-4: 'Metropolis';
+
+ .f-thin {font-weight: $f-thin;}
+ .f-regular {font-weight: $f-regular;}
+ .f-medium {font-weight: $f-medium;}
+ .f-medium-italic {font-weight: $f-medium-italic;}
+ .f-bold {font-weight: $f-bold;}
+ .f-extra {font-weight: $f-extra-bold;}
+ .f-black {font-weight: $f-black;}
+
+ .font-1 {font-family: $font-1;}
+ .font-2 {font-family: $font-2;}
+ .font-3 {font-family: $font-3;}
+ .font-4 {font-family: $font-4;}
 
 
 
