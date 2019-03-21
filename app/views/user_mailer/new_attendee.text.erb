@@ -3,6 +3,6 @@ Salut <%= @user.first_name %> !
 
 <%= @attendance.attendee.first_name %> <%= @attendance.attendee.last_name %> a demandé à participer à <%= @attendance.event.title %>.
 
-Pour gérer tes participations, va <%= link_to("ICI", edit_event_attendance_url(@attendance.event.id, @attendance.id)) %>.
+Tu peux gérer les demandes de participations à tes évènements sur <%= link_to("ton profil", user_url(@user.id)) %>.
 
 À très vite sur CoSport !
