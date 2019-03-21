@@ -7,7 +7,7 @@
 <p>pour  <%= @event.sport.sport_name%></p>
 <% if Attendance.where(event_id: @event.id).exists?%>
 	<p>avec</p>
-	<%  Attendance.where(event_id: @event.id).each do |participation|%>
+	<%  Attendance.where(event_id: @event.id, validation: true).each do |participation|%>
 <%= link_to user_path(participation.attendee_id) do %>
 	<%=	participation.attendee.first_name %> <%=participation.attendee.last_name %>
 <% end%>
@@ -19,13 +19,16 @@
 <% else %>
 	<% if @event.owner_id == current_user.id %>
 		<h3>Vous êtes le créateur de ce cosport</h3>
-	<% elsif current_user.attendances.where(event_id: @event.id).exists? && @event.owner_id != current_user.id%>
+	<% elsif current_user.attendances.where("event_id = ? and validation = ?", "#{@event.id}",  "#{true}").exists? && @event.owner_id != current_user.id%>
 		<h3> Vous êtes inscrit à ce cosport </h3>
 		<br>
 		<% attendance = Attendance.where(event_id: @event.id, attendee_id: current_user.id)[0] %>
 		<%= link_to "SE DÉSINSCRIRE DE CE COSPORT !", event_attendance_path(@event.id, attendance.id) ,method: "delete" %>
-	<% else %>
+	<% elsif !current_user.attendances.where("event_id = ?", "#{@event.id}").exists? && @event.owner_id != current_user.id%>
 	<%=link_to "REJOINDRE CE COSPORT !", event_attendances_path(@event.id) ,method: "post" %>
+
+	<% else %>
+	<p>Vous avez demandé à rejoindre ce cosport, merci d'attendre que ce soit validé.</p>
 	<% end %>
 <% end %>
 
