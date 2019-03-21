@@ -1,8 +1,0 @@
-<h2>
-  Tous les USERS :</h2>
-
-<% @user.each do |user| %>
-  <div>
-    <a href="<%= user_path(user.id) %>"><%= user.email %></a>
-  </div>
-<% end %>

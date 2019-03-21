@@ -10,18 +10,20 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require turbolinks
+//= require_tree .
+//= require bootstrap
 //= require jquery3
 //= require jquery_ujs
 //= require popper
-//= require bootstrap-sprockets
 //= require activestorage
-//= require turbolinks
 //= require leaflet
-//= require home
 //= require new_event_map
 //= require show_event_map
 //= require main_map
-//= require_tree .
+
+
+
 
 
 
@@ -32,24 +34,3 @@ $(document).ready(function(){
   };
 
 });
-
-console.log("hello");
-
-
-
-$('.dropdown-toggle').dropdown()
-
-  // function randomImage(){
-  //   var images = [
-  //    'banner.png',
-  //    'banner2.png',
-  //    'banner3.png'];
-  //   var size = images.length;
-  //   var x = Math.floor(size * Math.random());
-  //   console.log(x);
-  //   var element = document.getElementsByClassName('masthead');
-  //   console.log(element);
-  //   element[0].style["background"] = "url('images[x]')";
-  // }
-  //
-  // document.addEventListener("DOMContentLoaded", randomImage);
