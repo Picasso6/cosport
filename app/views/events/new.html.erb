@@ -13,13 +13,13 @@
   <div class="col-12 mb-3">
         <%= text_field_tag 'title', @title, placeholder: "titre", class: "form-control" %>
   </div>
-
+  
     <div class="col-12 mb-3" >
           <%=select_tag 'sport_id', options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }), class: "form-control" %>
     </div>
 
     <div class="col-12 mb-3" >
-          <%=select_tag 'city_id', options_for_select(City.all.collect{ |city| [city.city_name, city.id] }), class: "form-control"  %>
+          <%=select_tag 'city_id', options_for_select(City.all.collect{ |city| [city.city_name, city.id] }), class: "form-control" , :onchange => "centerCityMap()" %>
     </div>
 
     <div id="new-event-map">
