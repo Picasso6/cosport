@@ -9,6 +9,7 @@ gem 'dotenv-rails'
 gem 'table_print'
 gem 'groupdate'
 gem 'faker'
+gem 'ffaker'
 gem 'leaflet-rails'
 gem 'gon'
 
@@ -43,7 +44,7 @@ gem 'jbuilder', '~> 2.5'
 
 
 #front gem
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
