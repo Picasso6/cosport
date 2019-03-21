@@ -1,6 +1,19 @@
 class AttendancesController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
+  def index
+    user = User.find(params[:user_id])
+    events = Event.where(owner_id: user.id)
+    @attendances = []
+    events.each do |event|
+      event.attendances.each do |attendance|
+        if attendance.validation != true
+          @attendances << attendance
+        end
+      end
+    end
+  end
+
   def create
     unless already_attended?
         @event = Event.find(params[:event_id])
@@ -26,13 +39,15 @@ class AttendancesController < ApplicationController
     @attendance.update(validation: true)
     @attendance.attendee.level += 1
     @attendance.attendee.save
-    redirect_to event_path(@attendance.event.id)
+    redirect_to request.referrer
   end
 
   def destroy
     @attendance = Attendance.find(params[:id])
-    if @attendance.destroy
+    if @attendance.attendee == current_user &&  @attendance.destroy
       flash[:notice] = "Vous vous être desinscrit de cette annonce."
+      redirect_to request.referrer
+    else
       redirect_to request.referrer
     end
   end
