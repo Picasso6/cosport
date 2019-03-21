@@ -14,10 +14,14 @@
   width: 100%;
 }
 #main-map
-{ height: 1000px;
-  width: 1000px;
-}
+{ height: 550px;
 
+}
+ .border-map {
+  border: 2px solid #889aad !important;
+  box-shadow: aquamarine;
+  border-radius: 1rem !important;
+}
 
 /* Montserrat > font-1 */
 @font-face {
@@ -571,6 +575,8 @@ img.profil-picture-user {
 
 
 
+
+
     /* ---------------------------------------------------
       MEDIA QUERIES (events#index)
     ----------------------------------------------------- */
@@ -589,10 +595,4 @@ img.profil-picture-user {
         font-size: 2.2rem;
         padding: 0rem 5rem 1rem 5rem;
       }
-     }
-
-     ul {
-       list-style:none;
-       margin-left:0;
-       padding-left:0;
      }
