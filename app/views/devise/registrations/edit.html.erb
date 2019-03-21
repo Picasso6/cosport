@@ -1,6 +1,13 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-<br><br>
-<p>--- edit photo profil ---</p>
+<header class="masthead-2 mhead-3 text-cente">
+
+  <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+      <div class="col-xl-12 mx-auto font-1 text-center pb-3">
+        <h1 class="f-bold font-1 strong-color"> Édition du profil</h1>
+      </div>
+      <div class="col-md-7 col-lg-7 col-xl-5 mx-auto">
+
 <%if @user.profil_picture.attached?%>
 <%= image_tag @user.profil_picture, alt: 'profil_picture' %>
 <% end %>
@@ -93,3 +100,9 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+
+</div>
+
+</div>
+</div>
+</header>
