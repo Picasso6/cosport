@@ -9,6 +9,7 @@ gem 'dotenv-rails'
 gem 'table_print'
 gem 'groupdate'
 gem 'faker'
+gem 'ffaker'
 gem 'leaflet-rails'
 gem 'gon'
 
