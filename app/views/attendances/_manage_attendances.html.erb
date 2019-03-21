@@ -1,3 +1,5 @@
+<h3>Gérer les demandes de participations à vos évènements</h3>
+
 <% @attendances.sort { |a,b| a.created_at <=> b.created_at }.each do |attendance| %>
 <p><%=link_to(user_path(attendance.attendee.id)) do %> <%= attendance.attendee.first_name %> <%= attendance.attendee.last_name %> <%end%> souhaite participer à votre cosport "<%= attendance.event.title %>".</p>
 <p>Souhaitez vous valider sa présence ? <%= link_to "Valider", event_attendance_path(attendance.event.id, attendance.id) ,method: "patch" %> <%= link_to "Refuser", event_attendance_path(attendance.event.id, attendance.id),:data => {:confirm => 'Are you sure?'} ,method: "delete" %></p>
