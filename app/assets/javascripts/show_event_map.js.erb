@@ -1,4 +1,4 @@
-//Création of the map
+//Création of the map 
 var map = L.map('show-event-map').setView([Math.abs(Number(gon.event.latitude)),Math.abs(Number(gon.event.longitude))],15);
 L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',{maxZoom :100}).addTo(map);
 
