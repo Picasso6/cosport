@@ -12,12 +12,9 @@
 //
 //= require turbolinks
 //= require_tree .
-//= require js/jquery
-//= require js/popper
-//= require js/tooltip
-
-//= require bootstrap/js/bootstrap.bundle
-//= require bootstrap/js/bootstrap
+//= require bootstrap
+//= require jquery3
+//= require jquery_ujs
 //= require activestorage
 //= require leaflet
 //= require new_event_map
