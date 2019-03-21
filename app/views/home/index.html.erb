@@ -36,6 +36,44 @@
 
 </section><!-- end of section content -->
 
+<section class="section-2 pb-5">
+  <div class="container">
+    <div class="row align-items-center font-4  pt-5">
+      <div class="col-lg-8">
+        <h5 class="f-bold">Quels sports faites vous ? </h5>
+      </div>
+      <div class="col-lg-4 text-right">
+      </div>
+    </div>
+    <div class="row">
+      <% @events_last.each do |event| %>
+          <div class="col-lg-3">
+            <div class="card rounded p-2 my-3" style="max-height: 220px;">
+            <span class="sport-badge rounded-right"><%= event.sport.sport_name %></span>
+            <div class="card-title">
+              <span class="profil-picture">
+                <%if event.owner.profil_picture.attached?%>
+                  <%= image_tag event.owner.profil_picture, alt: 'profil_picture', style: "widht: 90px;" %>
+                <%else%>
+                  <%= image_tag "person.png", alt: 'profil_picture', class: "profil-picture-home" %>
+                <% end %>
+                </span>
+                <%= link_to event.title.capitalize.to_s , event_path(event.id) , method: "get", class:"event-landing-page" %>
+                </div>
+                <div class="card-body">
+                  <div class="col">
+                  <%=  event.city.city_name  %>
+                  </div>
+                  <div class="col">
+                  <%=  event.start_date.strftime("%d/%m/%Y")  %>
+                  </div>
+                </div>
+              </div>
+            </div>
+         <%end%>
+    </div>
+  </div>
+</section>
 
 <section class="features-icons bg-light text-center">
   <div class="container">
@@ -67,42 +105,6 @@
           <p class="lead mb-0 p-3">Cosport, rien de plus facile, vous postez votre annonce, vous validez la présence des intéressés, petit échange par mail ou sms, et c’est parti !</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="">
-  <div class="container">
-    <div class="row align-items-center font-4 ">
-      <div class="col-lg-8">
-        <h5 class="f-bold">Quels sports faites vous ? </h5>
-      </div>
-      <div class="col-lg-4 text-right">
-        <h5 class="f-regular">Nos derniers créneaux sportifs</h5>
-      </div>
-    </div>
-    <div class="row">
-      <% @events_last.each do |event| %>
-          <div class="col-lg-3">
-            <div class="card rounded p-2 my-3" style="max-height: 180px;">
-            <span class="sport-notify-badge rounded-right"><%= event.sport.sport_name %></span>
-            <div class="card-title">
-              <span class="profil-picture">
-                <%if event.owner.profil_picture.attached?%>
-                  <%= image_tag event.owner.profil_picture, alt: 'profil_picture' %>
-                <%else%>
-                  <%= image_tag "person.png", alt: 'profil_picture', class: "profil-picture-home" %>
-                <% end %>
-                </span>
-                <%= link_to event.title.capitalize.to_s , event_path(event.id) , method: "get", class:"event-landing-page" %>
-                </div>
-                <div class="card-body">
-                <%=  event.start_date.to_datetime  %>
-                </div>
-              </div>
-            </div>
-         <%end%>
     </div>
   </div>
 </section>
