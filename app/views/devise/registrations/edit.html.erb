@@ -8,9 +8,11 @@
       </div>
 
       <div class="col-md-7 col-lg-7 col-xl-5 mx-auto">
+          <div class="col-12 mb-3">
           <%= form_tag user_profil_picture_index_path(@user), multipart: true do %>
               <p><%= file_field_tag :profil_picture %> <br><br> <%= submit_tag "Changer son avatar", class: "btn btn-block btn-primary" %></p>
           <% end %>
+          </div>
 
 <%= form_tag users_sports_create_path, :method => 'get' do %>
 <em class="col-12 mb-3">Ajoutez vos niveaux dans les sports pratiqués.</em>
