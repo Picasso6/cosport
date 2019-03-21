@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:new , :show]
-<<<<<<< HEAD
   # config.filter_parameters << :secret_key
-=======
->>>>>>> d0280dad06052243f6b4b7aa3774f3473c6daae0
 
   def index
     @user = User.all
