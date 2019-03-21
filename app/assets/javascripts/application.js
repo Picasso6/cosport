@@ -10,19 +10,19 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require leaflet
+//= require new_event_map
+//= require show_event_map
+//= require main_map
 //= require turbolinks
-//= require_tree .
 //= require bootstrap
 //= require jquery3
 //= require jquery_ujs
 //= require popper
 //= require activestorage
-//= require leaflet
-//= require new_event_map
-//= require show_event_map
-//= require main_map
+//= require_tree .
 
-
+ 
 
 
 
