@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:new , :show]
   # config.filter_parameters << :secret_key
 
-
   def index
     @user = User.all
   end
@@ -21,9 +20,9 @@ class UsersController < ApplicationController
     @future_attendances = []
     @past_attendances = []
     @user_attendances.each do |attendance|
-      if attendance.event.start_date >= DateTime.now
+      if attendance.event.start_date >= DateTime.now && attendance.validation == true
         @future_attendances << attendance
-      else
+      elsif attendance.event.start_date <= DateTime.now && attendance.validation == true
         @past_attendances << attendance
       end
     end
@@ -41,6 +40,17 @@ class UsersController < ApplicationController
       @level = "Mordu"
     elsif @user.level >= 500
       @level = "Acharné"
+    end
+
+
+    events = Event.where(owner_id: @user.id)
+    @attendances = []
+    events.each do |event|
+      event.attendances.each do |attendance|
+        if attendance.validation != true
+          @attendances << attendance
+        end
+      end
     end
   end
 

@@ -9,12 +9,20 @@
           role: "tab",
           aria: { controls: true, selected: false },
           id:"v-pills-profile-tab" %>
+          <% if @user.id == current_user.id %>
         <%= link_to 'Mes Cosports', '#v-pills-events',
           class: "nav-link secondary-color navpill-profil",
           data: { toggle: "pill" },
           role: "tab",
           aria: { controls: true, selected: false },
           id:"v-pills-events-tab" %>
+        <%= link_to 'Gestion des participants', '#v-pills-management',
+          class: "nav-link secondary-color navpill-profil",
+          data: { toggle: "pill" },
+          role: "tab",
+          aria: { controls: true, selected: false },
+          id:"v-pills-events-tab" %>
+          <% end %>
       </div>
     </div>
 
@@ -69,7 +77,14 @@
 
 
 
+
         </div>
+
+        <div class="tab-pane fade" id="v-pills-management" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+          <%= render "attendances/manage_attendances" %>
+        </div>
+
+
       </div>
     </div>
     </div>

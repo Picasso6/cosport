@@ -4,6 +4,6 @@ class UsersSport < ApplicationRecord
   validates :level_user, presence: true
 
   def self.level_sport
-  	return ["debutant", "medium", "hard"]
+  	return ["Debutant", "Amateur", "Expert"]
   end
 end

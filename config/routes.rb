@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :opinions, only: [:create, :new]
     resources :opinions, only: [:create, :new, :destroy]
     resources :users_sports, only: [:create, :destroy]
+    resources :attendances, only: [:index]
   end
 
   resources :search, only: [:index]
