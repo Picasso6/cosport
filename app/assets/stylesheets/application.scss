@@ -1,21 +1,7 @@
 @import "leaflet";
 @import "bootstrap";
 
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
-*/
+
 
 
 /*Leaflet CSS*/
@@ -309,6 +295,7 @@ img.icon-social { width: auto; max-height: 200px;}
 // basic
 :root {
   --mainColor: #ff815a;
+  --secondaryColor: #2ff4b7;
 }
 a.event-landing-page {
   background:
@@ -331,7 +318,6 @@ a.event-landing-page:hover {
 }
 
 
-
 //button
 .btn-primary {
   background-color: $f-color-1;
@@ -339,6 +325,37 @@ a.event-landing-page:hover {
 }
 .btn-primary:hover {
   background-color: $f-color-2;
+}
+
+//nav-pills
+.nav-pills .nav-link {
+    border-radius: 0px;
+    margin: 0px 0 20px 0;
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: transparent;
+}
+a.navpill-profil {
+  background:
+    linear-gradient(
+      to right,
+      var(--secondaryColor) 0%,
+      var(--secondaryColor) 0px,
+      transparent 2px
+     );
+    background-repeat: repeat-x;
+    background-size: 100%;
+    text-decoration: none;
+    border-radius: 0px;
+}
+a.navpill-profil:hover {
+  background:
+     linear-gradient(
+       to right,
+       var(--secondaryColor) 0%,
+       var(--secondaryColor) 5px,
+       transparent
+     );
 }
 
 //form
@@ -443,8 +460,8 @@ h5.f-light.mb-5 {
 
 
 .features-icons {
-  padding-top: 7rem;
-  padding-bottom: 7rem;
+  padding-top: 12rem;
+  padding-bottom: 12rem;
 }
 
 .features-icons .features-icons-item {
@@ -461,6 +478,13 @@ h5.f-light.mb-5 {
 
 .features-icons .features-icons-item:hover .features-icons-icon i {
   font-size: 5rem;
+}
+
+//section
+
+section.section-2 {
+  min-height: 400px;
+  background-color: $s-color-2;
 }
 
 
@@ -506,12 +530,33 @@ div.sticky {
   top: 0px;
   width: 50px;
 }
+
+//span profil image landing page
 img.profil-picture-home {
   position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 10px;
+  right: 10px;
+  top: 10px;
+  width: 60px;
 }
+
+//span profil image profil user
+img.profil-picture-user {
+  position: absolute;
+  top: 20px;
+  right: 70px;
+  display: block;
+}
+.user {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
 
 #card-event .card:hover {
             background: #fff;
