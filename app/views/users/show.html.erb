@@ -9,6 +9,7 @@
           role: "tab",
           aria: { controls: true, selected: false },
           id:"v-pills-profile-tab" %>
+          <% if @user.id == current_user.id %>
         <%= link_to 'Mes Cosports', '#v-pills-events',
           class: "nav-link secondary-color navpill-profil",
           data: { toggle: "pill" },
@@ -21,6 +22,7 @@
           role: "tab",
           aria: { controls: true, selected: false },
           id:"v-pills-events-tab" %>
+          <% end %>
       </div>
     </div>
 
