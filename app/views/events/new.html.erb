@@ -17,16 +17,18 @@
           <%=select_tag 'sport_id', options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }) %>
     </div>
 
+<div data-turbolinks="false">
     <div class="form-group" >
           <%= label_tag 'Ville' %>
           <%=select_tag 'city_id', options_for_select(City.all.collect{ |city| [city.city_name, city.id] }),{:onchange => "centerCityMap();"}  %>
-          
+
     </div>
 
     <div id="new-event-map">
 
     </div>
-
+    <%= javascript_include_tag 'new_event_map' %>
+</div>
 
     <div id="hidden-div">
       <div class="form ">
@@ -69,5 +71,3 @@
      </div>
   </div>
   </div>
-
-  <%= javascript_include_tag 'new_event_map' %>

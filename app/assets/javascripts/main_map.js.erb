@@ -1,18 +1,22 @@
-var parisLatitude = 48.864716;
-var parisLongitude =  2.349014 ;
-var map ;
 
 
 
 
-getMapAsync();
 
+  var parisLatitude = 48.864716;
+  var parisLongitude =  2.349014 ;
+  var map = null ;
+
+  getMapAsync();
+  createMapCircles()
 
 function initMapWithoutGeolocation()
 {
    map = L.map('main-map').setView([parisLatitude,parisLongitude],15);
    L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',{maxZoom :100}).addTo(map);
    createMapCircles()
+
+
 }
 
 function initMapWithGeolocation(lat,lng)
@@ -20,6 +24,7 @@ function initMapWithGeolocation(lat,lng)
    map = L.map('main-map').setView([lat,lng],15);
    L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',{maxZoom :100}).addTo(map);
    createMapCircles()
+
 }
 
 if (!navigator.geolocation)
@@ -40,18 +45,19 @@ function failure()
 function getMapAsync()
 {
     setTimeout(function() {navigator.geolocation.getCurrentPosition(success,failure)},1);
+
+
 }
 
 function createMapCircles()
 {
   <% event_today = Event.all %>
+
   console.log("createMapCircles OP");
   <% event_today.each do |event| %>
      var randomNumber = Math.floor(Math.random() * 490) - 245;
      randomNumber = randomNumber/100000;
-     var latitude = Number(<%=event.latitude%>) + randomNumber;
-     var longitude = Number(<%=event.longitude%>) + randomNumber;
-     circle = L.circle([latitude ,longitude], {radius: 250}).addTo(map);
+     circle = L.circle([Number(<%=event.latitude%>) + randomNumber,Number(<%=event.longitude%>) + randomNumber], {radius: 250}).addTo(map);
      circle.bindPopup("<%=event.sport.sport_name%> avec <%=event.owner.first_name%> ");
      console.log("<%=event.title%> geolocalised")
      circle.on('click', function()
