@@ -10,14 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
-//= require activestorage
+//= require turbolinks
 //= require_tree .
-//= require bootstrap/js/bootstrap
 //= require js/jquery
 //= require js/popper
-//= require js/tooltip
-//= require js/jquery.nicescroll
+//= require bootstrap/js/bootstrap.bundle
+//= require bootstrap/js/bootstrap
 //= require activestorage
 //= require leaflet
 //= require new_event_map
