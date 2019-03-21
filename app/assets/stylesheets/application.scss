@@ -6,7 +6,7 @@
 
 /*Leaflet CSS*/
 #new-event-map
-{ height: 300px;
+{ height: 480px;
   width: 100%;
 }
 #show-event-map
@@ -21,6 +21,34 @@
   border: 2px solid #889aad !important;
   box-shadow: aquamarine;
   border-radius: 1rem !important;
+}
+
+
+
+//time_field_tag form
+span.time-spinner {
+    position: absolute;
+    top: -6px;
+    left: 17px;
+    color: #6f4dff;
+    font-size: small;
+    font-style: italic;
+   }
+input[type="time"] {
+  -webkit-padding-start: 15px;
+  padding-inline-start: 15px;
+  border-width: 0px;
+  border: 1px solid #6f4dff;
+  border-radius: 5px;
+  height: 32px;
+  width: 104px;
+  font-size: 25px;
+}
+
+input[type="time"]:focus {
+  outline: #ff815a00 solid 4px;
+  box-shadow: 0 0 0 3pt #ff815a;
+  border: 0px;
 }
 
 /* Montserrat > font-1 */
