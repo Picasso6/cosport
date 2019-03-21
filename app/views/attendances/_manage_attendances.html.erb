@@ -1,0 +1,5 @@
+<% @attendances.each do |attendance| %>
+<p><%= attendance.attendee.first_name %> <%= attendance.attendee.last_name %> souhaite participer à votre cosport <%= attendance.event.title %>.</p>
+<p>Souhaitez vous valider sa présence ? <%= link_to "Valider", event_attendance_path(attendance.event.id, attendance.id) ,method: "patch" %> <%= link_to "Refuser", event_attendance_path(attendance.event.id, attendance.id) ,method: "delete" %></p>
+
+<% end %>
