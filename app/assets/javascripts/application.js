@@ -15,7 +15,6 @@
 //= require bootstrap
 //= require jquery3
 //= require jquery_ujs
-//= require popper
 //= require activestorage
 //= require leaflet
 //= require new_event_map
