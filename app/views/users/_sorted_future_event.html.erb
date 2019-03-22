@@ -1,31 +1,31 @@
 
 <div class="row p-3">
-  <div class="col strong-color split-agenda">
+  <div class="col primary-color split-agenda pt-2">
+    <hr>
+
         <%i = 0%>
         <% while i < @future_owned_events_hash.length %>
-
             <%= @days_array_fr[@future_owned_events_hash.keys[i].wday]%>
             <%= @future_owned_events_hash.keys[i].strftime("%e")%>
             <%= @months_array_fr[@future_owned_events_hash.keys[i].strftime("%m").to_i]%>
             <%= @future_owned_events_hash.keys[i].strftime("%Y") %>
-            <br>
           <%events_by_hour = @future_owned_events_hash.values[i].group_by_hour_of_day { |evt| (evt.start_date+ Time.now.gmt_offset).utc.strftime("%T,%L")} %>
            <%j =0 %>
+           </br>
               <% while j< events_by_hour.length %>
-              <%= events_by_hour.keys[j]%>H
-              <br>
                  <% events_by_hour.values[j].sort_by(&:start_date).each do |event|%>
-                     <%= link_to event.title , event_path(event.id) , method: "get" %>
+                     <%= link_to event.title , event_path(event.id) , method: "get", class: "event-profil-page  strong-color" %>
                  <%end%>
                 <% j +=1 %>
-                <br>
               <% end %>
             <% i = i+1 %>
-        <% end%>
+            <hr>
+        <%end%>
     </div>
 
 
-      <div class=" col strong-color">
+      <div class=" col primary-color split-agenda pt-2">
+        <hr>
         <%i = 0%>
         <% while i < @future_attendances_hash.length %>
 
@@ -34,22 +34,20 @@
             <%= @months_array_fr[@future_attendances_hash.keys[i].strftime("%m").to_i]%>
             <%= @future_attendances_hash.keys[i].strftime("%Y") %>
 
-            <br>
-
           <%events_by_hour = @future_attendances_hash.values[i].group_by_hour_of_day { |att| (att.event.start_date+ Time.now.gmt_offset).utc.strftime("%T,%L")} %>
 
            <%j =0 %>
+           </br>
               <% while j< events_by_hour.length %>
-              <%= events_by_hour.keys[j]%>H
-              <br>
                  <% events_by_hour.values[j].sort { |a,b| a.event.start_date <=> b.event.start_date }.each do |attendance|%>
-                     <%= link_to attendance.event.title , event_path(attendance.event.id) , method: "get" %>
+                     <%= link_to attendance.event.title , event_path(attendance.event.id) , method: "get", class: "event-profil-page strong-color" %>
                  <%end%>
                 <% j +=1 %>
-                <br>
               <% end %>
 
             <% i = i+1 %>
+            <hr>
+
         <% end%>
 
       </div>

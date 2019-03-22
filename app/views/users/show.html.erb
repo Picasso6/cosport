@@ -10,7 +10,7 @@
 
           </div>
            <div class="flex-column" >
-             <div class="card card-box p-5">
+             <div class="card card-box p-5 strong-color f-size-4 f-thin">
                <span class="profil-picture-user">
                  <%if @user.profil_picture.attached?%>
                    <div class="user" style="background-image: url(<%= rails_blob_url(@user.profil_picture) %>)"></div>
@@ -18,21 +18,23 @@
                    <p>pas encore de profil_picture</p>
                  <% end %>
                </span>
-            <%= @user.first_name %><%= @user.last_name %>
-               <p>gender: <%= @user.gender %></p>
-               <p>description: <%= @user.description %></p>
+              <h3 class="font-3" ><%= @user.first_name %></h3>
+              <h3 class="font-3"><%= @user.last_name %></h3>
+               <p><i class="font-4 f-regular">Genre : </i> </br> <%= @user.gender %></p>
+               <p><i class="font-4 f-regular">Description : </i></br>  <%= @user.description %></p>
                <% if current_user.id == @user.id %>
-                 <p><%= @user.email %></p>
-                 <p><%= @user.phone_number %></p>
+                 <p><i class="font-4 f-regular">Email :</i></br><%= @user.email %></p>
+                 <p><i class="font-4 f-regular">Téléphone :</i></br><%= @user.phone_number %></p>
                <% end %>
                <% if @user.level != nil%>
-                 <p>level genreral: <%= @user.level %> <%= @level %></p>
+                 <p><i class="font-4 f-regular">Statut :</i></br> <%= @user.level %> <%= @level %></p>
                <% end %>
                <% @user.users_sports.each do |level_sport| %>
-                   <p>level: <%= level_sport.sport.sport_name %> (<%= level_sport.level_user %>)</p>
+                   <p><i class="font-4 f-regular">Niveau sportif :</i></br> <%= level_sport.sport.sport_name %> (<%= level_sport.level_user %>)</p>
                  <% end %>
                <% if current_user.id == @user.id %>
-                 <%= link_to "Edit", edit_user_registration_path, class: "event-landing-page medium-color font-4 f-regular" %>
+                 <%= link_to "Editer son profil", edit_user_registration_path, class: "event-landing-page medium-color font-4 f-regular" %>
+                 <%= link_to "Valider les demandes de participation", user_attendances_path(@user.id), class: "event-landing-page medium-color font-4 f-regular" %>
                <% end %>
              </div>
            </div>
@@ -42,7 +44,7 @@
     <!-- colonne droite -->
       <div class="col-md-9 col-lg-8 col-xl-8 mx-auto">
         <div class="col-xl-12 mx-auto font-1">
-    			<div class="f-size-3 font-3 strong-color text-center">
+    			<div class="f-size-3 font-3 strong-color text-center ">
             Agenda
           </div>
 
@@ -51,15 +53,15 @@
 
               <%if  current_user && current_user.id == @user.id %>
     <!-- EVENT FUTURE -->
-    <div class="col primary-color-bg">
+    <div class="col primary-color-bg ">
         Mes cosports à venir
           </div>
           <div class="row primary-color-bg pl-3">
                     <div class="col f-size-5 f-thin py-2 medium-color">
-                      Cosport à venir auquel je participe
+                      Cosports à venir que j'ai crée
                         </div>
                       <div class="col f-size-5 f-thin py-2 medium-color">
-                        cosports à venir que j'ai crée
+                        Cosport à venir auquel je participe
                       </div>
                     </div>
                   <div class="card card-event-future">
@@ -69,17 +71,17 @@
 
 
 <!-- EVENT PAST -->
-            <div class="col primary-color-bg pt-4">
+            <div class="col primary-color-bg pt-4 ">
               Mes cosports déjà passés
               </div>
                <div class="row primary-color-bg pl-3">
 
                  <div class="col f-size-5 medium-color f-thin py-2">
-                  cosports passés auquel j'ai participé
+                   Cosports passés que j'ai crée
                    </div>
 
                  <div class="col f-size-5 medium-color f-thin py-2">
-                  cosports passés que j'ai crée
+                  Cosports passés auquel j'ai participé
                    </div>
                </div>
                <div class="card card-event-past">
