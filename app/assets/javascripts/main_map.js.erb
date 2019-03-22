@@ -12,7 +12,7 @@ function createMapCircles()
      var latitude = Number(<%=event.latitude%>) + randomNumber;
      var longitude = Number(<%=event.longitude%>) + randomNumber;
      circle = L.circle([latitude ,longitude], {radius: 250}).addTo(map);
-     circle.bindPopup("<%=event.sport.sport_name%> avec <%=event.owner.first_name%> ").openPopup();
+     circle.bindPopup("<%=event.sport.sport_name%> avec <%=event.owner.first_name%> ");
      circle.on('click', function()
        {
        window.location = "events/<%=event.id%>"
