@@ -20,7 +20,7 @@
     </div>
 
     <div class="col-12 mb-3" >
-          <%=select_tag 'city_id', options_for_select(City.all.collect{ |city| [city.city_name, city.id] }), class: "form-control" , :onchange => "centerCityMap()" %>
+          <%=select_tag 'city_id', options_for_select(City.all.collect{ |city| [city.city_name, city.id] }), :prompt => "Ville" ,class: "form-control" , :onchange => "centerCityMap()" %>
     </div>
 
 
