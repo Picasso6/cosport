@@ -5,7 +5,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',{maxZ
 console.log("longitude="+Math.abs(Number(gon.event.latitude)));
 console.log("lat="+gon.event.latitude);
 //
-if (gon.attendance === true || gon.event.owner_id === gon.user.id)
+if (gon.attendance.validation === true || gon.event.owner_id === gon.user.id)
 {
   var marker = L.marker([gon.event.latitude,gon.event.longitude]).addTo(map);
   marker.bindPopup(gon.sport.sport_name);
