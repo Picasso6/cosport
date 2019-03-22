@@ -21,6 +21,10 @@
 //= require popper
 //= require activestorage
 //= require_tree .
+//
+//= require jquery
+
+
 
 
  //DROPDOWN PROFIL Button

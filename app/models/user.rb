@@ -24,7 +24,10 @@ class User < ApplicationRecord
   has_many :events, foreign_key: 'owner_id', class_name: "Event", dependent: :destroy
   has_many :attendances, foreign_key: 'attendee_id', class_name: "Attendance", dependent: :destroy
   has_many :events, through: :attendances, dependent: :destroy
-
+  
+  has_many :messages
+  has_many :conversations, foreign_key: :sender_id
+  
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
