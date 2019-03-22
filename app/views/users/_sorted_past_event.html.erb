@@ -14,10 +14,9 @@
         <%events_by_hour = @past_owned_events_hash.values[i].group_by_hour_of_day { |evt| (evt.start_date+ Time.now.gmt_offset).utc.strftime("%T,%L")} %>
          <%j =0 %>
           <% while j< events_by_hour.length %>
-          <%= events_by_hour.keys[j]%>H
           <br>
              <% events_by_hour.values[j].sort_by(&:start_date).each do |event|%>
-                 <%= link_to event.title , event_path(event.id) , method: "get", class: "event-profil-page s strong-color" %>
+                 <%= link_to event.title , event_path(event.id) , method: "get", class: "event-profil-page  strong-color" %>
              <%end%>
             <% j +=1 %>
           <% end %>
