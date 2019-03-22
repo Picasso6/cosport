@@ -14,7 +14,6 @@ end
 puts "Users faker generated"
 
 
-
 City.create!(city_name: "Paris", latitude: 48.85661, longitude: 2.351499)
 City.create!(city_name: "Lyon", latitude: 45.757814, longitude: 4.832011)
 City.create!(city_name: "Marseille", latitude: 43.296174, longitude: 5.369953)
