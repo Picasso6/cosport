@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
-
+  resources :conversations, only: [:create] 
 
   resources :events do
     resources :comments, only: [:create, :new]
