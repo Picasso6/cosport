@@ -15,7 +15,6 @@
   float: right;
 }
 
-/* Dropdown Content (Hidden by Default) */
 .dropdown-content {
  display: none;
  position: absolute;
@@ -26,7 +25,6 @@
  right:0
 }
 
-/* Links inside the dropdown */
 .dropdown-content a {
  color: black;
  padding: 12px 16px;
@@ -34,10 +32,8 @@
  display: block;
 }
 
-/* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #2ff4b7;}
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 /* END Dropdown Button */
 
