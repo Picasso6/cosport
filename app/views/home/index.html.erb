@@ -53,7 +53,7 @@
             <div class="card-title">
               <span class="profil-picture">
                 <%if event.owner.profil_picture.attached?%>
-                  <%= image_tag event.owner.profil_picture, alt: 'profil_picture', style: "widht: 90px;" %>
+                <div class="user" style="background-image: url(<%= rails_blob_url(event.owner.profil_picture) %>)"></div>
                 <%else%>
                   <%= image_tag "person.png", alt: 'profil_picture', class: "profil-picture-home" %>
                 <% end %>
