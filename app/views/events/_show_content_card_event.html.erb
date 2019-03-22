@@ -1,0 +1,18 @@
+<div class="card rounded p-3" style="min-height: 400px;">
+
+  <div class="card-title">
+    <span class="profil-picture-event">
+      <%if @event.owner.profil_picture.attached?%>
+      <div class="user" style="background-image: url(<%= rails_blob_url(@event.owner.profil_picture) %>)"></div>
+      <%else%>
+        <span class="profil-picture-user"><%= image_tag "person.png", alt: 'profil_picture', class: "user" %></span>
+      <% end %>
+      </span>
+    <div class="text-center py-3 f-size-3 font-4 strong-color f-medium"> Le <%= @event.start_date.strftime("%d/%m/%Y") %></div>
+    <div class="text-center py-3 f-size-4 font-4 primary-color f-medium"> À <%= @event.start_date.strftime('%H:%M') %></div>
+  </div>
+  <div class="card-body f-size-2 strong-color font-4 f-regular">
+    <div><b class="event-landing-page"><%= @event.owner.first_name%> <%= @event.owner.last_name%></b></br> vous propose sur <%= @event.city.city_name%>, </div>
+    <div class="f-thin"><%= @event.description%></div>
+    </div>
+  </div>
