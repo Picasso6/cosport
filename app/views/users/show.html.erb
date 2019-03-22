@@ -1,4 +1,4 @@
-<header class="masthead-2 mhead-3 text-center">
+<header class="masthead-2 mhead-1 ">
 
 <div class="container">
   <div class="row  justify-content-center">
@@ -6,11 +6,11 @@
     <!-- colonne gauche -->
        <div class="col-md-3 col-lg-4 col-xl-4 mx-auto">
          <div class="col-xl-12 mx-auto font-1 f-medium align-self-end">
-           <div class="f-size-3 font-3 strong-color text-center">
-            <div><%= @user.first_name %><%= @user.last_name %> </div>
-            </div>
+           <div class="f-size-3 font-3 strong-color">
+
+          </div>
            <div class="flex-column" >
-             <div class="card">
+             <div class="card card-box p-5">
                <span class="profil-picture-user">
                  <%if @user.profil_picture.attached?%>
                    <div class="user" style="background-image: url(<%= rails_blob_url(@user.profil_picture) %>)"></div>
@@ -18,7 +18,7 @@
                    <p>pas encore de profil_picture</p>
                  <% end %>
                </span>
-            
+            <%= @user.first_name %><%= @user.last_name %>
                <p>gender: <%= @user.gender %></p>
                <p>description: <%= @user.description %></p>
                <% if current_user.id == @user.id %>
@@ -28,8 +28,11 @@
                <% if @user.level != nil%>
                  <p>level genreral: <%= @user.level %> <%= @level %></p>
                <% end %>
+               <% @user.users_sports.each do |level_sport| %>
+                   <p>level: <%= level_sport.sport.sport_name %> (<%= level_sport.level_user %>)</p>
+                 <% end %>
                <% if current_user.id == @user.id %>
-                 <%= link_to "Edit", edit_user_registration_path, class: "nav-link" %>
+                 <%= link_to "Edit", edit_user_registration_path, class: "event-landing-page medium-color font-4 f-regular" %>
                <% end %>
              </div>
            </div>
@@ -40,63 +43,54 @@
       <div class="col-md-9 col-lg-8 col-xl-8 mx-auto">
         <div class="col-xl-12 mx-auto font-1">
     			<div class="f-size-3 font-3 strong-color text-center">
-            <% if @user.id == current_user.id %>
-          <%= link_to 'Mes Cosports',class: "nav-link secondary-color navpill-profil"%>
-          <%= link_to 'Gestion des participants', class: "nav-link secondary-color navpill-profil"%>
-            <% end %>
+            Agenda
           </div>
-        </div>
+
     		  <div class="col-12">
+            <div class="card card-agenda">
 
-<!-- render -->
-    	 				 </div>
+              <%if  current_user && current_user.id == @user.id %>
+    <!-- EVENT FUTURE -->
+    <div class="col primary-color-bg">
+        Mes cosports à venir
+          </div>
+          <div class="row primary-color-bg pl-3">
+                    <div class="col f-size-5 f-thin py-2 medium-color">
+                      Cosport à venir auquel je participe
+                        </div>
+                      <div class="col f-size-5 f-thin py-2 medium-color">
+                        cosports à venir que j'ai crée
+                      </div>
+                    </div>
+                  <div class="card card-event-future">
+                <%= render "sorted_future_event"  %>
+              </div>
+
+
+
+<!-- EVENT PAST -->
+            <div class="col primary-color-bg pt-4">
+              Mes cosports déjà passés
+              </div>
+               <div class="row primary-color-bg pl-3">
+
+                 <div class="col f-size-5 medium-color f-thin py-2">
+                  cosports passés auquel j'ai participé
+                   </div>
+
+                 <div class="col f-size-5 medium-color f-thin py-2">
+                  cosports passés que j'ai crée
+                   </div>
+               </div>
+               <div class="card card-event-past">
+              <%= render "sorted_past_event"  %>
+              </div>
+              <% end %>
        			</div>
-
 
 </header>
 
 
-    <div class="col col-lg-8 mx-auto">
-      <div class="tab-content">
-        <div class="show active">
-
-          <div id="card-event">
-            <div class="col mx-auto">
-              <div class="sticky font-1">
-                  <h5><%= @user.first_name %> <%= @user.last_name %></h5>
-                  </div>
-                    <div class="card rounded p-2 my-3">
-                        <div class="card-title">
-                          <% if current_user.id == @user.id %>
-                            <%= link_to "Edit", edit_user_registration_path, class: "nav-link" %>
-                          <% end %>
-                          <span class="profil-picture-user">
-                            <%if @user.profil_picture.attached?%>
-                      <div class="user" style="background-image: url(<%= rails_blob_url(@user.profil_picture) %>)"></div>
-
-                            <%else%>
-                              <p>pas encore de profil_picture</p>
-                            <% end %>
-                          </span>
-                          </div>
-
-                          </div>
-                      </div>
-                  </div>
-              </div>
-
-        <div class="tab-pane fade" id="v-pills-events" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-
-          <% @user.users_sports.each do |level_sport| %>
-            <p>level: <%= level_sport.sport.sport_name %> (<%= level_sport.level_user %>)</p>
-          <% end %>
-
-          <%= render "sorted_event"  %>
-
-
-
-
-        </div>
 
         <div class="tab-pane fade" id="v-pills-management" role="tabpanel" aria-labelledby="v-pills-messages-tab">
           <%= render "attendances/manage_attendances" %>
