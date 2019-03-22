@@ -242,7 +242,7 @@ $f-size-5: 0.8rem;
  html,body {
  	height:100%;
   padding-top:70px;
-  background-color: $s-color-1;
+  background-color: $m-color-1;
   }
  body {
   display: flex;
@@ -257,8 +257,11 @@ hr {
     border-top: 1px solid #2ff4b74f;
 }
 
-i {}
-
+.extended-content-container {
+    width: 500%;
+    margin-left: -200%;
+    padding: 20px;
+}
 .content {
   flex: 1 0 auto;
 }
@@ -333,7 +336,7 @@ img.icon-social { width: auto; max-height: 200px;}
 .dropdown-menu {
     left: -3rem;
 }
- section {
+ #section-main {
      min-height:calc(100% - 70px);
 }
 
@@ -520,7 +523,7 @@ header.masthead {
   background: url("banner4.png") no-repeat center center;
   background-size: cover;
   padding-top: 8rem;
-  padding-bottom: 8rem;
+  padding-bottom: 5rem;
   color: $f-color-2;
 }
 
@@ -599,7 +602,6 @@ h5.f-light.mb-5 {
 
 section.section-2 {
   min-height: 400px;
-  background-color: $s-color-2;
 }
 
 
@@ -612,9 +614,13 @@ div.sticky {
   position: -webkit-sticky;
   position: sticky;
   top: 6.1rem;
-  background-color: #ffffff;
   padding: 10px;
   z-index: 99999 !important;
+}
+.extended-content-container {
+    width: 500%;
+    margin-left: -200%;
+    padding: 20px;
 }
 /* Category Ads */
 
@@ -630,13 +636,15 @@ div.sticky {
   top: 0px;
   /* background: #ff815a; */
   text-align: center;
-  color: $f-color-1;
-  font-size: 14px;
-  width: 120px;
-  height: 25px;
+  color: #6f4dff;
+  /* font-size: 14px; */
+  width: auto;
+  height: 0px;
   padding: 0px 0px 0 0;
-  border-bottom: $s-color-1 1px solid;
-  border-left: 1px solid $s-color-1;
+  border-right: #6f4dff 6px solid;
+  /* border-left: 1px solid #6f4dff; */
+  padding: 6rem 2rem 32px 0rem;
+  border-top-right-radius: 30px;
 }
 
 #card-event img.profil-picture {
@@ -644,6 +652,10 @@ div.sticky {
   left: 0px;
   top: 0px;
   width: 50px;
+}
+
+.card-event-index {
+  border-radius: 30px;
 }
 
 //span profil image landing page
@@ -658,6 +670,12 @@ span.profil-picture-event {
   position: absolute;
   left: 30px;
   top: -35px;
+}
+
+span.profil-picture-event-all {
+  position: absolute;
+left: 30px;
+top: 25px;
 }
 
 //span profil image profil user
