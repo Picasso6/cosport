@@ -1,10 +1,10 @@
-<% if Attendance.where(event_id: @event.id).exists?%>
-<p>avec</p>
-<%  Attendance.where(event_id: @event.id, validation: true).each do |participation|%>
-<%= link_to user_path(participation.attendee_id) do %>
-<%=	participation.attendee.first_name %> <%=participation.attendee.last_name %>
-<% end%>
-<% end%>
+<% if Attendance.where(event_id: @event.id).where(validation: true).exists?%>
+  <p>avec</p>
+  <%  Attendance.where(event_id: @event.id, validation: true).each do |participation|%>
+      <%= link_to user_path(participation.attendee_id) do %>
+        <%=	participation.attendee.first_name %> <%=participation.attendee.last_name %>
+      <% end%>
+  <% end%>
 <% end%>
 
 <% if @event.start_date < (Time.now + Time.now.gmt_offset).utc %>
