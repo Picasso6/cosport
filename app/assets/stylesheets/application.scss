@@ -257,6 +257,8 @@ hr {
     border-top: 1px solid #2ff4b74f;
 }
 
+i {}
+
 .content {
   flex: 1 0 auto;
 }
@@ -388,7 +390,13 @@ a.event-profil-page:hover {
        var(--secondaryColor) 0%,
        var(--secondaryColor) 5px,
        transparent
-     );
+     );  background:
+          linear-gradient(
+            to right,
+            var(--secondaryColor) 0%,
+            var(--secondaryColor) 5px,
+            transparent
+          );
 }
 
 //button
