@@ -1,55 +1,60 @@
-<h2> <%= @event.title %> </h2>
+<header class="masthead-2 mhead-4">
 
+    <div class="container">
+      <div class="row align-items-end">
 
-<p>le <%= @event.start_date.asctime %></p>
-<p>par <%= @event.owner.last_name%> <%= @event.owner.first_name%></p>
-<p>à <%= @event.city.city_name%></p>
-<p>pour  <%= @event.sport.sport_name%></p>
-<% if Attendance.where(event_id: @event.id).exists?%>
-	<p>avec</p>
-	<%  Attendance.where(event_id: @event.id, validation: true).each do |participation|%>
-<%= link_to user_path(participation.attendee_id) do %>
-	<%=	participation.attendee.first_name %> <%=participation.attendee.last_name %>
-<% end%>
-	<% end%>
-<% end%>
+<!-- colonne gauche -->
+  <div class="col-md-8 col-lg-8 col-xl-8 mx-auto">
+    <div class="col-xl-12 mx-auto font-1">
+			<div class="display-4 font-3 strong-color text-center"><%= @event.sport.sport_name%></div>
+    </div>
+		  <div class="col-12">
+						<div class="card rounded p-3" style="min-height: 400px;">
 
-<% if @event.start_date < (Time.now + Time.now.gmt_offset).utc %>
+							<div class="card-title">
+								<span class="profil-picture-event">
+	                <%if @event.owner.profil_picture.attached?%>
+	                <div class="user" style="background-image: url(<%= rails_blob_url(@event.owner.profil_picture) %>)"></div>
+	                <%else%>
+	                  <span class="profil-picture-user"><%= image_tag "person.png", alt: 'profil_picture', class: "user" %></span>
+	                <% end %>
+	                </span>
+								<div class="text-center py-3 display-5 font-4 strong-color f-medium"> Le <%= @event.start_date.strftime("%d/%m/%Y") %></div>
+							</div>
+							<div class="card-body f-size-2 strong-color font-4 f-regular">
+							 	<div><b class="event-landing-page"><%= @event.owner.first_name%> <%= @event.owner.last_name%></b></br> vous propose sur <%= @event.city.city_name%>, </div>
+							 	<div class="f-thin"><%= @event.description%></div>
+								</div>
+							</div>
+	 				 </div>
+   			</div>
 
-<% else %>
-	<% if @event.owner_id == current_user.id %>
-		<h3>Vous êtes le créateur de ce cosport</h3>
-	<% elsif current_user.attendances.where("event_id = ? and validation = ?", "#{@event.id}",  "#{true}").exists? && @event.owner_id != current_user.id%>
-		<h3> Vous êtes inscrit à ce cosport </h3>
-		<br>
-		<% attendance = Attendance.where(event_id: @event.id, attendee_id: current_user.id)[0] %>
-		<%= link_to "SE DÉSINSCRIRE DE CE COSPORT !", event_attendance_path(@event.id, attendance.id) ,method: "delete" %>
-	<% elsif !current_user.attendances.where("event_id = ?", "#{@event.id}").exists? && @event.owner_id != current_user.id%>
-	<%=link_to "REJOINDRE CE COSPORT !", event_attendances_path(@event.id) ,method: "post" %>
+<!-- colonne droite -->
+   <div class="col-md-4 col-lg-4 col-xl-4 mx-auto">
+     <div class="col-xl-12 mx-auto font-1 f-medium text-center align-self-end">
+       <div class="f-medium font-1 medium-color f-uppercase"> Zone du Cosport </div>
+     </div>
+			 <div id="show-event-map" class="col-12  border-map pb-1"></div>
+			 <div class="col-xl-12 mx-auto pt-5">
+					<%= render 'show_join_an_event' %>
+			 </div>
+    </div>
+	</div>
 
-	<% else %>
-	<p>Vous avez demandé à rejoindre ce cosport, merci d'attendre que ce soit validé.</p>
-	<% end %>
-<% end %>
-
-<% if current_user.id == @event.owner.id %>
-<%= link_to "Editer l'évènement", edit_event_path(@event.id) %>
-<%= link_to "Supprimer l'évènement", event_path(@event.id),:data => {:confirm => 'Are you sure?'}, method: "delete" %>
-<% end %>
-
-<%= form_tag(event_comments_path(@event.id), method: :post ) do %>
-    <%= label_tag 'comments' %>
-    <%= text_area_tag 'content' %>
-	<%= submit_tag "Create com" %>
-<% end %>
-
-<% @comment.each do |comment| %>
-	<p><a href="<%= user_path(comment.user_id) %>"><%= comment.user.first_name %></a> dit : <%= comment.content %></p>
-	<%= button_to "delete", event_comment_path(@event.id, comment.id), :method => :delete %>
-<% end %>
-
-<div id="show-event-map">
-
+	<div class="row">
+		<div class=" col col-md-12 mx-auto">
+			<%= render 'show_comment_event'%>
+		</div>
+	</div>
 </div>
+</header>
+
+
+
+
+
+
+
+
 
 <%= javascript_include_tag 'show_event_map' %>

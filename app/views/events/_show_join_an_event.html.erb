@@ -1,0 +1,34 @@
+<% if Attendance.where(event_id: @event.id).exists?%>
+<p>avec</p>
+<%  Attendance.where(event_id: @event.id, validation: true).each do |participation|%>
+<%= link_to user_path(participation.attendee_id) do %>
+<%=	participation.attendee.first_name %> <%=participation.attendee.last_name %>
+<% end%>
+<% end%>
+<% end%>
+
+<% if @event.start_date < (Time.now + Time.now.gmt_offset).utc %>
+
+<% else %>
+  <% if @event.owner_id == current_user.id %>
+    <div class= "font-4 f-medium f-size-4"> " Vous êtes le créateur de ce cosport "</div>
+  <% elsif current_user.attendances.where("event_id = ? and validation = ?", "#{@event.id}",  "#{true}").exists? && @event.owner_id != current_user.id%>
+    <div class= "font-4 f-medium f-size-4"> " Vous êtes inscrit à ce cosport " </div>
+    <br>
+    <% attendance = Attendance.where(event_id: @event.id, attendee_id: current_user.id)[0] %>
+    <%= link_to "SE DÉSINSCRIRE DE CE COSPORT !", event_attendance_path(@event.id, attendance.id) ,method: "delete" %>
+  <% elsif !current_user.attendances.where("event_id = ?", "#{@event.id}").exists? && @event.owner_id != current_user.id%>
+
+  <%=link_to "REJOINDRE CE COSPORT !", event_attendances_path(@event.id) ,method: "post", class: "btn btn-block btn-lg btn-primary "%>
+
+  <% else %>
+  <p>Vous avez demandé à rejoindre ce cosport, merci d'attendre que ce soit validé.</p>
+  <% end %>
+<% end %>
+
+<% if current_user.id == @event.owner.id %>
+<div class="font-4 f-regular f-size-4">
+  <%= link_to "Editer", edit_event_path(@event.id), class:"event-landing-page" %>
+  <%= link_to "Supprimer l'évènement", event_path(@event.id),:data => {:confirm => 'Are you sure?'}, method: "delete", class:"event-landing-page" %>
+  </div>
+<% end %>
