@@ -269,7 +269,7 @@ $s-color-3: #080416;
 .strong-color-bg { background-color: $s-color-3; }
 
 // color for background
-$m-color-1: #f1efeb;
+$m-color-1: #f6f6f6 ;
 $m-color-2: #bababa;
 
 .primary-color-bg { background-color: $m-color-1;}
@@ -329,13 +329,25 @@ $f-size-5: 0.8rem;
  html,body {
  	height:100%;
   padding-top:70px;
-  background-color: $s-color-1;
+  background-color: $m-color-1;
   }
  body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+}
 
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid #2ff4b74f;
+}
+
+.extended-content-container {
+    width: 500%;
+    margin-left: -200%;
+    padding: 20px;
 }
 .content {
   flex: 1 0 auto;
@@ -411,7 +423,7 @@ img.icon-social { width: auto; max-height: 200px;}
 .dropdown-menu {
     left: -3rem;
 }
- section {
+ #section-main {
      min-height:calc(100% - 70px);
 }
 
@@ -425,6 +437,7 @@ img.icon-social { width: auto; max-height: 200px;}
 :root {
   --mainColor: #ff815a;
   --secondaryColor: #2ff4b7;
+  --thirdColor: #6f4dff;
 }
 a.event-landing-page {
   background:
@@ -446,6 +459,35 @@ a.event-landing-page:hover {
   background-size: 4px 50px;
 }
 
+a.event-profil-page {
+  background:
+    linear-gradient(
+      to right,
+      var(--secondaryColor) 0%,
+      var(--secondaryColor) 0px,
+      transparent 2px
+     );
+    background-repeat: repeat-x;
+    background-size: 100%;
+    text-decoration: none;
+    border-radius: 0px;
+}
+
+a.event-profil-page:hover {
+  background:
+     linear-gradient(
+       to right,
+       var(--secondaryColor) 0%,
+       var(--secondaryColor) 5px,
+       transparent
+     );  background:
+          linear-gradient(
+            to right,
+            var(--secondaryColor) 0%,
+            var(--secondaryColor) 5px,
+            transparent
+          );
+}
 
 //button
 .btn-primary {
@@ -533,7 +575,7 @@ a.navpill-profil:hover {
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
- 
+
 .form-control:focus {
     color: #495057;
     background-color: #fff;
@@ -568,7 +610,7 @@ header.masthead {
   background: url("banner4.png") no-repeat center center;
   background-size: cover;
   padding-top: 8rem;
-  padding-bottom: 8rem;
+  padding-bottom: 5rem;
   color: $f-color-2;
 }
 
@@ -581,6 +623,7 @@ header.masthead-2 {
   color: $f-color-2;
 }
 
+header.mhead-1 {  background-color: #f6f6f6 }
 header.mhead-2 {  background: url("banner2.png") no-repeat center center; }
 header.mhead-3 {  background: url("banner6.png") no-repeat center center; }
 header.mhead-4 {  background: url("banner.png") no-repeat center center; }
@@ -646,7 +689,6 @@ h5.f-light.mb-5 {
 
 section.section-2 {
   min-height: 400px;
-  background-color: $s-color-2;
 }
 
 
@@ -659,9 +701,13 @@ div.sticky {
   position: -webkit-sticky;
   position: sticky;
   top: 6.1rem;
-  background-color: #ffffff;
   padding: 10px;
   z-index: 999 !important;
+}
+.extended-content-container {
+    width: 500%;
+    margin-left: -200%;
+    padding: 20px;
 }
 /* Category Ads */
 
@@ -677,13 +723,15 @@ div.sticky {
   top: 0px;
   /* background: #ff815a; */
   text-align: center;
-  color: $f-color-1;
-  font-size: 14px;
-  width: 120px;
-  height: 25px;
+  color: #6f4dff;
+  /* font-size: 14px; */
+  width: auto;
+  height: 0px;
   padding: 0px 0px 0 0;
-  border-bottom: $s-color-1 1px solid;
-  border-left: 1px solid $s-color-1;
+  border-right: #6f4dff 6px solid;
+  /* border-left: 1px solid #6f4dff; */
+  padding: 6rem 2rem 32px 0rem;
+  border-top-right-radius: 30px;
 }
 
 #card-event img.profil-picture {
@@ -691,6 +739,10 @@ div.sticky {
   left: 0px;
   top: 0px;
   width: 50px;
+}
+
+.card-event-index {
+  border-radius: 30px;
 }
 
 //span profil image landing page
@@ -707,11 +759,17 @@ span.profil-picture-event {
   top: -35px;
 }
 
-//span profil image profil user
-img.profil-picture-user {
+span.profil-picture-event-all {
   position: absolute;
-  top: 20px;
-  right: 70px;
+left: 30px;
+top: 25px;
+}
+
+//span profil image profil user
+span.profil-picture-user {
+  position: absolute;
+  top: -40px;
+  right: 270px;
   display: block;
 }
 
@@ -756,6 +814,28 @@ textarea:focus {
   border: 0px;
 }
 
+
+
+/* ---------------------------------------------------
+    USER SHOW (User#show)
+----------------------------------------------------- */
+
+.card-box {
+    border-width: 0px;
+    border: 1px solid #cdcdcd;
+    box-shadow: -4px 4px 0px 4px #6d685c3b;
+    border-radius: 5px;
+}
+
+.split-agenda {
+    border-right: 1px solid #d6d5d2;
+  }
+
+.card.card-agenda {
+border: none !important;
+}
+
+
 .comment-box {
   max-height: 260px;
   overflow: overlay;
@@ -767,6 +847,7 @@ span.icon-comment-down {
     bottom: 0px;
     left: 261px;
 }
+
     /* ---------------------------------------------------
       MEDIA QUERIES (events#index)
     ----------------------------------------------------- */
