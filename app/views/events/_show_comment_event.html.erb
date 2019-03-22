@@ -1,5 +1,5 @@
 
-<%# <% unless @event.owner_id == current_user.id %>
+ <% unless @event.owner_id == current_user.id %>
 
 <%= form_tag(event_comments_path(@event.id), method: :post ) do %>
 
@@ -10,7 +10,7 @@
       <%= submit_tag "Ajouter un commentaire", class: '  btn-comment medium-color font-4 f-regular' %>
 </div>
 <% end %>
-<%# <%end%>
+<%end%>
 
 <% @comment.each do |comment| %>
 	<p><a href="<%= user_path(comment.user_id) %>"><%= comment.user.first_name %></a> dit : <%= comment.content %></p>
