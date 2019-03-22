@@ -1,30 +1,28 @@
+<header class="masthead-2 mhead-4 text-center">
+
+    <div class="container">
+      <div class="row">
+
+  <div class="col-md-5 col-lg-5 col-xl-5 mx-auto">
+
+    <div class="col-xl-12 mx-auto font-1 text-center pb-3">
+      <h1 class="f-bold font-1 strong-color"> Cosports</h1>
+    </div>
+
+
+
 <% @event.each do |event| %>
-<div>
+<div class="text-left">
 
   <%=link_to event.title , event_path(event.id) , method: "get" %>
-  <br>
-    <p><%= Sport.all.find(event.sport_id).sport_name %></p>
 
-    <p>à
-      <%= City.find(event.city_id).city_name %></p>
-      <p>le <%=event.start_date%></p>
-      <p>pendant <%= event.duration%> heures</p>
-
-    <p>crée par
-      <%= User.all.find(event.owner_id).first_name%>
-      <%= User.all.find(event.owner_id).last_name%></p>
-    <% if Attendance.where(event_id: event.id).exists?%>
-      <p>avec
-        <% Attendance.where(event_id: event.id).each do |attendance|%>
-          <%= User.find(attendance.attendee_id).first_name%>
-          <%= User.find(attendance.attendee_id).last_name%>
-              <br>
-        <% end %>
-          </p>
-        <% end %>
-        <p><%= event.description%></p>
-        <%= link_to "Supprimer l'évènement", admin_event_path(event.id),:data => {:confirm => 'Êtes vous sure ?'}, method: "delete" %>
-      <hr>
+        <%= link_to "supprimer", admin_event_path(event.id),:data => {:confirm => 'Êtes vous sure ?'}, method: "delete", class: 'text-danger' %>
     </div>
 
     <%end%>
+
+  </div>
+
+  </div>
+  </div>
+  </header>
