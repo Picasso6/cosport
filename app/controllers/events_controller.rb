@@ -44,7 +44,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params["id"])
     date = (params[:event][:start_date] + " " + params[:hour_start]).in_time_zone
-    @event.update(title: params[:event][:title], start_date: date, sport_id: params[:event][:sport_id], city_id: params[:event][:city_id], duration: params[:event][:duration], description: params[:event][:description])
+    @event.update(title: params[:event][:title], start_date: date, sport_id: params[:sport_id], city_id: params[:city_id], duration: params[:event][:duration], description: params[:event][:description], latitude: params[:event][:latitude], longitude: params[:event][:longitude])
     if @event.errors.any?
       flash[:danger] = "L'édition d'annonce n'a pas fonctionné."
       redirect_to request.referrer
