@@ -3,10 +3,10 @@ var parisLongitude =  2.349014 ;
 var map ;
 <% event_today = Event.all %>
 getMapAsync();
-
+console.log("test");
 function createMapCircles()
 {
-  <% event_today.each do |event| %>
+  <% event_today.each do |event|  %>
      var randomNumber = Math.floor(Math.random() * 490) - 245;
      randomNumber = randomNumber/100000;
      var latitude = Number(<%=event.latitude%>) + randomNumber;
