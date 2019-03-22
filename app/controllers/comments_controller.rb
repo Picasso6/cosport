@@ -6,7 +6,8 @@ class CommentsController < ApplicationController
 			flash[:notice] = "Le commentaire a bien été envoyé."
 			redirect_to request.referrer
 		else
-			flash[:danger] = "Erreur lors de la demande de participation."
+			puts @comment.errors.full_messages
+			flash[:danger] = "Erreur lors de l'envoi du commentaire'."
 			redirect_to request.referrer, status: :unprocessable_entity
 		end
 	end
