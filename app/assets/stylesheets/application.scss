@@ -219,11 +219,21 @@ $font-4: 'Metropolis';
 .font-3 {font-family: $font-3;}
 .font-4 {font-family: $font-4;}
 
+/* ---------------------------------------------------
+    FONTS SIZE
+----------------------------------------------------- */
 
+$f-size-1: 3rem;
+$f-size-2: 2rem;
+$f-size-3: 1.5rem;
+$f-size-4: 1.05rem;
+$f-size-5: 0.8rem;
 
-
-
-
+.f-size-1{ font-size: $f-size-1 }
+.f-size-2{ font-size: $f-size-2 }
+.f-size-3{ font-size: $f-size-3 }
+.f-size-4{ font-size: $f-size-4 }
+.f-size-5{ font-size: $f-size-5 }
 
  /* ---------------------------------------------------
      SETUP NAVBAR AND FOOTER STICKY WITH FLEXBOX
@@ -355,9 +365,17 @@ a.event-landing-page:hover {
   background-color: $f-color-1;
   border: 0px;
 }
+.btn-secondary {
+
+}
 .btn-primary:hover {
   background-color: $f-color-2;
 }
+.btn:focus, .btn.focus {
+    outline: 0;
+   box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+}
+
 
 //nav-pills
 .nav-pills .nav-link {
@@ -381,6 +399,29 @@ a.navpill-profil {
     border-radius: 0px;
 }
 a.navpill-profil:hover {
+  background:
+     linear-gradient(
+       to right,
+       var(--secondaryColor) 0%,
+       var(--secondaryColor) 5px,
+       transparent
+     );
+}
+
+.btn-comment {
+  background:
+  linear-gradient(
+  to right, var(--secondaryColor) 30%,
+   var(--secondaryColor) 68px,
+    transparent 5px
+    );
+  background-repeat: repeat-x;
+  background-size: 100%;
+  text-decoration: none;
+  border-radius: 8px;
+  border: 0px;
+}
+.btn-comment:hover {
   background:
      linear-gradient(
        to right,
@@ -455,6 +496,8 @@ header.masthead-2 {
 
 header.mhead-2 {  background: url("banner2.png") no-repeat center center; }
 header.mhead-3 {  background: url("banner6.png") no-repeat center center; }
+header.mhead-4 {  background: url("banner.png") no-repeat center center; }
+header.mhead-5 {  background: url("banner5.png") no-repeat center center; }
 
  .overlay {
   position: absolute;
@@ -564,11 +607,17 @@ div.sticky {
 }
 
 //span profil image landing page
-img.profil-picture-home {
+
+span.profil-picture {
   position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 60px;
+  right: 30px;
+  top: -35px;
+}
+
+span.profil-picture-event {
+  position: absolute;
+  left: 30px;
+  top: -35px;
 }
 
 //span profil image profil user
@@ -578,15 +627,17 @@ img.profil-picture-user {
   right: 70px;
   display: block;
 }
-.user {
-  display: inline-block;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
 
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+.user {
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border: 5px solid #000000;
+    background-color: white;
 }
 
 
@@ -601,9 +652,22 @@ img.profil-picture-user {
           width:50%;
     }
 
-
-
-
+    /* ---------------------------------------------------
+        EVENT SHOW (events#index)
+    ----------------------------------------------------- */
+textarea{
+  height: 100px;
+  width: 48.5vw;
+  border-width: 0px;
+  border: 1px solid #cdcdcd;
+  box-shadow: -4px 4px 0px 4px #6d685c3b;
+  border-radius: 5px;
+    }
+textarea:focus {
+  outline: #ff815a00 solid 4px;
+  box-shadow: 0 0 0 3pt #ff815a;
+  border: 0px;
+}
 
     /* ---------------------------------------------------
       MEDIA QUERIES (events#index)
