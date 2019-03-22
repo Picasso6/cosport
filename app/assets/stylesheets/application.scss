@@ -1,6 +1,41 @@
 @import "leaflet";
 @import "bootstrap";
 
+/* Dropdown Button */
+.dropbtn {
+  background-color: #ffffff;
+ color: blue;
+ font-size: 16px;
+ border: none;
+ cursor: pointer;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+  float: right;
+}
+
+.dropdown-content {
+ display: none;
+ position: absolute;
+ background-color: #ffffff;
+ min-width: 160px;
+ box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+ z-index: 99999 !important;
+ right:0
+}
+
+.dropdown-content a {
+ color: black;
+ padding: 12px 16px;
+ text-decoration: none;
+ display: block;
+}
+
+.dropdown-content a:hover {background-color: #2ff4b7;}
+
+.show {display:block;}
+/* END Dropdown Button */
 
 
 
@@ -15,6 +50,7 @@
 }
 #main-map
 { height: 550px;
+  margin-bottom: 50px;
 
 }
  .border-map {
@@ -615,7 +651,7 @@ div.sticky {
   position: sticky;
   top: 6.1rem;
   padding: 10px;
-  z-index: 99999 !important;
+  z-index: 999 !important;
 }
 .extended-content-container {
     width: 500%;
@@ -728,6 +764,7 @@ textarea:focus {
 }
 
 
+
 /* ---------------------------------------------------
     USER SHOW (User#show)
 ----------------------------------------------------- */
@@ -745,6 +782,19 @@ textarea:focus {
 
 .card.card-agenda {
 border: none !important;
+}
+
+
+.comment-box {
+  max-height: 260px;
+  overflow: overlay;
+}
+
+span.icon-comment-down {
+    width: 25px;
+    position: absolute;
+    bottom: 0px;
+    left: 261px;
 }
 
     /* ---------------------------------------------------

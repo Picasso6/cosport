@@ -10,18 +10,38 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require turbolinks
-//= require_tree .
-//= require bootstrap
 //= require jquery3
 //= require jquery_ujs
-//= require popper
-//= require activestorage
 //= require leaflet
 //= require new_event_map
 //= require show_event_map
 //= require main_map
+//= require turbolinks
+//= require bootstrap
+//= require popper
+//= require activestorage
+//= require_tree .
 
+
+
+ //DROPDOWN PROFIL Button
+function dropProfilList() {
+  document.getElementById("profilDropdown").classList.toggle("show");
+}
+
+
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
 
 
 

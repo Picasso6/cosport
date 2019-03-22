@@ -10,6 +10,7 @@ class Event < ApplicationRecord
 
   validates :description, presence: true, length: { maximum: 500}
   validates :start_date, presence: true
+  validate :no_events_in_past
 
 
   def self.search(params)
@@ -27,6 +28,12 @@ class Event < ApplicationRecord
       where(["sport_id = ? and start_date >= ? and start_date >= ?", "#{params["sport"]}", "#{params["start_date"].to_datetime}", "#{DateTime.now}"])
     else
       where(["start_date >= ?", "#{DateTime.now}"])
+    end
+  end
+
+  def no_events_in_past
+    if start_date.present? && start_date < DateTime.now
+        errors.add(:start_date, "Le cosport ne peux pas être dans le futur")
     end
   end
 

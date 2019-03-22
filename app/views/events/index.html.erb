@@ -38,6 +38,8 @@
       <div class="card-body f-size-2 strong-color font-4 f-regular">
         <div><b class="event-landing-page"><%= event.owner.first_name%> <%= event.owner.last_name%></b></br> vous propose sur <%= event.city.city_name%>, </div>
         <div class="f-thin"><%= event.description%></div>
+
+      <div class="text-left py-3">  <%= link_to "+ d'infos", event_path(event.id), class: "event-landing-page medium-color font-4 f-regular text-center" %></div>
         </div>
       </div>
         <% end %>
