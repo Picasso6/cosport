@@ -1,2 +1,27 @@
-<%= link_to("administrer les users", admin_users_path) %>
-<%= link_to("administrer les events", admin_events_path) %>
+<header class="masthead-2 mhead-4 text-center">
+
+    <div class="container">
+      <div class="row">
+
+  <div class="col-md-5 col-lg-5 col-xl-5 mx-auto">
+
+    <div class="col-xl-12 mx-auto font-1 text-center pb-3">
+      <h1 class="f-bold font-1 strong-color"> Page admin</h1>
+    </div>
+
+    <div class="col-12 mb-3 d-flex hidden-div">
+
+      <div class="col-6 p-0 pr-1">
+        <%= link_to("administrer users", admin_users_path, class: 'btn btn-block btn-lg btn-primary') %>
+        </div>
+          <div class="col-6 p-0 pl-1 ">
+            <%= link_to("admin events", admin_events_path, class: 'btn btn-block btn-lg btn-primary') %>
+          </div>
+        </div>
+
+
+</div>
+
+</div>
+</div>
+</header>
