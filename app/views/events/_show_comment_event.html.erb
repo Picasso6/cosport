@@ -1,16 +1,14 @@
 
- <% unless @event.owner_id == current_user.id %>
 
 <%= form_tag(event_comments_path(@event.id), method: :post ) do %>
 
 <div class="col-8 mb-3 pt-5">
-      <%= text_area_tag :comment, '', autocomplete: "off", class: "btn font-3 f-thin f-size-3 p-5 text-left", placeholder: "Écris ton commentaire dans la boite !" %>
+      <%= text_area_tag :content, '', autocomplete: "off", class: "btn font-3 f-thin f-size-3 p-5 text-left", placeholder: "Écris ton commentaire dans la boite !" %>
 </div>
 <div class="col-2 mb-3">
       <%= submit_tag "Ajouter un commentaire", class: '  btn-comment medium-color font-4 f-regular' %>
 </div>
 <% end %>
-<%end%>
 
 <% @comment.each do |comment| %>
 	<p><a href="<%= user_path(comment.user_id) %>"><%= comment.user.first_name %></a> dit : <%= comment.content %></p>
