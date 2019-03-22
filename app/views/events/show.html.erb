@@ -6,7 +6,7 @@
 <!-- colonne gauche -->
   <div class="col-md-8 col-lg-8 col-xl-8 mx-auto">
     <div class="col-xl-12 mx-auto font-1">
-			<div class="display-4 font-3 strong-color text-center"><%= @event.sport.sport_name%></div>
+			<div class="display-4 font-3 strong-color text-center"><%= @event.sport.sport_name %></div>
     </div>
 		  <div class="col-12">
 						<div class="card rounded p-3" style="min-height: 400px;">
@@ -22,7 +22,11 @@
 								<div class="text-center py-3 display-5 font-4 strong-color f-medium"> Le <%= @event.start_date.strftime("%d/%m/%Y") %></div>
 							</div>
 							<div class="card-body f-size-2 strong-color font-4 f-regular">
-							 	<div><b class="event-landing-page"><%= @event.owner.first_name%> <%= @event.owner.last_name%></b></br> vous propose sur <%= @event.city.city_name%>, </div>
+							 	<div><b class="event-landing-page">
+                  <%= link_to (user_path(@event.owner.id)) do  %>
+                    <%= @event.owner.first_name%> <%= @event.owner.last_name %>
+                  <%end%>
+                </b> vous propose sur <%= @event.city.city_name%>, </div>
 							 	<div class="f-thin"><%= @event.description%></div>
 								</div>
 							</div>

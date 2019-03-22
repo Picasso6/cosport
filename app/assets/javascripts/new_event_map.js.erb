@@ -1,5 +1,5 @@
 
-  
+
 var selectTag = document.getElementById("city_id");
 var cityValue = selectTag.value;
 var map;
@@ -14,9 +14,9 @@ function mapCity()
 {
   console.log("mapcity() OK");
   <%City.all.each do |city|%>
-  if (selectTag.value === "<%=city.id%>")
+  if (selectTag.value === "<%=city.id%>" || selectTag.value === "" )
   {
-    map = L.map('new-event-map').setView([<%=city.latitude%>,<%=city.longitude%>],14);
+    map = L.map('new-event-map').setView([<%=city.latitude%>,<%=city.longitude%>],5.5);
     L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',{maxZoom :100}).addTo(map);
     document.getElementById("lat-form").value = <%=city.latitude%>;
     document.getElementById("lgn-form").value = <%=city.longitude%>;
