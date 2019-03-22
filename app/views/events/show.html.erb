@@ -9,27 +9,7 @@
 			<div class="display-4 font-3 strong-color text-center"><%= @event.sport.sport_name %></div>
     </div>
 		  <div class="col-12">
-						<div class="card rounded p-3" style="min-height: 400px;">
-
-							<div class="card-title">
-								<span class="profil-picture-event">
-	                <%if @event.owner.profil_picture.attached?%>
-	                <div class="user" style="background-image: url(<%= rails_blob_url(@event.owner.profil_picture) %>)"></div>
-	                <%else%>
-	                  <span class="profil-picture-user"><%= image_tag "person.png", alt: 'profil_picture', class: "user" %></span>
-	                <% end %>
-	                </span>
-								<div class="text-center py-3 display-5 font-4 strong-color f-medium"> Le <%= @event.start_date.strftime("%d/%m/%Y") %></div>
-							</div>
-							<div class="card-body f-size-2 strong-color font-4 f-regular">
-							 	<div><b class="event-landing-page">
-                  <%= link_to (user_path(@event.owner.id)) do  %>
-                    <%= @event.owner.first_name%> <%= @event.owner.last_name %>
-                  <%end%>
-                </b> vous propose sur <%= @event.city.city_name%>, </div>
-							 	<div class="f-thin"><%= @event.description%></div>
-								</div>
-							</div>
+				<%= render 'show_content_card_event'%>
 	 				 </div>
    			</div>
 
