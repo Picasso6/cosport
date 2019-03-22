@@ -1,5 +1,7 @@
 class AttendancesController < ApplicationController
+  include AttendancesHelper
   before_action :authenticate_user!, only: [:create]
+  before_action :same_id, only: [:index]
 
   def index
     user = User.find(params[:user_id])
@@ -38,8 +40,12 @@ class AttendancesController < ApplicationController
     @attendance = Attendance.find(params[:id])
     @attendance.update(validation: true)
     @attendance.attendee.level += 1
-    @attendance.attendee.save
-    redirect_to request.referrer
+    if @attendance.attendee.save
+      respond_to do |format|
+        format.html { redirect_to request.referrer }
+        format.js
+      end
+    end
   end
 
   def destroy
