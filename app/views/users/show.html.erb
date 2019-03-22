@@ -1,34 +1,64 @@
+<header class="masthead-2 mhead-3 text-center">
+
 <div class="container">
   <div class="row  justify-content-center">
 
-    <div class="col col-lg-2">
-      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <%= link_to 'Profil', '#v-pills-profile',
-          class: "nav-link active secondary-color navpill-profil",
-          data: { toggle: "pill" },
-          role: "tab",
-          aria: { controls: true, selected: false },
-          id:"v-pills-profile-tab" %>
-          <% if @user.id == current_user.id %>
-        <%= link_to 'Mes Cosports', '#v-pills-events',
-          class: "nav-link secondary-color navpill-profil",
-          data: { toggle: "pill" },
-          role: "tab",
-          aria: { controls: true, selected: false },
-          id:"v-pills-events-tab" %>
-        <%= link_to 'Gestion des participants', '#v-pills-management',
-          class: "nav-link secondary-color navpill-profil",
-          data: { toggle: "pill" },
-          role: "tab",
-          aria: { controls: true, selected: false },
-          id:"v-pills-events-tab" %>
-          <% end %>
-      </div>
-    </div>
+    <!-- colonne gauche -->
+       <div class="col-md-3 col-lg-4 col-xl-4 mx-auto">
+         <div class="col-xl-12 mx-auto font-1 f-medium align-self-end">
+           <div class="f-size-3 font-3 strong-color text-center">
+            <div><%= @user.first_name %><%= @user.last_name %> </div>
+            </div>
+           <div class="flex-column" >
+             <div class="card">
+               <span class="profil-picture-user">
+                 <%if @user.profil_picture.attached?%>
+                   <div class="user" style="background-image: url(<%= rails_blob_url(@user.profil_picture) %>)"></div>
+                    <%else%>
+                   <p>pas encore de profil_picture</p>
+                 <% end %>
+               </span>
+            
+               <p>gender: <%= @user.gender %></p>
+               <p>description: <%= @user.description %></p>
+               <% if current_user.id == @user.id %>
+                 <p><%= @user.email %></p>
+                 <p><%= @user.phone_number %></p>
+               <% end %>
+               <% if @user.level != nil%>
+                 <p>level genreral: <%= @user.level %> <%= @level %></p>
+               <% end %>
+               <% if current_user.id == @user.id %>
+                 <%= link_to "Edit", edit_user_registration_path, class: "nav-link" %>
+               <% end %>
+             </div>
+           </div>
+         </div>
+    	</div>
+
+    <!-- colonne droite -->
+      <div class="col-md-9 col-lg-8 col-xl-8 mx-auto">
+        <div class="col-xl-12 mx-auto font-1">
+    			<div class="f-size-3 font-3 strong-color text-center">
+            <% if @user.id == current_user.id %>
+          <%= link_to 'Mes Cosports',class: "nav-link secondary-color navpill-profil"%>
+          <%= link_to 'Gestion des participants', class: "nav-link secondary-color navpill-profil"%>
+            <% end %>
+          </div>
+        </div>
+    		  <div class="col-12">
+
+<!-- render -->
+    	 				 </div>
+       			</div>
+
+
+</header>
+
 
     <div class="col col-lg-8 mx-auto">
-      <div class="tab-content" id="v-pills-tabContent">
-        <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+      <div class="tab-content">
+        <div class="show active">
 
           <div id="card-event">
             <div class="col mx-auto">
@@ -49,19 +79,7 @@
                             <% end %>
                           </span>
                           </div>
-                            <div class="card-body">
-                              <p>first_name: <%= @user.first_name %></p>
-                              <p>last_name: <%= @user.last_name %></p>
-                              <p>gender: <%= @user.gender %></p>
-                              <p>description: <%= @user.description %></p>
-                              <% if current_user.id == @user.id %>
-                                <p><%= @user.email %></p>
-                                <p><%= @user.phone_number %></p>
-                              <% end %>
-                              <% if @user.level != nil%>
-                                <p>level genreral: <%= @user.level %> <%= @level %></p>
-                              <% end %>
-                            </div>
+
                           </div>
                       </div>
                   </div>
