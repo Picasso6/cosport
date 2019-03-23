@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-5 col-lg-5 col-xl-5 mx-auto">
+        <div class="col-xl-12 mx-auto font-1 text-center pb-3">
+          <h1 class=" font-3 strong-color"> Nouveau cosport</h1>
+        </div>
+        <%= form_tag url_for(action: 'create'), method: "post" do %>
+          <div class="col-12 mb-3">
+            <%= text_field_tag 'title', @title, placeholder: "titre", class: "form-control" %>
+          </div>
+          <div class="col-12 mb-3" >
+            <%=select_tag 'sport_id', options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }.insert(0, "Sport")), class: "form-control" %>
+          </div>
+          <div class="col-12 mb-3" >
+            <%=select_tag 'city_id', options_for_select(City.all.collect{ |city| [city.city_name, city.id] }),class: "form-control" , :onchange => "centerCityMap()" %>
+          </div>
+          <div class="col-12 mb-3 d-flex hidden-div">
+            <div class="col-6 p-0 pr-1">
+              <%= text_field_tag :latitude, @latitude , id:"lat-form", placeholder: "latitude", class: "form-control d-none  " %>
+            </div>
+            <div class="col-6 p-0 pl-1 ">
+              <%= text_field_tag :longitude, @longitude, id: "lgn-form", placeholder: "longitude", class: "form-control d-none " %>
+            </div>
+          </div>
+          <div class="col-12 mb-3 row" >
+            <div class="col-9">
+                <%= date_field_tag 'start_date', @start_date, placeholder: "Date", class: "form-control "  %>
+            </div>
+            <div class="col-3 mb-3 pr-1 d-flex pt-3" >
+              <span class="time-spinner">À partir de </span>
+                <%= time_field_tag 'hour_start', class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-12 mb-3" >
+                <%= number_field_tag 'duration', @duration, class: "form-control ", placeholder: "durée" , min:0 ,step:5 %>
+          </div>
+          <div class="col-12 mb-3">
+            <%= text_area_tag 'description', @description, class: "form-control", placeholder: "description" %>
+          </div>
+          <div class="col-12 mb-3">
+            <%= submit_tag "Créer", class: 'btn btn-block btn-lg btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-7 col-lg-7 col-xl-7 mx-auto">
+        <div class="col-xl-12 mx-auto font-1 f-medium text-center pb-3 pt-3">
+          <h3 class="f-medium font-1 medium-color f-uppercase"> Pointe le lieu de Rdv sur la map ! </h3>
+        </div>
+        <div id="new-event-map" class="col-12 mb-3 border-map"></div>
+      </div>
+    </div>
+  </div>
