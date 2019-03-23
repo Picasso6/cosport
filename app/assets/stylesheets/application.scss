@@ -275,14 +275,18 @@ $f-size-5: 0.8rem;
      SETUP NAVBAR AND FOOTER STICKY WITH FLEXBOX
  ----------------------------------------------------- */
 
+html {
+height: 100%;
+}
+
  html,body {
- 	height:100%;
   padding-top:70px;
   background-color: $m-color-1;
   }
  body {
   display: flex;
   flex-direction: column;
+
   overflow-x: hidden;
 }
 
