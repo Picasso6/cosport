@@ -18,11 +18,11 @@
   </div>
 
     <div class="col-12 mb-3" >
-          <%=select_tag :sport_id, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }), autocomplete: "sport_id", class: "form-control" %>
+          <%=select_tag :sport_id, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] },@event.sport_id ),  class: "form-control" %>
     </div>
 
     <div class="col-12 mb-3" >
-          <%=select_tag :city_id, options_for_select(City.all.collect{ |city| [city.city_name, city.id] }), autocomplete: "city_id", class: "form-control", :onchange => "centerCityMap()"  %>
+          <%=select_tag :city_id, options_for_select(City.all.collect{ |city| [city.city_name, city.id] },@event.city_id), class: "form-control", :onchange => "centerCityMap()"  %>
     </div>
 
 
@@ -48,6 +48,8 @@
                    <span class="time-spinner">À partir de </span>
                     <%= time_field_tag 'hour_start', class: "form-control" %>
               </div>
+
+          
               </div>
 
           <div class="col-12 mb-3" >
@@ -70,11 +72,11 @@
      <div class="col-xl-12 mx-auto font-1 f-medium text-center pb-3 pt-3">
        <h3 class="f-medium font-1 medium-color f-uppercase"> Pointe le lieu de Rdv sur la map ! </h3>
      </div>
-      <div id="new-event-map" class="col-12 mb-3 border-map"></div>
+      <div id="edit-event-map" class="col-12 mb-3 border-map"></div>
     </div>
 
   </div>
   </div>
   </header>
 
-  <%= javascript_include_tag 'new_event_map' %>
+  <%= javascript_include_tag 'edit_event_map' %>
