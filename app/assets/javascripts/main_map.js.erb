@@ -1,45 +1,69 @@
 var parisLatitude = 48.864716;
 var parisLongitude =  2.349014 ;
 var map ;
-<% event_today = Event.all %>
+var iconMarkers = new L.FeatureGroup();
 getMapAsync();
+//iconZoom()
 
-console.log("gon.events");
-console.log(gon.events);
-function createMapCircles()
+function createMapIcons()
 {
-  //--- test ----
-  gon.events.forEach(function(event) {
 
+  gon.events.forEach(function(event) {
+        var iconPath = getIconIrl(event.sport_id)
          var randomNumber = Math.floor(Math.random() * 490) - 245;
          randomNumber = randomNumber/100000;
          var latitude = Number(event.latitude) + randomNumber;
          var longitude = Number(event.longitude) + randomNumber;
-         circle = L.circle([latitude ,longitude], {radius: 250}).addTo(map);
-         // circle.bindPopup("sport");
-         // console.log("event.latitude");
-         // console.log(event.latitude);
-         circle.on('click', function()
+         //circle = L.circle([latitude ,longitude], {radius: 250}).addTo(map);
+         mapIcon = L.icon({
+              iconUrl: iconPath,
+              iconSize: [38, 38],
+              iconAnchor: [22, 38],
+              popupAnchor: [-3, -76],
+
+              shadowSize: [68, 95],
+              shadowAnchor: [22, 94]
+                                });
+          var marker = L.marker([latitude ,longitude], {icon: mapIcon}).addTo(map);
+          iconMarkers.addLayer(marker);
+         marker.on('click', function()
            {
            window.location = "events/"+event.id
            })
 
        });
-//---- end test -----
+
 }
+
+// function iconZoom(){
+// map.on('zoomend', function() {
+//   console.log("removal icon function work");
+//     if (map.getZoom() <15){
+//             map.removeLayer(iconMarkers);
+//     }
+//     else {
+//             map.addLayer(iconMarkers);
+//         }
+// });
+// }
+
+
+
+
+
 
 function initMapWithoutGeolocation()
 {
    map = L.map('main-map').setView([parisLatitude,parisLongitude],15);
    L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',{maxZoom :100}).addTo(map);
-   createMapCircles()
+   createMapIcons()
 }
 
 function initMapWithGeolocation(lat,lng)
 {
    map = L.map('main-map').setView([lat,lng],15);
    L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',{maxZoom :100}).addTo(map);
-   createMapCircles()
+   createMapIcons()
 }
 
 if (!navigator.geolocation)
@@ -61,5 +85,53 @@ function getMapAsync()
 {
     setTimeout(function() {navigator.geolocation.getCurrentPosition(success,failure)},1);
     return map;
+
+}
+
+function getIconIrl(sport_id)
+{
+  switch(sport_id)
+  {
+    case 1 :
+        return "assets/football_icon.png";
+        break;
+    case 2:
+        return "/assets/handball_icon.png";
+        break;
+    case 3:
+        return "/assets/petanque_icon.png";
+        break;
+    case 4:
+        return "/assets/running_icon.png";
+        break;
+    case 5:
+        return "/assets/tennis_icon.png";
+        break;
+    case 6:
+        return "/assets/natation_icon.png";
+        break;
+    case 7:
+        return "/assets/escalade_icon.png";
+        break;
+    case 8:
+        return "/assets/basketball_icon.png";
+        break;
+    case 9:
+        return "/assets/roller_icon.png";
+        break;
+    case 10:
+        return "/assets/volleyball_icon.png";
+        break;
+    case 11:
+        return "/assets/ping-pong_icon.png";
+        break;
+    case 12:
+        return "/assets/badmington_icon.png";
+        break;
+    default:
+        return
+        break;
+    }
+
 
 }
