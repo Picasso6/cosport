@@ -36,7 +36,10 @@
         <div class="text-center py-3 f-size-3 font-4 primary-color f-medium pb-5"> À <%= event.start_date.strftime('%H:%M') %></div>
       </div>
       <div class="card-body f-size-2 strong-color font-4 f-regular">
-        <div><b class="event-landing-page"><%= event.owner.first_name%> <%= event.owner.last_name%></b></br> vous propose sur <%= event.city.city_name%>, </div>
+        <div><%= link_to (user_path(event.owner.id)) do %>
+          <b class="event-landing-page"><%= event.owner.first_name%> <%= event.owner.last_name%></b>
+          <%end%>
+        </br> vous propose sur <%= event.city.city_name%>, </div>
         <div class="f-thin"><%= event.description%></div>
 
       <div class="text-left py-3">  <%= link_to "+ d'infos", event_path(event.id), class: "event-landing-page medium-color font-4 f-regular text-center" %></div>

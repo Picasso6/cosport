@@ -11,6 +11,7 @@ class EventsController < ApplicationController
     gon.sport = @event.sport
     gon.user = current_user
     gon.attendance = current_user.attendances.where(event_id: @event.id).exists? && @event.owner_id != current_user.id
+    gon.validation  = current_user.attendances.where(event_id: @event.id)[0].validation 
     @comment = @event.comments
   end
 

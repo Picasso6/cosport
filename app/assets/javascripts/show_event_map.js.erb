@@ -2,10 +2,11 @@
 var map = L.map('show-event-map').setView([Math.abs(Number(gon.event.latitude)),Math.abs(Number(gon.event.longitude))],15);
 L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',{maxZoom :100}).addTo(map);
 
-console.log("longitude="+Math.abs(Number(gon.event.latitude)));
-console.log("lat="+gon.event.latitude);
-//
-if (gon.attendance === true || gon.event.owner_id === gon.user.id)
+// console.log("longitude="+Math.abs(Number(gon.event.latitude)));
+// console.log("lat="+gon.event.latitude);
+// console.log("validation event:" + gon.validation);
+
+if ( gon.validation  || gon.event.owner_id === gon.user.id)
 {
   var marker = L.marker([gon.event.latitude,gon.event.longitude]).addTo(map);
   marker.bindPopup(gon.sport.sport_name);
@@ -24,9 +25,3 @@ else
 
 
 }
-//
-// console.log(gon.sport.sport_name)
-
-//Event Marker
-// var marker = L.marker().addTo(map);
-// marker.bindPopup("<h3>ICI C'EST LILLE BOLOSS!!</h3>");
