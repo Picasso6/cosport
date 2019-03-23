@@ -1,0 +1,6 @@
+<div class="sticky font-1 primary-color-bg f-size-3 font-3 text-center extended-content-container">
+  <%= @days_array_fr[@events_hash.keys[@i].wday]%>
+  <%= @events_hash.keys[@i].strftime("%e")%>
+  <%= @months_array_fr[@events_hash.keys[@i].strftime("%m").to_i]%>
+  <%= @events_hash.keys[@i].strftime("%Y") %>
+</div>

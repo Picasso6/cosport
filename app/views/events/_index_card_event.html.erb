@@ -1,0 +1,25 @@
+<%events_by_hour = @events_hash.values[@i].group_by_hour_of_day { |evt| (evt.start_date+ Time.now.gmt_offset).utc.strftime("%T,%L")} %>
+<%j =0 %>
+<% while j< events_by_hour.length %>
+  <% events_by_hour.values[j].sort_by(&:start_date).each do |event|%>
+    <div class="card card-event-index p-3 my-5" style="min-height: 400px;">
+      <span class="sport-notify-badge f-size-2 font-3 strong-color"><%= event.sport.sport_name %></span>
+      <div class="card-title">
+        <span class="profil-picture-event-all">
+          <%if event.owner.profil_picture.attached?%>
+            <div class="user" style="background-image: url(<%= rails_blob_url(event.owner.profil_picture) %>)"></div>
+          <%else%>
+            <span class="profil-picture-event-all"><%= image_tag "person.png", alt: 'profil_picture', class: "user" %></span>
+          <% end %>
+        </span>
+        <div class="text-center py-3 f-size-3 font-4 primary-color f-medium pb-5"> À <%= event.start_date.strftime('%H:%M') %></div>
+      </div>
+      <div class="card-body f-size-2 strong-color font-4 f-regular">
+        <div><b class="event-landing-page"><%= event.owner.first_name%> <%= event.owner.last_name%></b></br> vous propose sur <%= event.city.city_name%>, </div>
+        <div class="f-thin"><%= event.description%></div>
+        <div class="text-left py-3">  <%= link_to "+ d'infos", event_path(event.id), class: "event-landing-page medium-color font-4 f-regular text-center" %></div>
+      </div>
+    </div>
+  <% end %>
+  <% j +=1 %>
+<% end %>
