@@ -44,6 +44,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params["id"])
+    gon.event = @event
   end
 
   def update
