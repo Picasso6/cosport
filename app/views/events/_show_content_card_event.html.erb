@@ -1,5 +1,5 @@
 <div class="card rounded p-3" style="min-height: 400px;">
-
+ 
   <div class="card-title">
     <span class="profil-picture-event">
       <%if @event.owner.profil_picture.attached?%>
@@ -12,7 +12,11 @@
     <div class="text-center py-3 f-size-4 font-4 primary-color f-medium"> À <%= @event.start_date.strftime('%H:%M') %></div>
   </div>
   <div class="card-body f-size-2 strong-color font-4 f-regular">
-    <div><b class="event-landing-page"><%= @event.owner.first_name%> <%= @event.owner.last_name%></b></br> vous propose sur <%= @event.city.city_name%>, </div>
+    <div><b class="event-landing-page">
+      <%= link_to (user_path(@event.owner.id)) do %>
+      <%= @event.owner.first_name%> <%= @event.owner.last_name %>
+      <%end%>
+        </b></br> vous propose sur <%= @event.city.city_name%>, </div>
     <div class="f-thin"><%= @event.description%></div>
     </div>
   </div>

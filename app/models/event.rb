@@ -22,7 +22,7 @@ class Event < ApplicationRecord
       where(["sport_id = ? and start_date >= ?", "#{params["sport"]}", "#{DateTime.now}"])
     elsif params["city"] != "Ville" && params["sport"] != "Sport" && params["start_date"] == ""
       where(["city_id = ? and sport_id = ? and start_date >= ?", "#{params["city"]}", "#{params["sport"]}", "#{DateTime.now}"])
-    elsif params["city"] != "Ville" && params["sport"] += "Sport" && params["start_date"] != ""
+    elsif params["city"] != "Ville" && params["sport"] == "Sport" && params["start_date"] != ""
       where(["city_id = ? and start_date >= ? and start_date >= ?", "#{params["city"]}", "#{params["start_date"].to_datetime}", "#{DateTime.now}"])
     elsif params["city"] == "Ville" && params["sport"] != "Sport" && params["start_date"] != ""
       where(["sport_id = ? and start_date >= ? and start_date >= ?", "#{params["sport"]}", "#{params["start_date"].to_datetime}", "#{DateTime.now}"])

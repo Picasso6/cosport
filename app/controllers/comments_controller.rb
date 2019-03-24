@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
 			# redirect_to request.referrer
 			format.html { redirect_to request.referrer }
 			 format.js
-			 # Comment.last.destroy
 		end
 		else
 			puts @comment.errors.full_messages
