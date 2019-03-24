@@ -26,7 +26,7 @@ Par défaut le point de rendez-vous est situé au centre de la ville séléction
 
 ### Cosports aujourd'hui 
 
-Cosport propose une fonctionnalité permettant de visualiser tous les cosports situés autour de l'utilisateur et qui auront lieu dans la journée en cours. Une icone orange vous pointe sur la carte pour préciser vortre position sur la carte. Si le navigateur refuse la géolocalisation , la carte pointe par défaut sur le centre de Paris.
+Cosport propose une fonctionnalité permettant de visualiser tous les cosports situés autour de l'utilisateur et qui auront lieu dans la journée en cours. Une icone orange vous pointe sur la carte pour préciser vortre position . Si le navigateur refuse la géolocalisation , la carte pointe par défaut sur le centre de Paris.
 Chaque icone représente le sport définissant le cosport. Pour plus de précision sur celui-ci l'utilisateur doit cliquer sur l'icône.
 
 ### Présentation du cosport
