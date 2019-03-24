@@ -2,7 +2,7 @@
 
 => cosport.herokuapp.com 
 
-À propos
+<h2> À propos </h2>
 
 Cosport est une application en ligne permettant de creer ou de trouver des rendez-vous centrés sur le sport. 
 Elle a pour ambition de créer du lien social à travers l' organisation de créneaux sportifs à plusieurs (appelés cosports).
@@ -26,17 +26,31 @@ Par défaut le point de rendez-vous est situé au centre de la ville séléction
 
 Cosports aujourd'hui 
 
-Cosport propose une fonctionnalité permettant de visualiser tous les cosports situés autour de l'utilisateur et qui auront lieu dans la journée en cours. 
+Cosport propose une fonctionnalité permettant de visualiser tous les cosports situés autour de l'utilisateur et qui auront lieu dans la journée en cours. Une icone orange vous pointe sur la carte pour préciser vortre position sur la carte. Si le navigateur refuse la géolocalisation , la carte pointe par défaut sur le centre de Paris.
+Chaque icone représente le sport définissant le cosport. Pour plus de précision sur celui-ci l'utilisateur doit cliquer sur l'icône.
+
+Présentation du cosport
+
+La page d'affichage du cosport présente les éléments le caractérisant.L'utilisateur peut demander à s'inscrire au cosport en cliquant sur le bouton rejoindre. Il sera alors en attente de validation. Le point de rendez-vous est définit par une zone sur la carte. Cette zone est remplacée par un marqueur précis une fois que la participation de l'utilisateur été validée par le créateur de l'évenement. Il est impossible de définir le point de rendez-vous précis à partir du centrede lazone quand la participation de l'utilisateur n'est pas validée, car un algorythme change le centre du cercle à chaque rafraichissement.  
+
+Gestion des participations
+
+Une notification apparait au niveau du bouton profil quand des participants demandent à rejoindre  un evenetment que l'utilisateur a crée. Un lien vers la page de gestion des participation apparait alors dans la dropdown du profil.
+L'utilisateur peut alors validé ou refusé la participation d'une personne à son cosport.
 
 Mode admin
 
 Un mode admin a été conçu pour le site.
 Ce mode permet de bannir des utilisateurs ou supprimer des événements sportifs si ceux si s'avèrent problématiques.
-Vous pouvez vous connecter à Cosport grace au mode admin par cette adresse :
+Vous pouvez vous connecter à Cosport grace au mode admin par cette adresse =>
+\n
 id : cosport-admin@yopmail.com
 password : 123456
 
-Prévision
+Prévisions
 
-Niveau par sport
-Mode tinderlike
+Cosport espére évoluer au cours des prochains mois.
+Parmis les fonctionnalités que l'équipe compte implémenter , on trouve celle du defilement de profil façon "tinder". L'utilisateur gerera les validations de participations de cette façon.
+La fonctionnalité de recherche de cosports compte elle aussi évoluer. Un moteur de recherche de lieu permettra de référencer des sports dans des endroits autres que les grandes villes. 
+Les cosports pourront être aussi référencer en focntion du niveau de l'utilisateur dans tel ou tel sport. Ainsi un bon joggeur pourra crée un cosport de running destinés uniquement aux bon joggeurs , par exemple.
+Un système de régie publicitaire destiné uniquement à la vente de produits ou services rattachés au sport peut aussi être mis en place . Ainsi un utilisateur aimant le tennis sera mis en lien avec des magasin de tennis. La main_map pourra referencé des points de ventes d'articles de sports .
