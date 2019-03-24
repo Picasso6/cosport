@@ -16,7 +16,9 @@
           <% while j< events_by_hour.length %>
           <br>
              <% events_by_hour.values[j].sort_by(&:start_date).each do |event|%>
-                 <%= link_to event.title , event_path(event.id) , method: "get", class: "event-profil-page  strong-color" %>
+                 <div class="col flex-column">
+                   <%= link_to event.title , event_path(event.id) , method: "get", class: "event-profil-page  strong-color" %>
+                 </div>
              <%end%>
             <% j +=1 %>
           <% end %>
@@ -33,12 +35,14 @@
         <%= @past_attendances_hash.keys[i].strftime("%e")%>
         <%= @months_array_fr[@past_attendances_hash.keys[i].strftime("%m").to_i]%>
         <%= @past_attendances_hash.keys[i].strftime("%Y") %>
-      </br>
+      <br>
         <%events_by_hour = @past_attendances_hash.values[i].group_by_hour_of_day { |att| (att.event.start_date+ Time.now.gmt_offset).utc.strftime("%T,%L")} %>
          <%j =0 %>
           <% while j< events_by_hour.length %>
              <% events_by_hour.values[j].sort { |a,b| a.event.start_date <=> b.event.start_date }.each do |attendance|%>
-                 <%= link_to attendance.event.title , event_path(attendance.event.id) , method: "get", class: "event-profil-pages strong-color" %>
+                 <div class="col flex-column">
+                   <%= link_to attendance.event.title , event_path(attendance.event.id) , method: "get", class: "event-profil-pages strong-color" %>
+                 </div>
              <%end%>
             <% j +=1 %>
           <% end %>
