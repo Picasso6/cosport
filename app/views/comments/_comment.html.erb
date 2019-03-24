@@ -1,11 +1,12 @@
-<div class="media text-muted pt-3 " id="comment<%comment.id%>">
-  <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray text-dark">
-    <strong class="d-block text-muted"><%= link_to user_path(comment.user.id), class: 'text-dark' do %> <%= comment.user.first_name %> <%= comment.user.last_name %><%end%></strong>
-    <%= comment.content %>
-    <% if comment.user == current_user %>
-    <br><%= link_to "supprimer", event_comment_path(comment.event.id, comment.id), class: 'text-danger', :method => :delete %>
+<div class="media text-muted pt-3 col-2" id="comment<%comment.id%>">
+  <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray text-dark d-flex">
+    <strong class="d-block text-muted"><%= link_to user_path(comment.user.id), class: 'text-dark' do %>
+        <%= comment.user.first_name %><%= comment.user.last_name %><%end%>
+        </strong>
+          <%= comment.content %>
+            <% if comment.user == current_user %>
+            <br>
+        <%= link_to "supprimer", event_comment_path(comment.event.id, comment.id), class: 'text-danger', :method => :delete %>
     <% end %>
-  </p>
-
-
+    </div>
 </div>
