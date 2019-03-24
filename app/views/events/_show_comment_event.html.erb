@@ -1,16 +1,31 @@
-
-
-<%= form_tag(event_comments_path(@event.id), method: :post ) do %>
+<%= form_tag(event_comments_path(@event.id), method: :post, remote: true ) do %>
 
 <div class="col-8 mb-3 pt-5">
-      <%= text_area_tag :content, '', autocomplete: "off", class: "btn font-3 f-thin f-size-3  text-left", placeholder: "Écris ton commentaire dans la boite !" %>
+      <%= text_area_tag :content, '', autocomplete: "off", class: "btn font-3 f-thin f-size-3 text-left", placeholder: "Écris ton commentaire dans la boite !" %>
 </div>
 <div class="col-2 mb-3">
-      <%= submit_tag "Ajouter un commentaire", class: '  btn-comment medium-color font-4 f-regular' %>
+      <%= submit_tag "Ajouter un commentaire", class: '  btn-comment medium-color font-4 f-regular', id: 'ajax-click' %>
 </div>
 <% end %>
 
-<% @comment.each do |comment| %>
-	<p><a href="<%= user_path(comment.user_id) %>"><%= comment.user.first_name %></a> dit : <%= comment.content %></p>
-	<%= button_to "delete", event_comment_path(@event.id, comment.id), :method => :delete %>
-<% end %>
+
+<div class="container">
+  <div class="col-md-6 col-sm-12">
+      <div class="my-3 p-3 bg-light rounded box-shadow comment-box", id="comment-">
+              <h6 class="border-bottom border-gray pb-2 mb-0">Commentaires</h6>
+              <% @comment.each do |comment| %>
+              <div class="media text-muted pt-3" id="comment<%=comment.id%>">
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray text-dark">
+                  <strong class="d-block text-muted"><%= link_to user_path(comment.user_id), class: 'text-dark' do %> <%= comment.user.first_name %> <%= comment.user.last_name %><%end%></strong>
+                  <%= comment.content %>
+                  <% if comment.user.id == current_user.id %>
+                  <br><%= link_to "supprimer", event_comment_path(@event.id, comment.id), class: 'text-danger', :method => :delete, remote: true %>
+                  <% end %>
+                </p>
+      </div>
+      <% end %>
+<div id="close"></div>
+    </div>
+    <span class="icon-comment-down"><%= image_tag('down', class: "icon-social mx-auto pb-4")%></span>
+</div>
+</div>
