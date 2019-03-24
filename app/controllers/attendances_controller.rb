@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AttendancesController < ApplicationController
   include AttendancesHelper
   before_action :authenticate_user!, only: [:create]
@@ -9,28 +11,24 @@ class AttendancesController < ApplicationController
     @attendances = []
     events.each do |event|
       event.attendances.each do |attendance|
-        if attendance.validation != true
-          @attendances << attendance
-        end
+        @attendances << attendance if attendance.validation != true
       end
     end
   end
 
   def create
     unless already_attended?
-        @event = Event.find(params[:event_id])
-        @attendance = Attendance.new(attendee_id: current_user.id, event_id: @event.id)
-        if @attendance.save
-          flash[:notice] = "Votre demande de participation est en attente de validation."
-          redirect_to event_path(@attendance.event.id)
-        else
-          flash[:danger] = "Erreur lors de la demande de participation."
-          redirect_to request.referrer
-        end
+      @event = Event.find(params[:event_id])
+      @attendance = Attendance.new(attendee_id: current_user.id, event_id: @event.id)
+      if @attendance.save
+        flash[:notice] = 'Votre demande de participation est en attente de validation.'
+        redirect_to event_path(@attendance.event.id)
+      else
+        flash[:danger] = 'Erreur lors de la demande de participation.'
+        redirect_to request.referrer
+      end
       end
     end
-
-
 
   def edit
     @attendance = Attendance.find(params[:id])
@@ -50,8 +48,8 @@ class AttendancesController < ApplicationController
 
   def destroy
     @attendance = Attendance.find(params[:id])
-    if @attendance.attendee == current_user &&  @attendance.destroy
-      flash[:notice] = "Vous vous être desinscrit de cette annonce."
+    if @attendance.attendee == current_user && @attendance.destroy
+      flash[:notice] = 'Vous vous être desinscrit de cette annonce.'
       redirect_to request.referrer
     elsif @attendance.destroy
       redirect_to request.referrer
@@ -63,5 +61,4 @@ class AttendancesController < ApplicationController
   def already_attended?
     Attendance.where(attendee_id: current_user.id, event_id: params[:event_id]).exists?
   end
-
 end
