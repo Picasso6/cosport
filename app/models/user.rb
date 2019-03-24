@@ -44,11 +44,17 @@ class User < ApplicationRecord
     self.save
   end
 
-  # def alert
-  #   if User
-  #   flash[:notice] = "Votre compte a bien été créé, merci de le valider grace au lien envoyer sur votre adresse email."
-  #   redirect_to root_path
-  # end
+  def notification_number()
+      accumulator = 0
+    if Attendance.where(validation: nil).exists?
+       Attendance.where(validation: nil).each do |atd|
+         if Event.find(atd.event_id).owner_id == self.id
+           accumulator += 1
+         end
+       end
+     end
+      return accumulator
+  end
 
 
 end
