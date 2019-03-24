@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
       <div class="col-xl-12 mx-auto font-1 text-center pb-3">
-        <h1 class="f-bold font-1 strong-color">Réinitialiser son mot de passe</h1>
+        <h1 class="f-regular font-3 strong-color">Réinitialiser son mot de passe</h1>
       </div>
       <div class="col-md-7 col-lg-7 col-xl-5 mx-auto">
 
@@ -14,13 +14,13 @@
 
   <div class="col-12 mb-3">
     <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+      <em class="medium-color f-size-5 f-thin font-4">(<%= @minimum_password_length %> characters minimum)</em><br />
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder: "nouveau mot de passe", class: "form-control" %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder: "nouveau mot de passe", class: "form-control-light" %>
   </div>
 
   <div class="col-12 mb-3">
-    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "confirmer le mot de passe", class: "form-control" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "confirmer le mot de passe", class: "form-control-light" %>
   </div>
 
   <div class="col-12 mb-3">

@@ -2,113 +2,128 @@
 
   <!-- <div class="overlay"></div> -->
     <div class="container">
-      <div class="col-xl-12 mx-auto font-1 text-center pb-3">
-        <h1 class="f-bold font-3 strong-color"> Édition du profil</h1>
+      <div class="col-xl-6 mx-auto font-1 text-left pb-5 px-5">
+        <h1 class="f-regular font-3 strong-color">Profil</h1>
       </div>
 
-      <div class="col-6 mb-3 mx-auto">
+<div class="row pb-3 ">
+  <div class="col-md-9 col-sm-12 col-lg-6 col-xl-6 mx-auto">
 
-          <div class="profil-picture-user">
-            <%if @user.profil_picture.attached?%>
-              <div class="user" style="background-image: url(<%= rails_blob_url(@user.profil_picture) %>)"></div>
-               <%else%>
-              <p>pas encore de profil_picture</p>
-            <% end %>
-          </div>
+
+  <div class="col-12">
+    <div class="profil-picture-edit p-3">
+      <%if @user.profil_picture.attached?%>
+      <div class="user user-edit" style="background-image: url(<%= rails_blob_url(@user.profil_picture) %>)"></div>
+     <%else%>
+    <p>pas encore de profil_picture</p>
+    <% end %>
+      </div>
+        </div>
+        <div class="col-12 mb-5">
+          <div class="col p-0 pr-1 mb-3">
         <%= form_tag user_profil_picture_index_path(@user), multipart: true do %>
-          <div class="file-inputs">
-            <%= file_field_tag :profil_picture, class:"file" %>
-            <div class="fake-file">Choisir son avatar</div>
-          </div>
-          <div class="">
-            <%= submit_tag "Sauvegarder", class: "btn btn-block btn-primary" %>
-          </div>
-            <% end %>
-          </div>
+        <div class="file-inputs">
+          <%= file_field_tag :profil_picture, class:"file" %>
+        <div class="fake-file btn btn-light col-6">Choisir son avatar</div>
+        </div>
+      </div>
+    <div class="col p-0 pr-1">
+      <%= submit_tag "Sauvegarder", class: "btn btn-light col-6" %>
+      </div>
+    <% end %>
+  </div>
 
+      </div>
+    </div>
 
-            <div class="col-6 mb-3 mx-auto">
-              <%= form_tag users_sports_create_path, :method => 'get' do %>
-              <em class="col-12 mb-3">Ajoutez vos niveaux dans les sports pratiqués.</em>
-              <div class="col-12 mb-3 d-flex">
-                <div class="col-4 p-0 pr-1">
-                  <%= select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }), class: "form-control" %>
-                  </div>
-              <div class="col-4 p-0 pl-1 ">
-                <%= select_tag :level, options_for_select(UsersSport.level_sport.collect{ |sport| [sport] }), class: "form-control" %>
-              </div>
-              <div class="col-4 p-0 pl-1 ">
-              <%= submit_tag "Ajouter", :name => nil, class: "btn btn-block btn-lg btn-primary" %>
-              </div>
+          <div class="row">
+              <div class="col-md-9 col-sm-12 col-lg-6 col-xl-6  mx-auto">
+                <%= form_tag users_sports_create_path, :method => 'get' do %>
+                <em class="col-12 mb-3 medium-color f-size-5 f-thin font-4">Ajoutez vos niveaux dans les sports pratiqués.</em>
+
+                <div class="col-12 mb-3 d-flex">
+                  <div class="col-4 p-0 pr-1">
+                    <%= select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }), class: "form-control-light" %>
+                    </div>
+                <div class="col-4 p-0 pl-1 ">
+                  <%= select_tag :level, options_for_select(UsersSport.level_sport.collect{ |sport| [sport] }), class: "form-control-light" %>
                 </div>
-              <div class="col-12 mb-3">
-                <ul>
-                  <% @user.users_sports.each do |level_sport| %>
-                  <li>
-                    <%= link_to "x", user_users_sport_path(@user.id, level_sport.id), :method => :delete, class: "text-danger" %>
-                    <%= level_sport.sport.sport_name %> (<%= level_sport.level_user %>)
-                  </li>
-                <% end %>
-              </ul>
-            <% end %>
-          </div>
+                <div class="col-4 p-0 pl-1 ">
+                <%= submit_tag "Ajouter", :name => nil, class: "btn btn-block btn-lg btn-primary" %>
+                </div>
+              </div>
+
+                <div class="col-12 mb-3">
+                  <ul>
+                    <% @user.users_sports.each do |level_sport| %>
+                    <li>
+                      <%= link_to "x", user_users_sport_path(@user.id, level_sport.id), :method => :delete, class: "text-danger" %>
+                      <%= level_sport.sport.sport_name %> (<%= level_sport.level_user %>)
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div>
+
+    </div>
+  </div>
+
+
+
+
+
+<div class="row mb-4">
+<div class="col-md-9 col-sm-12 col-lg-6 col-xl-6 mx-auto">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="col-12 mb-3 d-flex mx-auto">
+      <div class="col-6 p-0 pr-1">
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "prénom", class: "form-control-light" %>
         </div>
-
-
-
-
-
-
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-
-        <div class="col-6 mb-3 d-flex mx-auto">
-          <div class="col-6 p-0 pr-1">
-      <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "prénom", class: "form-control" %>
-      </div>
         <div class="col-6 p-0 pl-1 ">
-          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "nom", class: "form-control" %>
-        </div>
-      </div>
+      <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "nom", class: "form-control-light" %>
+    </div>
+  </div>
 
-      <div class="col-12 mb-3">
-        <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", placeholder: "téléphone", class: "form-control" %>
-      </div>
+  <div class="col-12 mb-3">
+    <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", placeholder: "téléphone", class: "form-control-light" %>
+  </div>
 
-      <div class="col-12 mb-3">
-        <%= f.text_area :description, autofocus: true, autocomplete: "description", placeholder: "description", class: "form-control" %>
-      </div>
-
-
-        <div class="col-12 mb-3">
-          <%= select_tag :gender, options_for_select(['Homme', 'Femme']), class: "form-control"%>
-        </div>
+  <div class="col-12 mb-3">
+    <%= f.text_area :description, autofocus: true, autocomplete: "description", placeholder: "description", class: "form-control-light" %>
+  </div>
 
 
-        <div class="col-12 mb-3">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email", class: "form-control" %>
-        </div>
-
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-        <% end %>
+    <div class="col-12 mb-3">
+      <%= select_tag :gender, options_for_select(['Homme', 'Femme']), class: "form-control-light"%>
+    </div>
 
 
-<!-- START OF SECOND CARD -->
+    <div class="col-12 mb-3">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email", class: "form-control-light" %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+  </div>
+  </div>
+
 
   <div class="row ">
-    <div class="col-6 mx-auto">
+    <div class="col-md-9 col-sm-12 col-lg-6 col-xl-6 mx-auto">
       <div class="col-12 mb-3">
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> caractères minimum)</em>
+        <em class= "medium-color f-size-5 f-thin font-4">(<%= @minimum_password_length %> caractères minimum)</em>
           <% end %>
-        <%= f.password_field :password, autocomplete: "new-password", placeholder: "mot de passe (ignorez pour laisser en état)", class: "form-control" %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "mot de passe (ignorez pour laisser en état)", class: "form-control-light" %>
           </div>
-            <div class="col-12 mb-3">
-          <%= f.password_field :password_confirmation, placeholder: "confirmer le mot de passe", autocomplete: "new-password", class: "form-control" %>
+            <div class="col-12 mb-3 pb-5">
+          <%= f.password_field :password_confirmation, placeholder: "confirmer le mot de passe", autocomplete: "new-password", class: "form-control-light" %>
         </div>
         <div class="col-12 mb-3">
-      <%= f.password_field :current_password, placeholder: "mot de passe actuel (obligatoire)", autocomplete: "current-password", class: "form-control" %>
+      <%= f.password_field :current_password, placeholder: "mot de passe actuel (obligatoire)", autocomplete: "current-password", class: "form-control-light" %>
       </div>
         <div class="col-12 mb-3">
         <%= f.submit "Éditer", class: "btn btn-block btn-lg btn-primary" %>
