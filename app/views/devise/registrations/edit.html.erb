@@ -1,50 +1,70 @@
 <header class="masthead-2 mhead-3 text-cente">
 
-  <div class="overlay"></div>
+  <!-- <div class="overlay"></div> -->
     <div class="container">
-      <div class="row">
       <div class="col-xl-12 mx-auto font-1 text-center pb-3">
-        <h1 class="f-bold font-1 strong-color"> Édition du profil</h1>
+        <h1 class="f-bold font-3 strong-color"> Édition du profil</h1>
       </div>
 
-      <div class="col-md-7 col-lg-7 col-xl-5 mx-auto">
-          <div class="col-12 mb-3">
-          <%= form_tag user_profil_picture_index_path(@user), multipart: true do %>
-              <p><%= file_field_tag :profil_picture %> <br><br> <%= submit_tag "Changer son avatar", class: "btn btn-block btn-primary" %></p>
-          <% end %>
+      <div class="col mx-auto">
+
+        <div class="col-6 mb-3 mx-auto d-flex">
+          <div class="col-12 profil-picture-user">
+            <%if @user.profil_picture.attached?%>
+              <div class="user" style="background-image: url(<%= rails_blob_url(@user.profil_picture) %>)"></div>
+               <%else%>
+              <p>pas encore de profil_picture</p>
+            <% end %>
+          </div>
+        <%= form_tag user_profil_picture_index_path(@user), multipart: true do %>
+          <div class=" col-6 file-inputs">
+            <%= file_field_tag :profil_picture, class:"file" %>
+            <div class="fake-file">Choisir son avatar</div>
+          </div>
+          <div class="col-6">
+            <%= submit_tag "Sauvegarder", class: "btn btn-block btn-primary" %>
+          </div>
+            <% end %>
           </div>
 
-<%= form_tag users_sports_create_path, :method => 'get' do %>
-<em class="col-12 mb-3">Ajoutez vos niveaux dans les sports pratiqués.</em>
-<div class="col-12 mb-3 d-flex">
-  <div class="col-4 p-0 pr-1">
-    <%= select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }), class: "form-control" %>
-    </div>
-      <div class="col-4 p-0 pl-1 ">
-        <%= select_tag :level, options_for_select(UsersSport.level_sport.collect{ |sport| [sport] }), class: "form-control" %>
-      </div>
-      <div class="col-4 p-0 pl-1 ">
-<%= submit_tag "Ajouter", :name => nil, class: "btn btn-block btn-lg btn-primary" %>
-      </div>
-    </div>
-    <div class="col-12 mb-3">
-      <ul>
-      <% @user.users_sports.each do |level_sport| %>
-        <li><%= link_to "x", user_users_sport_path(@user.id, level_sport.id), :method => :delete, class: "text-danger" %> <%= level_sport.sport.sport_name %> (<%= level_sport.level_user %>)</li>
-      <% end %>
-      </ul>
 
-  <% end %>
-  </div>
+            <div class="col-6 mb-3 mx-auto">
+              <%= form_tag users_sports_create_path, :method => 'get' do %>
+              <em class="col-12 mb-3">Ajoutez vos niveaux dans les sports pratiqués.</em>
+              <div class="col-12 mb-3 d-flex">
+                <div class="col-4 p-0 pr-1">
+                  <%= select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }), class: "form-control" %>
+                  </div>
+              <div class="col-4 p-0 pl-1 ">
+                <%= select_tag :level, options_for_select(UsersSport.level_sport.collect{ |sport| [sport] }), class: "form-control" %>
+              </div>
+              <div class="col-4 p-0 pl-1 ">
+              <%= submit_tag "Ajouter", :name => nil, class: "btn btn-block btn-lg btn-primary" %>
+              </div>
+                </div>
+              <div class="col-12 mb-3">
+                <ul>
+                  <% @user.users_sports.each do |level_sport| %>
+                  <li>
+                    <%= link_to "x", user_users_sport_path(@user.id, level_sport.id), :method => :delete, class: "text-danger" %>
+                    <%= level_sport.sport.sport_name %> (<%= level_sport.level_user %>)
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        </div>
 
 
 
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="col-12 mb-3 d-flex">
-    <div class="col-6 p-0 pr-1">
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="col-6 mb-3 d-flex mx-auto">
+          <div class="col-6 p-0 pr-1">
       <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "prénom", class: "form-control" %>
       </div>
         <div class="col-6 p-0 pl-1 ">
@@ -66,45 +86,37 @@
         </div>
 
 
-  <div class="col-12 mb-3">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email", class: "form-control" %>
+        <div class="col-12 mb-3">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email", class: "form-control" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+
+<!-- START OF SECOND CARD -->
+
+  <div class="row ">
+    <div class="col-6 mx-auto">
+      <div class="col-12 mb-3">
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> caractères minimum)</em>
+          <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "mot de passe (ignorez pour laisser en état)", class: "form-control" %>
+          </div>
+            <div class="col-12 mb-3">
+          <%= f.password_field :password_confirmation, placeholder: "confirmer le mot de passe", autocomplete: "new-password", class: "form-control" %>
+        </div>
+        <div class="col-12 mb-3">
+      <%= f.password_field :current_password, placeholder: "mot de passe actuel (obligatoire)", autocomplete: "current-password", class: "form-control" %>
+      </div>
+        <div class="col-12 mb-3">
+        <%= f.submit "Éditer", class: "btn btn-block btn-lg btn-primary" %>
+          </div>
+          <% end %>
+        <p class="col-12 mb-3"><%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "En es-tu sur ?" }, method: :delete, class: "text-danger" %></p>
+      </div>
+    </div>
   </div>
-
-
-
-
-
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="col-12 mb-3">
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> caractères minimum)</em>
-    <% end %>
-    <br />
-    <%= f.password_field :password, autocomplete: "new-password", placeholder: "mot de passe (ignorez pour laisser en état)", class: "form-control" %>
-  </div>
-
-  <div class="col-12 mb-3">
-    <%= f.password_field :password_confirmation, placeholder: "confirmer le mot de passe", autocomplete: "new-password", class: "form-control" %>
-  </div>
-
-  <div class="col-12 mb-3">
-    <%= f.password_field :current_password, placeholder: "mot de passe actuel (obligatoire)", autocomplete: "current-password", class: "form-control" %>
-  </div>
-
-  <div class="col-12 mb-3">
-    <%= f.submit "Éditer", class: "btn btn-block btn-lg btn-primary" %>
-  </div>
-<% end %>
-
-
-<p class="col-12 mb-3"><%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "En es-tu sur ?" }, method: :delete, class: "text-danger" %></p>
-
-</div>
-</div>
-
-</div>
 </header>
