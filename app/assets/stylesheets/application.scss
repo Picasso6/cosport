@@ -329,10 +329,10 @@ section {
     width: 130px;
 }
  .icon-large {
-     width: 160px;
+     width: 220px;
  }
  .icon-xlarge {
-     width: 230px;
+     width: 240px;
  }
 
  span.ico-map::before {
@@ -854,6 +854,10 @@ div.profil-picture-edit {
     background-size: cover;
     border: 5px solid #000000;
     background-color: white;
+}
+
+.user-no-picture {
+  border-color: $s-color-2;
 }
 
 .user-edit {

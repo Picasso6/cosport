@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-xl-9 mx-auto">
           <h1 class="f-bold font-3 strong-color f-size-1 display-2"> Le sport où tu veux, <br>avec qui tu veux !</h1>
-            <h5 class="f-medium font-4  mb-5">Trouves des partenaires pour faire du sport ! </h5>
+            <h5 class="f-medium font-4  mb-5">Trouve des partenaires pour faire du sport ! </h5>
         </div>
         <div class="col-md-10 col-lg-9 col-xl-7 mx-auto">
                 <%= form_tag events_index_path, :method => 'get', :id => 'events_search', class: "" do %>
@@ -53,7 +53,7 @@
                   <%if event.owner.profil_picture.attached?%>
                   <div class="user" style="background-image: url(<%= rails_blob_url(event.owner.profil_picture) %>)"></div>
                   <%else%>
-                    <%= image_tag "person.png", alt: 'profil_picture', class: "profil-picture" %>
+                    <%= image_tag "person.png", alt: 'profil_picture', class: "user user-no-picture"  %>
                   <% end %>
                   </span>
                   <%= link_to event.title.capitalize.to_s , event_path(event.id) , method: "get", class:"event-landing-page" %>
@@ -100,7 +100,7 @@
               <%= image_tag('icon-comet', class: "icon-social mx-auto pb-4")%>
             </div>
             <h3 class= "font-3">Facilité</h3>
-            <p class="lead mb-0 p-3">Cosport, rien de plus facile, vous postez votre annonce, vous validez la présence des intéressés, petit échange par mail ou sms, et c’est parti !</p>
+            <p class="lead mb-0 p-3">Cosport, rien de plus facile : vous postez votre annonce, vous validez la présence des intéressés, un petit échange par mail ou sms et c’est parti !</p>
           </div>
         </div>
       </div>
