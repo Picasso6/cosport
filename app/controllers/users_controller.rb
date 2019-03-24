@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:new , :show]
+  before_action :authenticate_user!, only: %i[new show]
   # config.filter_parameters << :secret_key
 
   def index
@@ -7,16 +9,16 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@sport = Sport.all
-  	@level_sport = UsersSport.level_sport
+    @sport = Sport.all
+    @level_sport = UsersSport.level_sport
     @user = User.find(params[:id])
     @opinion = Opinion.where(recipient_id: @user)
 
-    @future_owned_events = Event.where("owner_id = ? and start_date >= ?", "#{current_user.id}", "#{DateTime.now}")
-    @future_owned_events_hash = @future_owned_events.group_by_day { |evt| evt.start_date }
-    @past_owned_events = Event.where("owner_id = ? and start_date <= ?", "#{current_user.id}", "#{DateTime.now}")
-    @past_owned_events_hash = @past_owned_events.group_by_day { |evt| evt.start_date }
-    @user_attendances = Attendance.where("attendee_id = ?", "#{current_user.id}").sort { |a,b| a.event.start_date <=> b.event.start_date }
+    @future_owned_events = Event.where('owner_id = ? and start_date >= ?', current_user.id.to_s, DateTime.now.to_s)
+    @future_owned_events_hash = @future_owned_events.group_by_day(&:start_date)
+    @past_owned_events = Event.where('owner_id = ? and start_date <= ?', current_user.id.to_s, DateTime.now.to_s)
+    @past_owned_events_hash = @past_owned_events.group_by_day(&:start_date)
+    @user_attendances = Attendance.where('attendee_id = ?', current_user.id.to_s).sort { |a, b| a.event.start_date <=> b.event.start_date }
     @future_attendances = []
     @past_attendances = []
     @user_attendances.each do |attendance|
@@ -28,34 +30,27 @@ class UsersController < ApplicationController
     end
     @future_attendances_hash = @future_attendances.group_by_day { |att| att.event.start_date }
     @past_attendances_hash = @past_attendances.group_by_day { |att| att.event.start_date }
-    @months_array_fr = [ nil, "Janvier", "Fevrier" ," Mars" , "Avril" , "Mai" , "Juin" ,"Juillet", "Août" , "Septembre" , "Octobre" , "Novembre" ,"Décembre"]
-    @days_array_fr = ["Dimanche" , "Lundi "," Mardi" , "Mercredi" ,"Jeudi" , "Vendredi", "Samedi" ]
+    @months_array_fr = [nil, 'Janvier', 'Fevrier', ' Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
+    @days_array_fr = ['Dimanche', 'Lundi ', ' Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
 
-
-    if @user.level >= 5 && @user.level <50
-      @level = "Curieux"
+    if @user.level >= 5 && @user.level < 50
+      @level = 'Curieux'
     elsif @user.level >= 50 && @user.level < 200
-      @level = "Appliqué"
+      @level = 'Appliqué'
     elsif @user.level >= 200 && @user.level < 500
-      @level = "Mordu"
+      @level = 'Mordu'
     elsif @user.level >= 500
-      @level = "Acharné"
+      @level = 'Acharné'
     end
-
 
     events = Event.where(owner_id: @user.id)
     @attendances = []
     events.each do |event|
       event.attendances.each do |attendance|
-        if attendance.validation != true
-          @attendances << attendance
-        end
+        @attendances << attendance if attendance.validation != true
       end
     end
   end
 
-  def edit
-
-  end
-
+  def edit; end
 end
