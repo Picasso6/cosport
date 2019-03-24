@@ -1,51 +1,67 @@
 var parisLatitude = 48.864716;
 var parisLongitude =  2.349014 ;
 var map ;
-var iconMarkers = new L.FeatureGroup();
+userIcon = L.icon({
+     iconUrl: '/assets/person.png',
+     iconSize: [35, 35],
+     iconAnchor: [22, 38],
+     popupAnchor: [-3, -76],
+     shadowSize: [68, 95],
+     shadowAnchor: [22, 94]
+                       });
+
 getMapAsync();
-//iconZoom()
+var iconMarkers = new L.FeatureGroup();
 
 function createMapIcons()
 {
 
-  gon.events.forEach(function(event) {
-        var iconPath = getIconIrl(event.sport_id)
-         var randomNumber = Math.floor(Math.random() * 490) - 245;
-         randomNumber = randomNumber/100000;
-         var latitude = Number(event.latitude) + randomNumber;
-         var longitude = Number(event.longitude) + randomNumber;
-         //circle = L.circle([latitude ,longitude], {radius: 250}).addTo(map);
-         mapIcon = L.icon({
-              iconUrl: iconPath,
-              iconSize: [35, 35],
-              iconAnchor: [22, 38],
-              popupAnchor: [-3, -76],
-
-              shadowSize: [68, 95],
-              shadowAnchor: [22, 94]
-                                });
-          var marker = L.marker([latitude ,longitude], {icon: mapIcon}).addTo(map);
-          iconMarkers.addLayer(marker);
-         marker.on('click', function()
-           {
-           window.location = "events/"+event.id
-           })
+  gon.eventsToday.forEach(function(event)
+  {
+    var iconPath = getIconIrl(event.sport_id)
+     var randomNumber = Math.floor(Math.random() * 490) - 245;
+     randomNumber = randomNumber/100000;
+     var latitude = Number(event.latitude) + randomNumber;
+     var longitude = Number(event.longitude) + randomNumber;
+     //circle = L.circle([latitude ,longitude], {radius: 250}).addTo(map);
+     mapIcon = L.icon({
+          iconUrl: iconPath,
+          iconSize: [35, 35],
+          iconAnchor: [22, 38],
+          popupAnchor: [-3, -76],
+          shadowSize: [68, 95],
+          shadowAnchor: [22, 94]
+                            });
+      // var marker = L.marker([latitude ,longitude], {icon: mapIcon}).addTo(map);
+      // iconMarkers.addLayer(marker);
+      var marker = L.marker([latitude ,longitude], {icon: mapIcon});
+      iconMarkers.addLayer(marker);
+      iconMarkers.addTo(map);
+      //
+     marker.on('click', function()
+       {
+       window.location = "events/"+event.id
+       })
 
        });
-
+  iconZoom()
 }
 
-// function iconZoom(){
-// map.on('zoomend', function() {
-//   console.log("removal icon function work");
-//     if (map.getZoom() <15){
-//             map.removeLayer(iconMarkers);
-//     }
-//     else {
-//             map.addLayer(iconMarkers);
-//         }
-// });
-// }
+function iconZoom()
+{
+    map.on('zoomend', function()
+    {
+
+        if (map.getZoom() < 13)
+        {
+        map.removeLayer(iconMarkers);
+        }
+        else
+        {
+        map.addLayer(iconMarkers);
+        }
+      });
+}
 
 
 
@@ -63,7 +79,9 @@ function initMapWithGeolocation(lat,lng)
 {
    map = L.map('main-map').setView([lat,lng],15);
    L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',{maxZoom :100}).addTo(map);
+   var userMarker = L.marker([lat,lng], {icon: userIcon}).addTo(map);
    createMapIcons()
+   console.log(map.getZoom());
 }
 
 if (!navigator.geolocation)
