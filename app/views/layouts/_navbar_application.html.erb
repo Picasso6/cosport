@@ -286,6 +286,9 @@
                  <%= link_to "PROFIL", user_path(current_user.id), class: "nav-link dropdown-item" %>
 
                  <%= link_to "Deconnexion", destroy_user_session_path, method: "delete", class: "nav-link dropdown-item" %>
+                 <% if current_user.notification_number() != 0%>
+                  <%= link_to "Demandes", user_attendances_path(current_user.id), class: "nav-link dropdown-item" %>
+                 <%end%>
                  <% if current_user && current_user.admin == true%>
                    <%= link_to "Admin Page", admin_root_path, class: "nav-link dropdown-item" %>
                  <%  end %>
