@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class Admin::EventsController < ApplicationController
   include CheckAdminHelper
   before_action :authenticate_user!
   before_action :check_if_admin
 
   def index
-    @event = Event.where("start_date >= ?", "#{DateTime.now}")
+    @event = Event.where('start_date >= ?', DateTime.now.to_s)
   end
 
   def update
@@ -19,9 +21,7 @@ class Admin::EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     if Attendance.exists?(event: @event)
-      Attendance.where(event: @event).each do |attendance|
-        attendance.destroy
-      end
+      Attendance.where(event: @event).each(&:destroy)
     end
     @event.destroy
     redirect_to request.referrer
