@@ -42,10 +42,6 @@ Mode admin
 
 Un mode admin a été conçu pour le site.
 Ce mode permet de bannir des utilisateurs ou supprimer des événements sportifs si ceux si s'avèrent problématiques.
-Vous pouvez vous connecter à Cosport grace au mode admin par cette adresse =>
-
-id : cosport-admin@yopmail.com.  
-, password : 123456
 
 Prévisions
 
