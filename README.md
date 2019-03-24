@@ -2,7 +2,7 @@
 
 => cosport.herokuapp.com 
 
-<h2> À propos </h2>
+ À propos 
 
 Cosport est une application en ligne permettant de creer ou de trouver des rendez-vous centrés sur le sport. 
 Elle a pour ambition de créer du lien social à travers l' organisation de créneaux sportifs à plusieurs (appelés cosports).
@@ -43,9 +43,9 @@ Mode admin
 Un mode admin a été conçu pour le site.
 Ce mode permet de bannir des utilisateurs ou supprimer des événements sportifs si ceux si s'avèrent problématiques.
 Vous pouvez vous connecter à Cosport grace au mode admin par cette adresse =>
-\n
-id : cosport-admin@yopmail.com
-password : 123456
+
+id : cosport-admin@yopmail.com.  
+, password : 123456
 
 Prévisions
 
