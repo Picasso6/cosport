@@ -40,23 +40,21 @@
 
 
 /*Leaflet CSS*/
-#edit-event-map
-{ height: 480px;
+#edit-event-map {
+  height: 480px;
   width: 100%;
 }
 
-#new-event-map
-{ height: 480px;
+#new-event-map {
+  height: 480px;
   width: 100%;
 }
-#show-event-map
-{ height: 300px;
+#show-event-map {
+  height: 300px;
   width: 100%;
 }
-#main-map
-{ height: 550px;
-  margin-bottom: 50px;
-
+#main-map {
+  height: 550px;
 }
  .border-map {
   border: 2px solid #889aad !important;
@@ -314,6 +312,9 @@ hr {
 .footer {
   flex-shrink: 0;
   background-color: grey;
+  max-height: 65px;
+  min-height: 65px;
+  color: #f6f6f6;
 }
 
 section {
@@ -328,7 +329,7 @@ section {
     width: 130px;
 }
  .icon-large {
-     width: 200px;
+     width: 160px;
  }
  .icon-xlarge {
      width: 230px;
@@ -368,6 +369,17 @@ span.ico-search::before {
  height: 20px;
  float: left;
  margin: 10px 10px 0 0;
+}
+
+span.legend-map-1::before {
+  content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      float: left;
+      border-radius: 15px;
+      background-color: #ff815a;
+      margin: 1px 15px 0 0;
 }
 
 img.icon-social { width: auto; max-height: 200px;}
@@ -477,11 +489,28 @@ a.event-profil-page:hover {
   border: 0px;
 }
 .btn-secondary {
-
+    background-color: transparent;
+    color: #808080;
+    border-width: 0px;
+    border: 1px solid #cdcdcd;
+    box-shadow: -4px 4px 0px 4px #6d685c3b;
+    border-radius: 5px;
 }
+
+.btn-light {
+  background-color: transparent;
+  color: #808080;
+  border-width: 0px;
+  box-shadow: 0px 1px 0px 0px #6d685c3b;
+}
+
 .btn-primary:hover {
   background-color: $f-color-2;
 }
+.btn-secondary:hover {
+    color: #f6f6f6;
+}
+.btn-light:hover {background-color: $m-color-1; }
 .btn:focus, .btn.focus {
     outline: 0;
    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
@@ -497,8 +526,7 @@ div.fake-file {
   left: 0px;
   z-index: 1;
   cursor: pointer;
-  box-shadow: -1px 1px 0px 1px #6f4dff;
-  border-bottom-left-radius: 5px;
+
 }
 
 input.file {
@@ -581,6 +609,23 @@ a.navpill-profil:hover {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.form-control-light {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 12px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-width: 0px;
+    border: 1px solid #cdcdcd;
+    box-shadow: -1px 1px 0px 1px #6d685c3b;
+    border-radius: 5px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
 .form-control:focus {
     color: #495057;
     background-color: #fff;
@@ -589,6 +634,13 @@ a.navpill-profil:hover {
     box-shadow: 0 0 0 0.2rem rgb(255, 129, 90);
 }
 
+.form-control-light:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #ff815a;
+    outline: 0;
+    box-shadow: 0 0 0 0.05rem rgb(255, 129, 90);
+}
 
 
 
@@ -781,18 +833,16 @@ top: 25px;
 
 //span profil image profil user
 span.profil-picture-user {
-  position: absolute;
-  top: -40px;
-  right: 270px;
   display: block;
 }
 
 //span profil image profil edit
-span.profil-picture-edit {
-  position: absolute;
-  top: 0px;
-  left:30px;
+div.profil-picture-edit {
   display: block;
+  top: -130px;
+  left: 280px;
+  position: absolute;
+
 }
 .user {
     display: inline-block;
@@ -806,6 +856,11 @@ span.profil-picture-edit {
     background-color: white;
 }
 
+.user-edit {
+  width: 210px !important;
+  height: 210px !important;
+  opacity: 1;
+}
 
 #card-event .card:hover {
             background: #fff;
