@@ -6,10 +6,9 @@
         <h1 class="f-bold font-3 strong-color"> Édition du profil</h1>
       </div>
 
-      <div class="col mx-auto">
+      <div class="col-6 mb-3 mx-auto">
 
-        <div class="col-6 mb-3 mx-auto d-flex">
-          <div class="col-12 profil-picture-user">
+          <div class="profil-picture-user">
             <%if @user.profil_picture.attached?%>
               <div class="user" style="background-image: url(<%= rails_blob_url(@user.profil_picture) %>)"></div>
                <%else%>
@@ -17,11 +16,11 @@
             <% end %>
           </div>
         <%= form_tag user_profil_picture_index_path(@user), multipart: true do %>
-          <div class=" col-6 file-inputs">
+          <div class="file-inputs">
             <%= file_field_tag :profil_picture, class:"file" %>
             <div class="fake-file">Choisir son avatar</div>
           </div>
-          <div class="col-6">
+          <div class="">
             <%= submit_tag "Sauvegarder", class: "btn btn-block btn-primary" %>
           </div>
             <% end %>
