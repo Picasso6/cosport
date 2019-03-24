@@ -1,18 +1,16 @@
 
-
 var selectTag = document.getElementById("city_id");
 var cityValue = selectTag.value;
 var map;
-mapCity();
-onClickMap();
-
 var theMarker = {};
 var lat;
 var lon;
+mapCity();
+onClickMap();
 
 function mapCity()
 {
-  console.log("mapcity() OK");
+
   <%City.all.each do |city|%>
   if (selectTag.value === "<%=city.id%>" || selectTag.value === "" )
   {
@@ -27,7 +25,7 @@ function mapCity()
 
 function centerCityMap()
 {
-    console.log("centerCityMap() OK");
+
   <%City.all.each do |city|%>
   if (selectTag.value == "<%=city.id%>")
   {
@@ -43,16 +41,15 @@ function onClickMap()
 {
   map.on('click',function(e)
   {
-        console.log("onClickMap()  OK");
-       lat = e.latlng.lat;
-       lon = e.latlng.lng;
-       if (theMarker != undefined) {
-             map.removeLayer(theMarker);
-       };
-      theMarker = L.marker([lat,lon]);
-      theMarker.addTo(map);
-      console.log("clicked on"+lat +" "+ lon);
-       document.getElementById("lat-form").value = lat;
-       document.getElementById("lgn-form").value = lon;
+     lat = e.latlng.lat;
+     lon = e.latlng.lng;
+     if (theMarker != undefined)
+     {
+       map.removeLayer(theMarker);
+     };
+    theMarker = L.marker([lat,lon]);
+    theMarker.addTo(map);
+    document.getElementById("lat-form").value = lat;
+    document.getElementById("lgn-form").value = lon;
   });
 }

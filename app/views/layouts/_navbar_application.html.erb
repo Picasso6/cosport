@@ -254,7 +254,7 @@
           <%= link_to "COSPORT", root_path, class: "nav-link secondary-color logo-font-size" %>
         </li>
       </ul>
-
+   
 
           <% if current_user %>
 
@@ -276,9 +276,15 @@
         </li>
             <li>
               <div class="nav-item dropdown show">
-               <button onclick="dropProfilList()" class="dropbtn nav-link secondary-color">Profil</button>
+               <button onclick="dropProfilList()" class="dropbtn nav-link secondary-color">
+                 Profil
+                 <% if current_user.notification_number() != 0%>
+                  <%= current_user.notification_number()%>
+                 <%end%>
+               </button>
                <div id="profilDropdown" class="dropdown-content">
                  <%= link_to "PROFIL", user_path(current_user.id), class: "nav-link dropdown-item" %>
+
                  <%= link_to "Deconnexion", destroy_user_session_path, method: "delete", class: "nav-link dropdown-item" %>
                  <% if current_user && current_user.admin == true%>
                    <%= link_to "Admin Page", admin_root_path, class: "nav-link dropdown-item" %>

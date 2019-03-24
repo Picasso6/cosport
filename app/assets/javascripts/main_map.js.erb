@@ -9,7 +9,7 @@ userIcon = L.icon({
      shadowSize: [68, 95],
      shadowAnchor: [22, 94]
                        });
-
+//Map creation
 getMapAsync();
 var iconMarkers = new L.FeatureGroup();
 
@@ -32,8 +32,7 @@ function createMapIcons()
           shadowSize: [68, 95],
           shadowAnchor: [22, 94]
                             });
-      // var marker = L.marker([latitude ,longitude], {icon: mapIcon}).addTo(map);
-      // iconMarkers.addLayer(marker);
+
       var marker = L.marker([latitude ,longitude], {icon: mapIcon});
       iconMarkers.addLayer(marker);
       iconMarkers.addTo(map);
@@ -47,6 +46,7 @@ function createMapIcons()
   iconZoom()
 }
 
+//Remove icon when zoom is to low
 function iconZoom()
 {
     map.on('zoomend', function()
@@ -67,7 +67,7 @@ function iconZoom()
 
 
 
-
+//Map Geolocalisation
 function initMapWithoutGeolocation()
 {
    map = L.map('main-map').setView([parisLatitude,parisLongitude],15);
@@ -81,7 +81,7 @@ function initMapWithGeolocation(lat,lng)
    L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',{maxZoom :100}).addTo(map);
    var userMarker = L.marker([lat,lng], {icon: userIcon}).addTo(map);
    createMapIcons()
-   console.log(map.getZoom());
+
 }
 
 if (!navigator.geolocation)
