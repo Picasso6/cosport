@@ -8,6 +8,13 @@
       <% @attendances.sort { |a,b| a.created_at <=> b.created_at }.each do |attendance| %>
       <div class="card card-event-index p-3 my-5" id="att<%=attendance.id%>">
         <div class="card-body f-size-2 strong-color font-4 f-regular">
+          <div class="profil-picture pb-2">
+            <%if attendance.attendee.profil_picture.attached?%>
+            <div class="user" style="background-image: url(<%= rails_blob_url(attendance.attendee.profil_picture) %>)"></div>
+            <%else%>
+              <%= image_tag "person.png", alt: 'profil_picture', class: "user user-no-picture"  %>
+            <% end %>
+            </div>
             <%= link_to user_path(attendance.attendee.id), class: 'text-dark' do %>
             <b class="event-landing-page font-3 f-regular">
               <%= attendance.attendee.first_name %> <%= attendance.attendee.last_name %>
@@ -17,7 +24,7 @@
           souhaite participer à votre cosport :
             <br>
             <b class="event-hover mb-5 font-4 f-medium">"<%= attendance.event.title %>".</b>
-            <b class="py-5 col-5 justify-content-between d-flex mx-auto font-4 f-medium">
+            <b class="py-3 col-5 justify-content-between d-flex mx-auto font-4 f-medium">
               <%= link_to "Valider", event_attendance_path(attendance.event.id, attendance.id) ,method: "patch", remote: true, class: "primary-color" %>
               <%= link_to "Refuser", event_attendance_path(attendance.event.id, attendance.id),method: "delete", class: 'secondary-color' %>
               </b>
