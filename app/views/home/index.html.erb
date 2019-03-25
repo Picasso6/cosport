@@ -2,29 +2,29 @@
 <section id= "section-main"> <!-- place your content inside for sticky footer -->
   <div class="container-fluid">
 
-  <header class="masthead text-white text-center">
+  <header class="masthead text-center">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
-        <div class="col-xl-9 mx-auto font-1">
-          <h2 class="f-bold"> Le sport où tu veux, avec qui tu veux !</h2>
-            <h5 class="f-light mb-5">Cosport : trouve des partenaires sportifs ! </h5>
+        <div class="col-xl-9 mx-auto">
+          <h1 class="f-bold font-3 strong-color f-size-1 display-2"> Le sport où tu veux, <br>avec qui tu veux !</h1>
+            <h5 class="f-medium font-4  mb-5">Trouve des partenaires pour faire du sport ! </h5>
         </div>
         <div class="col-md-10 col-lg-9 col-xl-7 mx-auto">
                 <%= form_tag events_index_path, :method => 'get', :id => 'events_search', class: "" do %>
               <div class="form-row form-landing-page">
 
               <div class="col-12 col-md-3 mb-md-0">
-                    <p><%=select_tag :city, options_for_select(City.all.collect{ |city| [city.city_name, city.id] }.insert(0, "Ville")), class: "form-control form-control-xs" %> </p>
+                    <p><%=select_tag :city, options_for_select(City.all.collect{ |city| [city.city_name, city.id] }.insert(0, "Ville")), class: "form-control-light form-control-xs" %> </p>
                       </div>
                       <div class="col-12 col-md-3 mb-md-0">
-                        <p><%=select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }.insert(0, "Sport")), class:"form-control" %></p>
+                        <p><%=select_tag :sport, options_for_select(Sport.all.collect{ |sport| [sport.sport_name, sport.id] }.insert(0, "Sport")), class:"form-control-light" %></p>
                       </div>
                         <div class="col-12 col-md-4 mb-md-0">
-                        <p>  <%= date_field_tag 'start_date', @start_date, class: "form-control"%></p>
+                        <p>  <%= date_field_tag 'start_date', @start_date, class: "form-control-light"%></p>
                         </div>
                       <div class="col-12 col-md-2">
-                      <%= submit_tag "Search", :name => nil, class: "btn btn-block btn-lg btn-primary" %>
+                      <%= submit_tag "Go", :name => nil, class: "btn btn-block btn-lg btn-primary" %>
                     </div>
                 <% end %>
               </div>
@@ -36,9 +36,9 @@
 
   <div class="section-2">
     <div class="container">
-      <div class="row align-items-center font-4  pt-5">
+      <div class="row align-items-center font-4  pt-2">
         <div class="col-lg-8 font-3 f-size-3 py-5 mb-2">
-      Quels sports faites vous ?
+      Les derniers cosports crées :
         </div>
         <div class="col-lg-4 text-right">
         </div>
@@ -53,7 +53,7 @@
                   <%if event.owner.profil_picture.attached?%>
                   <div class="user" style="background-image: url(<%= rails_blob_url(event.owner.profil_picture) %>)"></div>
                   <%else%>
-                    <%= image_tag "person.png", alt: 'profil_picture', class: "profil-picture" %>
+                    <%= image_tag "person.png", alt: 'profil_picture', class: "user user-no-picture"  %>
                   <% end %>
                   </span>
                   <%= link_to event.title.capitalize.to_s , event_path(event.id) , method: "get", class:"event-landing-page" %>
@@ -73,7 +73,10 @@
     </div>
   </div>
 
+
+
   <div class="features-icons text-center">
+      <div class="line-home mx-auto "></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-4">
@@ -100,7 +103,7 @@
               <%= image_tag('icon-comet', class: "icon-social mx-auto pb-4")%>
             </div>
             <h3 class= "font-3">Facilité</h3>
-            <p class="lead mb-0 p-3">Cosport, rien de plus facile, vous postez votre annonce, vous validez la présence des intéressés, petit échange par mail ou sms, et c’est parti !</p>
+            <p class="lead mb-0 p-3">Cosport, rien de plus facile : vous postez votre annonce, vous validez la présence des intéressés, un petit échange par mail ou sms et c’est parti !</p>
           </div>
         </div>
       </div>

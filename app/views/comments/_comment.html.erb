@@ -1,4 +1,4 @@
-<div class="media text-muted pt-3 col-2" id="comment<%comment.id%>">
+<div class="media text-muted pt-3 col" id="comment<%comment.id%>">
   <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray text-dark d-flex">
     <strong class="d-block text-muted"><%= link_to user_path(comment.user.id), class: 'text-dark' do %>
         <%= comment.user.first_name %><%= comment.user.last_name %><%end%>

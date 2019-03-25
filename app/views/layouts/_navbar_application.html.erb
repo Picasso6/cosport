@@ -254,17 +254,17 @@
           <%= link_to "COSPORT", root_path, class: "nav-link secondary-color logo-font-size" %>
         </li>
       </ul>
-   
+
 
           <% if current_user %>
 
       <ul class="navbar-nav">
-        <li class="nav-item icon-xlarge">
+        <li class="nav-item icon-large">
           <span class="ico-map icon-color">
            <%= link_to "Cosports aujourd'hui", maps_path, class: "nav-link secondary-color" %>
           </span>
         </li>
-        <li class="nav-item icon-medium">
+        <li class="nav-item icon-large">
           <span class="ico-search icon-color">
            <%= link_to "Rechercher", search_index_path, class: "nav-link secondary-color" %>
           </span>
@@ -279,18 +279,23 @@
                <button onclick="dropProfilList()" class="dropbtn nav-link secondary-color">
                  Profil
                  <% if current_user.notification_number() != 0%>
-                  <%= current_user.notification_number()%>
+                  <span class="notification font-4 f-medium"><%= current_user.notification_number()%></span>
                  <%end%>
                </button>
-               <div id="profilDropdown" class="dropdown-content">
-                 <%= link_to "PROFIL", user_path(current_user.id), class: "nav-link dropdown-item" %>
+               <div id="profilDropdown" class="dropdown-content rounded">
+                 <%= link_to "Profil", user_path(current_user.id), class: "nav-link dropdown-item nav-color" %>
+
 
                  <%= link_to "Deconnexion", destroy_user_session_path, method: "delete", class: "nav-link dropdown-item" %>
                  <% if current_user.notification_number() != 0%>
-                  <%= link_to "Demandes", user_attendances_path(current_user.id), class: "nav-link dropdown-item" %>
+                    <%= link_to "Notifications", user_attendances_path(current_user.id), class: "nav-link dropdown-item " %>
+                    <span class="notification-dropdown text-center font-4 f-size-5 f-medium">
+                      <%= current_user.notification_number()%>
+                    </span>
                  <%end%>
+
                  <% if current_user && current_user.admin == true%>
-                   <%= link_to "Admin Page", admin_root_path, class: "nav-link dropdown-item" %>
+                   <%= link_to "Administrateur", admin_root_path, class: "nav-link dropdown-item nav-color" %>
                  <%  end %>
                </div>
               </div>
@@ -308,7 +313,7 @@
              <%= link_to "Parcourir les évènements", new_event_path, class: "nav-link secondary-color" %>
             </span>
           </li>
-          <li class="nav-item icon-medium">
+          <li class="nav-item icon-large">
             <span class="ico-search icon-color">
              <%= link_to "Rechercher", search_index_path, class: "nav-link secondary-color" %>
             </span>
