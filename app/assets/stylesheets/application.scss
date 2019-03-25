@@ -315,6 +315,30 @@ section {
  .nav-color {
      color: $f-color-2 !important;
  }
+
+ span.notification{
+   background-color: $f-color-3;
+   width: 25px;
+   height: 24px;
+   position: absolute;
+   border-radius: 15px;
+   top: -12px;
+   right: -15px;
+   color: white;
+ }
+
+ span.notification-dropdown {
+   background-color: $m-color-1;
+   width: 25px;
+   height: 20px;
+   position: absolute;
+   border-radius: 28px;
+   top: 110px;
+   right: 25px;
+   color: $f-color-3;
+   border: 1px solid;
+ }
+
  .show {
    display: block;
  }
@@ -915,10 +939,10 @@ div.profil-picture-edit {
 }
 
 #card-event .card:hover {
-            background: #fff;
-            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
-            border-radius: 4px;
-            transition: all 0.3s ease;
+  background: #fff;
+  box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+  border-radius: 30px;
+  transition: all 0.3s ease;
         }
 
   .my-group .form-control{
@@ -942,7 +966,9 @@ textarea:focus {
   border: 0px;
 }
 
-
+b.event-hover {
+  background-color: $f-color-3;
+}
 
 /* ---------------------------------------------------
     USER SHOW (User#show)
