@@ -1,25 +1,30 @@
-<header class="masthead-2 mhead-3 text-center">
-
+<header class="masthead-2 mhead-1 text-center">
     <div class="container">
       <div class="row">
-
-  <div class="col-md-8 col-lg-8 col-xl-8 mx-auto">
-
-    <div class="col-xl-12 mx-auto font-1 text-center pb-3">
-      <h1 class="f-bold font-1 strong-color font-3"> Gestion des participations</h1>
+        <div class="col-md-8 col-lg-8 col-xl-8 mx-auto">
+          <div class="col-xl-12 mx-auto font-1 text-center pb-3">
+        <h1 class="f-bold strong-color font-3"> Gestion des participations</h1>
+        </div>
+      <% @attendances.sort { |a,b| a.created_at <=> b.created_at }.each do |attendance| %>
+      <div class="card card-event-index p-3 my-5" id="att<%=attendance.id%>">
+        <div class="card-body f-size-2 strong-color font-4 f-regular">
+            <%= link_to user_path(attendance.attendee.id), class: 'text-dark' do %>
+            <b class="event-landing-page font-3 f-regular">
+              <%= attendance.attendee.first_name %> <%= attendance.attendee.last_name %>
+            </b>
+            <br>
+          <%end%>
+          souhaite participer à votre cosport :
+            <br>
+            <b class="event-hover mb-5 font-4 f-medium">"<%= attendance.event.title %>".</b>
+            <b class="py-5 col-5 justify-content-between d-flex mx-auto font-4 f-medium">
+              <%= link_to "Valider", event_attendance_path(attendance.event.id, attendance.id) ,method: "patch", remote: true, class: "primary-color" %>
+              <%= link_to "Refuser", event_attendance_path(attendance.event.id, attendance.id),method: "delete", class: 'secondary-color' %>
+              </b>
+            </div>
+          </div>
+        <%end%>
+      </div>
     </div>
-
-<% @attendances.sort { |a,b| a.created_at <=> b.created_at }.each do |attendance| %>
-<div class="card mb-2 text-left p-2", id="att<%=attendance.id%>">
-<p class="text-dark"><%=link_to user_path(attendance.attendee.id), class: 'text-dark' do %> <%= attendance.attendee.first_name %> <%= attendance.attendee.last_name %> <%end%> souhaite participer à votre cosport "<%= attendance.event.title %>".</p>
-<p><%= link_to "Valider", event_attendance_path(attendance.event.id, attendance.id) ,method: "patch", remote: true %> <%= link_to "Refuser", event_attendance_path(attendance.event.id, attendance.id),method: "delete", class: 'text-danger' %></p>
-</div>
-<%end%>
-
-
-
-</div>
-
-</div>
-</div>
+  </div>
 </header>
