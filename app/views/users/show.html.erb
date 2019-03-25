@@ -33,9 +33,13 @@
                    <p><i class="font-4 f-regular">Niveau sportif :</i></br> <%= level_sport.sport.sport_name %> (<%= level_sport.level_user %>)</p>
                  <% end %>
                <% if current_user.id == @user.id %>
-                 <%= link_to "Editer son profil", edit_user_registration_path, class: "event-landing-page medium-color font-4 f-regular" %>
-                 <%= link_to "Valider les demandes de participation", user_attendances_path(@user.id), class: "event-landing-page medium-color font-4 f-regular" %>
-               <% end %>
+                <p class="pb-3">
+                  <%= link_to "Editer son profil", edit_user_registration_path, class: "event-landing-page medium-color font-4 f-regular" %>
+                </p>
+                  <p>
+                    <%= link_to "Valider les demandes de participation", user_attendances_path(@user.id), class: "event-landing-page medium-color font-4 f-regular" %>
+                 </p>
+                 <% end %>
              </div>
            </div>
          </div>
