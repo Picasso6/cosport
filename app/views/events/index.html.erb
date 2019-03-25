@@ -2,6 +2,9 @@
 <div id="card-event">
 
   <div class="col-md-9 col-lg-7 col-xl-6 mx-auto ">
+    <%if @events_hash.length == 0 %>
+      <h1>Désolé il n'y a pas de cosport correspondant à ta requête :'(</h1>
+    <%end %>
 
   <%i = 0%>
     <% while i < @events_hash.length %>
