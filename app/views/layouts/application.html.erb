@@ -13,8 +13,13 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
 
-
   </head>
+
+  <div class="loading" style="display: none;">
+      <div class="loading-icon-wrapper">
+        <div class="loading-icon" style="display: none;"></div>
+      </div>
+    </div>
 
   <body>
     <%= render "layouts/navbar_application"  %>
