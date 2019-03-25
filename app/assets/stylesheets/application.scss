@@ -338,7 +338,7 @@ section {
    color: $f-color-3;
    border: 1px solid;
  }
- 
+
  .show {
    display: block;
  }
@@ -876,7 +876,7 @@ div.sticky {
 }
 
 .card-border-event {
-  height: 100px;
+  height: auto;
   width: 48.5vw;
   border-width: 0px;
   border: 1px solid #cdcdcd;
@@ -888,8 +888,8 @@ div.sticky {
 
 span.profil-picture {
   position: absolute;
-  right: 30px;
-  top: -35px;
+  right: 25px;
+  top: 70px;
 }
 
 span.profil-picture-event {
@@ -898,6 +898,17 @@ span.profil-picture-event {
   top: -35px;
 }
 
+span.profil-picture-event-show {
+  position: absolute;
+  left: 80px;
+  top: 25px;
+}
+
+span.profil-picture-event-show {
+  position: absolute;
+  left: 80px;
+  top: 25px;
+}
 span.profil-picture-event-all {
   position: absolute;
 left: 30px;
