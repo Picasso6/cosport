@@ -40,7 +40,7 @@
       </div>
       <div class="card-body f-size-2 strong-color font-4 f-regular">
         <div><%= link_to (user_path(event.owner.id)) do %>
-          <b class="event-landing-page"><%= event.owner.first_name%> <%= event.owner.last_name%></b>
+          <b class="event-landing-page"><%= event.owner.first_name%> <%= event.owner.last_name %></b>
           <%end%>
         </br> vous propose sur <%= event.city.city_name%>, </div>
         <div class="f-thin"><%= event.description%></div>
