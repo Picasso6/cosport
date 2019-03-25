@@ -338,7 +338,7 @@ section {
    color: $f-color-3;
    border: 1px solid;
  }
-
+ 
  .show {
    display: block;
  }
@@ -348,9 +348,10 @@ section {
  }
 
  button.dropbtn.nav-link.secondary-color {
-     outline: 0px;
-     border-top: 3px solid #2ff4b7;
- }
+    outline: 0px;
+    border-top: 0px solid #2ff4b7;
+    background-color: white;
+}
  /* END Dropdown Button */
 
 
