@@ -1,41 +1,6 @@
 @import "leaflet";
 @import "bootstrap";
 
-/* Dropdown Button */
-.dropbtn {
-  background-color: #ffffff;
- color: blue;
- font-size: 16px;
- border: none;
- cursor: pointer;
-}
-.dropdown {
-  position: relative;
-  display: inline-block;
-  float: right;
-}
-
-.dropdown-content {
- display: none;
- position: absolute;
- background-color: #ffffff;
- min-width: 160px;
- box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
- z-index: 99999 !important;
- right:0
-}
-
-.dropdown-content a {
- color: black;
- padding: 12px 16px;
- text-decoration: none;
- display: block;
-}
-
-.dropdown-content a:hover {background-color: #2ff4b7;}
-
-.show {display:block;}
-/* END Dropdown Button */
 
 
 
@@ -64,31 +29,7 @@
 
 
 
-//time_field_tag form
-span.time-spinner {
-    position: absolute;
-    top: -6px;
-    left: 17px;
-    color: #6f4dff;
-    font-size: small;
-    font-style: italic;
-   }
-input[type="time"] {
-  -webkit-padding-start: 15px;
-  padding-inline-start: 15px;
-  border-width: 0px;
-  border: 1px solid #6f4dff;
-  border-radius: 5px;
-  height: 32px;
-  width: 104px;
-  font-size: 25px;
-}
 
-input[type="time"]:focus {
-  outline: #ff815a00 solid 4px;
-  box-shadow: 0 0 0 3pt #ff815a;
-  border: 0px;
-}
 
 /* Montserrat > font-1 */
 @font-face {
@@ -274,6 +215,9 @@ $f-size-5: 0.8rem;
 .f-size-4{ font-size: $f-size-4 }
 .f-size-5{ font-size: $f-size-5 }
 
+
+
+
  /* ---------------------------------------------------
      SETUP NAVBAR AND FOOTER STICKY WITH FLEXBOX
  ----------------------------------------------------- */
@@ -329,11 +273,62 @@ section {
     width: 130px;
 }
  .icon-large {
-     width: 220px;
+     width: 235px;
  }
  .icon-xlarge {
      width: 240px;
  }
+
+
+ /* Dropdown Button */
+ .dropbtn {
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+ }
+ .dropdown {
+   position: relative;
+   display: inline-block;
+   float: right;
+ }
+
+ .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 99999 !important;
+  right:0
+ }
+
+ .dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+ }
+
+ .dropdown-content a:hover {
+   background-color: #2ff4b7;
+ }
+
+ .nav-color {
+     color: $f-color-2 !important;
+ }
+ .show {
+   display: block;
+ }
+ .dropdown-content {
+   border: 1px solid #6f4dff;
+   box-shadow: -1px 1px 0px 1px #7758f9;
+ }
+
+ button.dropbtn.nav-link.secondary-color {
+     outline: 0px;
+     border-top: 3px solid #2ff4b7;
+ }
+ /* END Dropdown Button */
+
 
  span.ico-map::before {
   content: "";
@@ -368,7 +363,7 @@ span.ico-search::before {
  mask-size: cover;  width: 20px;
  height: 20px;
  float: left;
- margin: 10px 10px 0 0;
+ margin: 10px 10px 0 15px;
 }
 
 span.legend-map-1::before {
@@ -382,7 +377,7 @@ span.legend-map-1::before {
       margin: 1px 15px 0 0;
 }
 
-img.icon-social { width: auto; max-height: 200px;}
+img.icon-social { width: 100px; max-height: 200px;}
 
 .icon-color:before {
   background-color: $f-color-2;
@@ -616,7 +611,7 @@ a.navpill-profil:hover {
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5;
-    color: #495057;
+    color: #757575;
     background-color: #fff;
     background-clip: padding-box;
     border-width: 0px;
@@ -643,12 +638,57 @@ a.navpill-profil:hover {
 }
 
 
+//time_field_tag form
+span.time-spinner {
+  position: absolute;
+  top: -15px;
+  left: 17px;
+  font-size: small;
+  font-style: italic;
+   }
+input[type="time"] {
+
+  width: 100%;
+  height: calc(2rem + 8px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-width: 0px;
+  border: 1px solid #cdcdcd;
+  box-shadow: -1px 1px 0px 1px #6d685c3b;
+  border-radius: 5px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input[type="time"]:focus {
+  outline: #ff815a00 solid 4px;
+  box-shadow: 0 0 0 3pt #ff815a;
+  border: 0px;
+}
+
 
 //form devise
 a.links-devise:hover {
     color: #ff815a;
     border-bottom: 1px solid #ff815a;
     text-decoration: none;
+}
+
+// alert
+
+.alert-success {
+    color: #18684f;
+    background-color: #2ff4b7a3;
+    border-color: #82d7bc;
+}
+
+.alert-danger {
+  color: #8f0153;
+      background-color: #f32929bd;
+      border-color: #db3737;
 }
 
 /* ---------------------------------------------------
@@ -680,7 +720,7 @@ header.masthead-2 {
   color: $f-color-2;
 }
 
-header.mhead-1 {  background-color: #f6f6f6 }
+header.mhead-1 {  background-color: #f6f6f6; }
 header.mhead-2 {  background: url("banner2.png") no-repeat center center; }
 header.mhead-3 {  background: url("banner6.png") no-repeat center center; }
 header.mhead-4 {  background: url("banner.png") no-repeat center center; }
@@ -721,9 +761,17 @@ h5.f-light.mb-5 {
 }
 
 
+.line-home {
+  width: 35vw;
+  border: 3px solid #dfdfdf;
+  margin-bottom: 5em;
+  margin-top: 2em;
+  border-radius: 10px;
+}
+
 .features-icons {
-  padding-top: 12rem;
-  padding-bottom: 12rem;
+  padding-top: 8rem;
+  padding-bottom: 7rem;
 }
 
 .features-icons .features-icons-item {

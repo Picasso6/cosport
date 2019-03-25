@@ -46,7 +46,6 @@ window.onclick = function(event) {
 
 
 
-
 $(document).ready(function(){
 
   window.onbeforeunload = function () {
