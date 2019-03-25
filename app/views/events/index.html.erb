@@ -41,11 +41,7 @@
       <div class="card-body f-size-2 strong-color font-4 f-regular">
       <b class="event-landing-page">
         <div><%= link_to (user_path(event.owner.id)) do %>
-<<<<<<< HEAD
-          <b class="event-landing-page"><%= event.owner.first_name%> <%= event.owner.last_name %></b>
-=======
             <%= event.owner.first_name%> <%= event.owner.last_name%>
->>>>>>> db739089af42cad227723a4bb1cc749ca4787d45
           <%end%>
           </b>
         <br> vous propose sur <%= event.city.city_name%>, </div>
@@ -63,3 +59,4 @@
 
   </div>
 </div>
+<span id=""><%= current_user.notification_number()%></span><span id="e"><%= current_user.notification_number()%></span><span id="event"><%= current_user.notification_number()%></span>

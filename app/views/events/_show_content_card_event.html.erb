@@ -1,7 +1,7 @@
 <div class="card rounded p-3 card-border-event" style="min-height: 400px;">
 
   <div class="card-title">
-    <span class="profil-picture-event">
+    <span class="profil-picture-event-show">
       <%if @event.owner.profil_picture.attached?%>
       <div class="user" style="background-image: url(<%= rails_blob_url(@event.owner.profil_picture) %>)"></div>
       <%else%>
