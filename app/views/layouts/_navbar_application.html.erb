@@ -279,7 +279,7 @@
                <button onclick="dropProfilList()" class="dropbtn nav-link secondary-color">
                  Profil
                  <% if current_user.notification_number() != 0%>
-                  <%= current_user.notification_number()%>
+                  <span class="notification font-4 f-medium"><%= current_user.notification_number()%></span>
                  <%end%>
                </button>
                <div id="profilDropdown" class="dropdown-content rounded">
@@ -288,7 +288,10 @@
 
                  <%= link_to "Deconnexion", destroy_user_session_path, method: "delete", class: "nav-link dropdown-item" %>
                  <% if current_user.notification_number() != 0%>
-                  <%= link_to "Demandes", user_attendances_path(current_user.id), class: "nav-link dropdown-item" %>
+                    <%= link_to "Notifications", user_attendances_path(current_user.id), class: "nav-link dropdown-item " %>
+                    <span class="notification-dropdown text-center font-4 f-size-5 f-medium">
+                      <%= current_user.notification_number()%>
+                    </span>
                  <%end%>
 
                  <% if current_user && current_user.admin == true%>
