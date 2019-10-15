@@ -1,5 +1,5 @@
-desc "Creer des events"
-task create_event_dayly: :environment do
+desc "Create events every day"
+task create_events_daily: :environment do
   date1 =  Time.now + 6.hours
   date2 =  Time.now + 9.hours
   date3 =  Time.now + 12.hours
